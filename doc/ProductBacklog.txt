@@ -17,12 +17,20 @@ BD:
 cliente (id, cpf, rg, passaporte, nome_cliente, endereco, email)
 cliente_login(id_cliente,password)
 
+
+
 R3 - CRUD aeroportos - somente AV
-- coordenadas--Ira informar as coordenadas em longitude e latitude
-- a distancia deve ser calculada automaticamente
+- coordenadas--
+- a distancia 
+O funcionario com permissao irá cadastrar os aeroportos e as aeronaves, e apos o cadastro da viagem
+no sistema devera colocar as latitude e longitudepara ser gerada as coordenadas.
+
+
+
 BD
-coordenada(latitude, longitude)
-distancia(localA, localB, aux) 
+Aeroporto(idAeroporto, nome,sigla, destino, horario, distancia, latitude, longitude, escalas)
+
+
 
 
 R4 - CRUD aeronaves - somente AV
