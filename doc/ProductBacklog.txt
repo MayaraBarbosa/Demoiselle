@@ -225,6 +225,25 @@ R20 - Possibilitar venda da passagem por meio de sistema externo
 - desenvolver WebService
 - desenvolver sistema para teste
 
+ao  efetuar o login, o cliente pode selecionar compra de passagem online;
+
+BD:
+
+cliente (idcliente, cpf, passaporte, nome, endereco,cidade, numero, cep, uf, sexo, idade,email);
+
+vooIda(idVoo, nomeDestino, horarioChegadaAoDestino,nomeOrigem,horarioSaidaDaOrigem,dataIda);
+
+vooVolta(idVoo, nomeDestino, horarioChegadaAoDestino,nomeOrigem,horarioSaidaDaOrigem, dataVolta);
+
+compra(idCompra, valor, poltronaIda, poltronaVolta idClasse);
+
+classe(idClasse, valor, especifica��o);
+
+horario(idHorario, horarios);
+
+
+
+
 R21 - Criar site principal para clientes (site principal da empresa)
 
 R22 - Gerenciar quais promoções e banners devem ser exibidos no site principal (somente av)
@@ -235,6 +254,6 @@ R24 - Permitir remarcação de voo (adiantar voo) - atendente
 
 R25 - Fretamento - um cliente pode fretar uma aeronave (um voo), configurar rota e horário de partida
 
-
+e
 
 >>>>>>> 639303f98bc65d99a2e00d5868fa824ba779590a
