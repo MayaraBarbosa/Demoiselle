@@ -4,11 +4,12 @@ R1 - Desenvolver Sistemas de Autenticação.
 
 Todo usuário no primeiro acesso terá que se autenticar no sistema informando Nome completo, CPF, RG, endereço completo, telefones
 e email para contato.
-BD:
-cliente(idcliente, nome, sobrenome, cpf, rg, endereco, telefone, email)
+
 Roles: Clientes, Agencias de viagem, Administradores de Voos  (AV),atendentes
 Administrador geral (pode cadastrar todos os demais e atribuir papeis)
 - Desenvolver CRUD de usuários e Roles.
+BD:
+cliente(idcliente, nome, sobrenome, cpf, rg, endereco, telefone, email)
 
 R2 - Os clientes serão cadastrados no sistema de forma automática assim que o mesmo efetuar a compra de uma passagem. O cadastro ficará armazenado no sistema pelo período de 1 ano, após esse tempo o registro será inativado no sistema e setado como removido no banco de dados. Caso o cliente realize a compra de uma nova passagem após o período de 1 ano, seu registro será reativado no sistema e reinserido no banco de dados. Durante o primeiro login no sistema o cliente deverá confirmar seus dados e escolher uma senha, após escolher sua senha ele poderá logar no sistema utilizando seu email e senha.
 R2.1- Caso o usuário queira recuperar sua senha o mesmo deverá clicar na opção "Esqueci minha senha", após isso o sistema irá disparar um email para recuperação de senha. Após confirmar o email o usuário terá a opção de escolher uma nova senha. Será guardado no banco de dados um hash da senha.
@@ -32,12 +33,15 @@ BD
 aeronave(id, modelo, quantidade_assentos, tempo_de_voo, fk_empresa)
 empresa(id, nome, nome_fantasia, cnpj)
 
-R5- CRUD de Rotas de avião
+________________________________________________________________________________________________________________________________________
+							R5- CRUD de Rotas de avião
+________________________________________________________________________________________________________________________________________
  R5.1 O administrador do sistema deve ser capaz de armazenar dados sobre o voo do usuário assim como hora, local de saída, destino e aeronaves disponíveis para levantar voo. E também deve ser possível editar esses dados, remover uma rota de um voo e também deletar. Esses dados serão fixados até que o administrador altere novamente os dados do voo.
  R5.2 Se os dados sobre o voo forem removidas ou deletadas os dados deverão ser desconsiderados para os usuários do sistema.
-
 DB:
  Routes (origin_route, destiny_route, airship_available, date, hour)
+________________________________________________________________________________________________________________________________________
+
 
 R6 - Gerenciamento de VOOS - somente AV
 - associar rota, aeronave, data/hora de embarque, cardÃ¡pio de voo
@@ -122,29 +126,41 @@ R13 - Rastrear malas
 Após o despacho da mala a mesma é etiquetada onde na etiqueta consta um código de barras, a cada escala o sistema lê o código de barras e atualiza o local da mala.
 
 BD:
-bagagens(id_bagagem, id_aviao, id_voo, id_cliente, peso, codigo_barras, local)
+bagagens(id_bagagem, id_aviao, id_voo, id_cliente, peso, codigo_barras, local);
+
+atualizacaoMala(id ,fk_id_bagagem,id_aviao, id_voo, peso, data_ent, local_atual, hora_atual, destino_final, fk_codigo_barras);
 
 ================================
 
 
 R14 - Criar pacotes promocionais - somente AV
 
-R15 - Adquirir pacotes promocionais
- Na pagina principal de vendas de passagens aéreas deve ser permitido o anuncio de pacotes promocionais, como por exemplo: na compra de uma passagem direta para um pais especifico ganhe o dobro de milhas, ou então descontos dependendo da forma de pagamentos.
- BD: promocoes (id_promo, valor_passagem, data_validade, formas_pagamento);
+R15 - Adquirir Pacotes Promocionais
+	O sistema deverá permitir as empresas aéreas a divulgação de promoções em sites de vendas de passagens aéreas, como por exemplo ganhe o dobro de milhas caso adquira uma passagem com conexão direta para determinado pais.
+
+BD: 
+promocoes(id_promocao(pk), fk_valor_passagem, fk_data_validade, fk_formas_pagamento, fk_id_empresa, fk_tipo_promocao,fk_quantidade_liberada, fk_id_cidade_origem, fk_id_cidade_destino, fk_data_compra);
+	
+empresa_promocao(id_empresa_promocao(pk), fk_id_empresa, quantidade_liberada, tipo_promocao, data_validade_promocao, valor_passagem);
+
 
 R16 - Criar interface para sistema externo informar se o cliente possui restriÃ§Ãµes legais
 - desenvolver um aplicativo de teste
 
 R17 - Notificar usuÃ¡rio em caso de cancelamento ou remarcaÃ§Ã£o do voo
 
-R18 - Possibilitar o AV alterar aeronave
-- alocar aeronave maior/menor, de acordo com aquisiÃ§Ãµes de passagem
+R18 - Reconhecimento de retina no cadastro do cliente
+ O sistema deve identificar a retina de um determinado cliente identificando seus pontos. O sistema irá armazenar 512 bytes após a identificação.
+BD:
+cliente (idcliente, dataColeta, retina)
+retina (idretina, pontos)
 
-R19 - Cancelamento de Voo
- O sistema deve permitir ao AV cancelar o voo após ele ter efetuado o login, deve ser feito uma observação por qual motivo o voo foi   cancelado.
- BD: atendenteVoo (idAtend, nomeAtend, senhaAtend);
-     voo (idVoo, destino, horarioSaida, horarioChegada, observacao, idPiloto, idAeronave, idPassageiro);
+
+R19 - Cancelamento de Decolagem
+ O sistema deve permitir ao atendente de voo (logado) cancelar a decolagem para um determinado local. Deve ser informado ao sistema qual  os motivos de cancelamento do voo e quem ordenou o cancelamento e exibir os passageiros desse voo.
+ BD: 
+ atendenteVoo (idAtend, nomeAtend, senhaAtend);
+ voo (idVoo, destino, horarioSaida, horarioChegada, motivoCancelamento, idSupervisor, idPiloto, idAeronave, idPassageiro);
 
 R20 - Possibilitar venda da passagem por meio de sistema externo
 - desenvolver WebService
@@ -246,8 +262,12 @@ R16 - Criar interface para sistema externo informar se o cliente possui restriÃ
 
 R17 - Notificar usuÃ¡rio em caso de cancelamento ou remarcaÃ§Ã£o do voo
 
-R18 - Possibilitar o AV alterar aeronave
-- alocar aeronave maior/menor, de acordo com aquisiÃ§Ãµes de passagem
+R18 - Reconhecimento de retina no cadastro do cliente
+ O sistema deve identificar a retina de um determinado cliente identificando seus pontos. O sistema irá armazenar 512 bytes após a identificação.
+BD:
+cliente (idcliente, dataColeta, retina)
+retina (idretina, pontos)
+
 
 R19 - Possibilitar AV cancelar voo
 - justificar o motivo
@@ -255,6 +275,25 @@ R19 - Possibilitar AV cancelar voo
 R20 - Possibilitar venda da passagem por meio de sistema externo
 - desenvolver WebService
 - desenvolver sistema para teste
+
+ao  efetuar o login, o cliente pode selecionar compra de passagem online;
+
+BD:
+
+cliente (idcliente, cpf, passaporte, nome, endereco,cidade, numero, cep, uf, sexo, idade,email);
+
+vooIda(idVoo, nomeDestino, horarioChegadaAoDestino,nomeOrigem,horarioSaidaDaOrigem,dataIda);
+
+vooVolta(idVoo, nomeDestino, horarioChegadaAoDestino,nomeOrigem,horarioSaidaDaOrigem, dataVolta);
+
+compra(idCompra, valor, poltronaIda, poltronaVolta idClasse);
+
+classe(idClasse, valor, especifica��o);
+
+horario(idHorario, horarios);
+
+
+
 
 R21 - Criar site principal para clientes (site principal da empresa)
 
@@ -284,7 +323,11 @@ R25 - Fretamento - um cliente pode fretar uma aeronave (um voo), configurar rota
 
 - Deverá ter dia/hora para vôos fretados 
 
+<<<<<<< HEAD
+e
+=======
 - Ter peso máximo de carga para que o frete não seja para levar muita bagagem.
 
+>>>>>>> de9147d97d9cb0c3421ca9615f6933e8229a2ebe
 
 >>>>>>> 639303f98bc65d99a2e00d5868fa824ba779590a
