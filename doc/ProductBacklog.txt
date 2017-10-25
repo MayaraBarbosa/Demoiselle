@@ -80,14 +80,15 @@ R8 - Busca de voos
 - opÃ§Ã£o de ida ou ida/volta ou multitrechos
 - opÃ§Ã£o de datas aproximadas
 
-R9 - Efetuar aquisiÃ§Ã£o de passagem
-- informar passaporte/cpf do passageiro.
-- se menor de idade, informar as leis vigentes.
-- se houver restriÃ§Ã£o legal o sistema deve informar
-- informar cartÃ£o de crÃ©dito
-- informar cÃ³digo promocional, cÃ³digo do programa de milhagem (cpf)
-- informar aquisiÃ§Ã£o de pacotes (escolha do assento antecipado ou com conforto)
-- informar pagamento (cartÃ£o de credito, boleto)
+R9 - Efetuar aquisição de passagem
+O sistema deve ser capaz de proporcionar passagens, apresentando informações da 
+compra como passaporte/cpf do passageiro, cartão de crédito, código promocional, 
+código do programa de milhagem e forma de pagamento. 
+Caso menor de idade, informar leis vigentes ou restrição legal quando disponível. 
+O sistema também deve informar aquisição de pacotes, podendo escolher o assento 
+ou conforto.
+BD:
+PassageAcquisition(passport,card_number,promotional_code,mileage_program_code,payment_type,current_laws,legal_restriction)
 
 R10 - Gerar boleto para pagamento da compra	
  Após o cliente escolher o modo de pagamento via boleto e finalizar a compra da passagem, o sistema deverá mostrar
@@ -226,18 +227,6 @@ R8 - Busca de voos
 - Selecionar aeroporto de origem/destino  e datas
 - opÃ§Ã£o de ida ou ida/volta ou multitrechos
 - opÃ§Ã£o de datas aproximadas
-
-Trecho commitado no projeto:
-
-R9 - Efetuar aquisição de passagem
-O sistema deve ser capaz de proporcionar passagens, apresentando informações da 
-compra como passaporte/cpf do passageiro, cartão de crédito, código promocional, 
-código do programa de milhagem e forma de pagamento. 
-Caso menor de idade, informar leis vigentes ou restrição legal quando disponível. 
-O sistema também deve informar aquisição de pacotes, podendo escolher o assento 
-ou conforto.
-BD: 
-PassageAcquisition(passport,card_number,promotional_code,mileage_program_code,payment_type,current_laws,legal_restriction)
 
 R10 - Gerar boleto para pagamento da compra
 
