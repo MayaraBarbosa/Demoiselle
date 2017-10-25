@@ -91,10 +91,9 @@ BD:
 PassageAcquisition(passport,card_number,promotional_code,mileage_program_code,payment_type,current_laws,legal_restriction)
 
 R10 - Gerar boleto para pagamento da compra	
- Após o cliente escolher o modo de pagamento via boleto e finalizar a compra da passagem, o sistema deverá mostrar
- um botão para visualizar o boleto. Após clicar no botão, o boleto será gerado e renderizado na tela do usuário.
+ O sistema deverá permitir que o cliente escolha o modo de pagamento via boleto bancário no processo de compra da passagem. Após clicar no botão visualizar, o boleto será gerado na tela do usuário.
  BD: 
- cliente (idcliente, cpf, passaporte, nome, endereco)
+ cliente (idcliente, login, senha, cpf, passaporte, nome, endereco)
  pagamento(idpagamento, idformapagamento, idcliente, data, hora)
  boleto (idboleto, idpagamento, codbarras, codbanco, vencimento, nossonumero, valor, carteira, datadocumento)
  
