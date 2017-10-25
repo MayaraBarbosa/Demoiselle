@@ -49,8 +49,13 @@ DB
     Pais(id, nome, abreviatura)
     Estado(id, nome, uf, id_pais)
     Cidade(id, nome, id_estado)
-    Aeronave(id, nome, modelo, ano)
-    Rota(id_cidade_origem, id_cidade_destino, id_aeronave, data)
+    Aeroporto(id, nome, abreviatura, id_cidade)
+    Aeronave(id, nome, modelo, ano, qtde_assentos)
+    Assento(id, codigo, fileira, coluna, id_aeronave, corredor, janela)
+    Rota(id_aeroporto_origem, id_aeroporto_destino, duracao)
+    Voo(id, data, observacao, id_rota, id_aeronave)
+    VooXPassagem(id_voo, id_passagem, id_assento)
+    Passagem(id, id_cliente, valor)
 
 R7 - Cadastrar cardÃ¡pio de voo
 - cadastrar conjunto de alimentaÃ§Ã£o
