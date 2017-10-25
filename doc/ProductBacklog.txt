@@ -158,7 +158,7 @@ retina (idretina, pontos)
 
 
 R19 - Cancelamento de Decolagem
- O sistema deve permitir ao atendente de voo (logado) cancelar a decolagem para um determinado local. Deve ser informado ao sistema qual  os motivos de cancelamento do voo e quem ordenou o cancelamento e exibir os passageiros desse voo.
+ O sistema deve permitir ao administrador de voo (logado no sistema) cancelar a decolagem para um determinado local. Deve ser informado ao sistema quais  os motivos de cancelamento do voo e exibir os passageiros desse voo.
  BD: 
  atendenteVoo (idAtend, nomeAtend, senhaAtend);
  voo (idVoo, destino, horarioSaida, horarioChegada, motivoCancelamento, idSupervisor, idPiloto, idAeronave, idPassageiro);
