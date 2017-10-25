@@ -322,12 +322,5 @@ R25 - Fretamento - um cliente pode fretar uma aeronave (um voo), configurar rota
 - O frete deverá ser solicitado antecipado(1 dia / 1 hora antes) pois caso não seja solicitado antecipadamente o valor a ser pago deverá ser mais alto.
 
 - Deverá ter dia/hora para vôos fretados 
-
-<<<<<<< HEAD
-e
-=======
 - Ter peso máximo de carga para que o frete não seja para levar muita bagagem.
 
->>>>>>> de9147d97d9cb0c3421ca9615f6933e8229a2ebe
-
->>>>>>> 639303f98bc65d99a2e00d5868fa824ba779590a
