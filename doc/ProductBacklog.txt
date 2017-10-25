@@ -206,8 +206,6 @@ R3 - CRUD aeroportos - somente AV
 R4 - CRUD aeronaves - somente AV
 - capacidade de passageiros
 - assentos (conforto, convencional, saÃ­das de emergencia, etc)
-R6 - Gerenciamento de VOOS - somente AV
-- associar rota, aeronave, data/hora de embarque, cardÃ¡pio de voo
 
 R7 - Cadastrar cardÃ¡pio de voo
 - cadastrar conjunto de alimentaÃ§Ã£o
