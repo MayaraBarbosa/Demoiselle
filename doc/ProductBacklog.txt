@@ -121,7 +121,9 @@ R13 - Rastrear malas
 Após o despacho da mala a mesma é etiquetada onde na etiqueta consta um código de barras, a cada escala o sistema lê o código de barras e atualiza o local da mala.
 
 BD:
-bagagens(id_bagagem, id_aviao, id_voo, id_cliente, peso, codigo_barras, local)
+bagagens(id_bagagem, id_aviao, id_voo, id_cliente, peso, codigo_barras, local);
+
+atualizacaoMala(id ,fk_id_bagagem,id_aviao, id_voo, peso, data_ent, local_atual, hora_atual, destino_final, fk_codigo_barras);
 
 ================================
 
