@@ -1,31 +1,19 @@
-<<<<<<< HEAD
-﻿Product backlog
+Product backlog
 
-R1 - Desenvolver Sistemas de Autenticação. 
-<<<<<<< HEAD
-Roles: Clientes, Agências de viagem, Administradores de Voos  (AV),atendentes
-Administrador geral (pode cadastrar todos os demais e atribuir papéis)
-- Desenvolver CRUD de usuários e Roles.
-=======
-
-O Sistema deve permitir que todo usuário realize login para autenticação. O usuário ao acessar o sistema deverá informar seu nome de usuário e senha.
-
+R1 - Desenvolver Sistemas de AutenticaÃ§Ã£o. 
+O Sistema deve permitir que todo usuÃ¡rio realize login para autenticaÃ§Ã£o. O usuÃ¡rio ao acessar o sistema deverÃ¡ informar seu nome de usuÃ¡rio e senha.
 Roles: Clientes, Agencias de viagem, Administradores de Voos  (AV),atendentes
 Administrador geral (pode cadastrar todos os demais e atribuir papeis)
-- Desenvolver CRUD de usuários e Roles.
+Desenvolver CRUD de usuÃ¡rios e Roles.
 BD:
-usuario(id_usuario, nome_usuario, senha)
+usuario(idusuario, nome_usuario, senha)
+role(idrole, descricao)
 
-R2 - Os clientes serão cadastrados no sistema de forma automática assim que o mesmo efetuar a compra de uma passagem. O cadastro ficará armazenado no sistema pelo período de 1 ano, após esse tempo o registro será inativado no sistema e setado como removido no banco de dados. Caso o cliente realize a compra de uma nova passagem após o período de 1 ano, seu registro será reativado no sistema e reinserido no banco de dados. Durante o primeiro login no sistema o cliente deverá confirmar seus dados e escolher uma senha, após escolher sua senha ele poderá logar no sistema utilizando seu email e senha.
-R2.1- Caso o usuário queira recuperar sua senha o mesmo deverá clicar na opção "Esqueci minha senha", após isso o sistema irá disparar um email para recuperação de senha. Após confirmar o email o usuário terá a opção de escolher uma nova senha. Será guardado no banco de dados um hash da senha.
+R2 - Os clientes serÃ£o cadastrados no sistema de forma automÃ¡tica assim que o mesmo efetuar a compra de uma passagem. O cadastro ficarÃ¡ armazenado no sistema pelo perÃ­odo de 1 ano, apÃ³s esse tempo o registro serÃ¡ inativado no sistema e setado como removido no banco de dados. Caso o cliente realize a compra de uma nova passagem apÃ³s o perÃ­odo de 1 ano, seu registro serÃ¡ reativado no sistema e reinserido no banco de dados. Durante o primeiro login no sistema o cliente deverÃ¡ confirmar seus dados e escolher uma senha, apÃ³s escolher sua senha ele poderÃ¡ logar no sistema utilizando seu email e senha.
+R2.1- Caso o usuÃ¡rio queira recuperar sua senha o mesmo deverÃ¡ clicar na opÃ§Ã£o "Esqueci minha senha", apÃ³s isso o sistema irÃ¡ disparar um email para recuperaÃ§Ã£o de senha. ApÃ³s confirmar o email o usuÃ¡rio terÃ¡ a opÃ§Ã£o de escolher uma nova senha. SerÃ¡ guardado no banco de dados um hash da senha.
 BD:
 cliente (id, cpf, rg, passaporte, nome_cliente, endereco, email)
 cliente_login(id_cliente,password)
-
->>>>>>> 96e21fc32ef75b28bb0abbf4cbe13817d34be8fa
-
-R2 - Auto cadastro de clientes no sistema
-R2.1 Recuperar senha
 
 R3 - CRUD aeroportos - somente AV
 - coordenadas
@@ -33,109 +21,109 @@ R3 - CRUD aeroportos - somente AV
 
 R4 - CRUD aeronaves - somente AV
 - capacidade de passageiros
-- assentos (conforto, convencional, saídas de emergencia, etc)
+- assentos (conforto, convencional, saÃ­das de emergencia, etc)
 
 R5 - CRUD Rotas - somente AV
 - aeroporto origem/destino 
-- aeronaves possíveis
+- aeronaves possÃ­veis
 
 R6 - Gerenciamento de VOOS - somente AV
-- associar rota, aeronave, data/hora de embarque, cardápio de voo
+- associar rota, aeronave, data/hora de embarque, cardÃ¡pio de voo
 
-R7 - Cadastrar cardápio de voo
-- cadastrar conjunto de alimentação
+R7 - Cadastrar cardÃ¡pio de voo
+- cadastrar conjunto de alimentaÃ§Ã£o
 - voos curtos
 - voos com + de 2 horas de voo
 - voos com + de 5 horas de voo
-	* O sistema ter� a funcionalidade de cadastrar o card�pio do v�o podendo cadastrar card�pios diferentes para cada tipo de v�o, 
-na �rea de cadastro de card�pio o funcion�rio ter� que inserir o nome dos alimentos e o tipo do v�o, 
-por exemplo: v�o curto ser�o do tipo A,
-		V�o com + de 2 horas de dura��o ser�o do tipo B,
-		V�o com + de 2 horas de dura��o ser�o do tipo C.
-	* O cliente no momento da compra da passagem ele poder� informar se possui alguma restri��o alimentar (ex: algum tipo de alergia) 
-ou algum tipo de prefer�ncia alimentar (ex: vegano, vegetariano).
+	* O sistema terá a funcionalidade de cadastrar o cardápio do vôo podendo cadastrar cardápios diferentes para cada tipo de vôo, 
+na área de cadastro de cardápio o funcionário terá que inserir o nome dos alimentos e o tipo do vôo, 
+por exemplo: vôo curto serão do tipo A,
+		Vôo com + de 2 horas de duração serão do tipo B,
+		Vôo com + de 2 horas de duração serão do tipo C.
+	* O cliente no momento da compra da passagem ele poderá informar se possui alguma restrição alimentar (ex: algum tipo de alergia) 
+ou algum tipo de preferência alimentar (ex: vegano, vegetariano).
 DB:
-card�pio (id, tipoVoo, id_alimento)
+cardápio (id, tipoVoo, id_alimento)
 alimento (id, idCardapio, nome)
-cliente (id, nome, cpf, dataDoVoo, restri��o, tipoDeAlimentacao)
-restri��o (id, id_cliente, nomeAlimento)
+cliente (id, nome, cpf, dataDoVoo, restrição, tipoDeAlimentacao)
+restrição (id, id_cliente, nomeAlimento)
 
 
 R8 - Busca de voos
 - Selecionar aeroporto de origem/destino  e datas
-- opção de ida ou ida/volta ou multitrechos
-- opção de datas aproximadas
+- opÃ§Ã£o de ida ou ida/volta ou multitrechos
+- opÃ§Ã£o de datas aproximadas
 
-R9 - Efetuar aquisição de passagem
+R9 - Efetuar aquisiÃ§Ã£o de passagem
 - informar passaporte/cpf do passageiro.
 - se menor de idade, informar as leis vigentes.
-- se houver restrição legal o sistema deve informar
-- informar cartão de crédito
-- informar código promocional, código do programa de milhagem (cpf)
-- informar aquisição de pacotes (escolha do assento antecipado ou com conforto)
-- informar pagamento (cartão de credito, boleto)
+- se houver restriÃ§Ã£o legal o sistema deve informar
+- informar cartÃ£o de crÃ©dito
+- informar cÃ³digo promocional, cÃ³digo do programa de milhagem (cpf)
+- informar aquisiÃ§Ã£o de pacotes (escolha do assento antecipado ou com conforto)
+- informar pagamento (cartÃ£o de credito, boleto)
 
 <<<<<<< HEAD
 R10 - Gerar boleto para pagamento da compra
 
 
-R11 � Realizar check-in
-Ap�s efetuar o login no sistema, o usu�rio deve informar o seu localizador e seu CPF. Com a identifica��o feita no avi�o, ele pode escolher, ou n�o, se gostaria de levar mais bagagem acima do padr�o. Finalizando, ele deve escolher o assento de sua prefer�ncia (desde que esteja vazio). Ap�s check-in realizado, adicionar milhagem ao cliente atrav�s da seguinte equa��o.  
+R11 ï¿½ Realizar check-in
+Apï¿½s efetuar o login no sistema, o usuï¿½rio deve informar o seu localizador e seu CPF. Com a identificaï¿½ï¿½o feita no aviï¿½o, ele pode escolher, ou nï¿½o, se gostaria de levar mais bagagem acima do padrï¿½o. Finalizando, ele deve escolher o assento de sua preferï¿½ncia (desde que esteja vazio). Apï¿½s check-in realizado, adicionar milhagem ao cliente atravï¿½s da seguinte equaï¿½ï¿½o.  
 =======
 R10 - Gerar boleto para pagamento da compra	
- O sistema deverá permitir que o cliente escolha o modo de pagamento via boleto bancário no processo de compra da passagem. 
-Após clicar no botão visualizar, o boleto será gerado na tela do usuário.
+ O sistema deverÃ¡ permitir que o cliente escolha o modo de pagamento via boleto bancÃ¡rio no processo de compra da passagem. 
+ApÃ³s clicar no botÃ£o visualizar, o boleto serÃ¡ gerado na tela do usuÃ¡rio.
  BD: 
  cliente (idcliente, login, senha, cpf, passaporte, nome, endereco)
  pagamento(idpagamento, idformapagamento, idcliente, data, hora)
  boleto (idboleto, idpagamento, codbarras, codbanco, vencimento, nossonumero, valor, carteira, datadocumento)
  
 
-R11 – Realizar check-in
-Após efetuar o login no sistema, o usuário deve informar o seu localizador e seu CPF. Com a identificação feita no avião, ele pode escolher, ou não, se gostaria de levar mais bagagem acima do padrão. Finalizando, ele deve escolher o assento de sua preferência (desde que esteja vazio). Após check-in realizado, adicionar milhagem ao cliente através da seguinte equação. 
+R11 â€“ Realizar check-in
+ApÃ³s efetuar o login no sistema, o usuÃ¡rio deve informar o seu localizador e seu CPF. Com a identificaÃ§Ã£o feita no aviÃ£o, ele pode escolher, ou nÃ£o, se gostaria de levar mais bagagem acima do padrÃ£o. Finalizando, ele deve escolher o assento de sua preferÃªncia (desde que esteja vazio). ApÃ³s check-in realizado, adicionar milhagem ao cliente atravÃ©s da seguinte equaÃ§Ã£o. 
 >>>>>>> 96e21fc32ef75b28bb0abbf4cbe13817d34be8fa
 Ex: Distancia: 536 km
 536 / 1.5 = 357,33
-Pre�o 350,00 * 0.1% = 0.35
+Preï¿½o 350,00 * 0.1% = 0.35
 Milhas 0.35 * 357,33 = 125.
 BD:
-Cliente (idCliente, cpf, passaporte, nome, endere�o, idBagagem, milhagem)
+Cliente (idCliente, cpf, passaporte, nome, endereï¿½o, idBagagem, milhagem)
 Bagageiro (idBagagem, idCliente, compartimentoMala*, valorTotal)
-*comparimentoMala seria o local/"arm�rio" que estariam guardadas as malas.
-Avi�o (idAviao, nomeAvi�o, assentosDisponiveis, origem, destino, idCliente, idBagagem)
+*comparimentoMala seria o local/"armï¿½rio" que estariam guardadas as malas.
+Aviï¿½o (idAviao, nomeAviï¿½o, assentosDisponiveis, origem, destino, idCliente, idBagagem)
 
 
 R12 - Despachar malas (atendente)
 - gerar etiquetas
-- registrar status: esteira, embarque, avião x, transferencia, avião y, desenbarque, esteira
+- registrar status: esteira, embarque, aviÃ£o x, transferencia, aviÃ£o y, desenbarque, esteira
 
 * Despache de bagagem
-* Ap�s check-in do cliente no aeroporto, o atendende deve gerar etiquedas �nicas para cada bagagem do cliente, como tamb�m, registrar no sistema o status da mesma.
+* Após check-in do cliente no aeroporto, o atendende deve gerar etiquedas únicas para cada bagagem do cliente, como também, registrar no sistema o status da mesma.
 * BD: Bagagem(idPassageiro, NumEsteira, NumEmbarque, NumAviao, NumDesembarque) 
 
 
 R13 - Rastrear malhas
-- permitir o cliente identificar onde as malas estão
+- permitir o cliente identificar onde as malas estÃ£o
 
 
 R14 - Criar pacotes promocionais - somente AV
-* Adicionar prmo��es para viagens, pacotes com viagens de ida e volta, pacotes de viagens para varios lugares tur�sticos, etc.
-* Dever� ser criado uma tabela pacote, que cont�m os atributos de destino e pre�o, op��o de ida e volta, id do pacote e id da passagem, para concatenar com a tabela passagem com as informa��es da passagem ou tabela viagem que contenha o id da passagem assim como a tabela de destino com as informa��es de cada destino dos voos.
-* Pacotes(ID_Pacote, ID_Passagem, nome_destino, ID_Destino, ida_volta, pre�o)
+* Adicionar prmoções para viagens, pacotes com viagens de ida e volta, pacotes de viagens para varios lugares turísticos, etc.
+* Deverá ser criado uma tabela pacote, que contém os atributos de destino e preço, opção de ida e volta, id do pacote e id da passagem, para concatenar com a tabela passagem com as informações da passagem ou tabela viagem que contenha o id da passagem assim como a tabela de destino com as informações de cada destino dos voos.
+* Pacotes(ID_Pacote, ID_Passagem, nome_destino, ID_Destino, ida_volta, preço)
 
 
 R15 - Adquirir pacotes promocionais
 
-R16 - Criar interface para sistema externo informar se o cliente possui restrições legais
+R16 - Criar interface para sistema externo informar se o cliente possui restriÃ§Ãµes legais
 - desenvolver um aplicativo de teste
-Usando uma api externa  (Ex:Recordsapi Public Records), ao se cadastrar um usuario se verificar� se consta algo no seu cpf.
+Usando uma api externa  (Ex:Recordsapi Public Records), ao se cadastrar um usuario se verificará se consta algo no seu cpf.
 
 BD: Cliente(idCliente, cpf, passaporte, nome, endereco, idBagagem, milhagem)
 
-R17 - Notificar usuário em caso de cancelamento ou remarcação do voo
+R17 - Notificar usuÃ¡rio em caso de cancelamento ou remarcaÃ§Ã£o do voo
 
 R18 - Possibilitar o AV alterar aeronave
-- alocar aeronave maior/menor, de acordo com aquisições de passagem
+- alocar aeronave maior/menor, de acordo com aquisiÃ§Ãµes de passagem
 
 R19 - Possibilitar AV cancelar voo
 - justificar o motivo
@@ -143,9 +131,9 @@ R19 - Possibilitar AV cancelar voo
 R20 - Possibilitar venda da passagem por meio de sistema externo
 - desenvolver WebService
 - desenvolver sistema para teste
-Rafael Pantalão  Lionardo 
+Rafael PantalÃ£o  Lionardo 
 
-Após efetuar o login, o cliente pode selecionar compra de passagem
+ApÃ³s efetuar o login, o cliente pode selecionar compra de passagem
 
 BD:
 
@@ -159,43 +147,43 @@ voo(idBanco,Classe, nomeDestino, horarioDestino,nomeSaida,horarioSaida)
 R21 - Criar site principal para clientes (site principal da empresa)
 
 <<<<<<< HEAD
-R22 - Gerenciar quais promoções e banners devem ser exibidos no site principal (somente av)
+R22 - Gerenciar quais promoÃ§Ãµes e banners devem ser exibidos no site principal (somente av)
 =======
 
-R22 - Gerenciar quais promoÃ§Ãµes e banners devem ser exibidos no site principal (somente av)
+R22 - Gerenciar quais promoÃƒÂ§ÃƒÂµes e banners devem ser exibidos no site principal (somente av)
 >>>>>>> 96e21fc32ef75b28bb0abbf4cbe13817d34be8fa
 
 
 <<<<<<< HEAD
-R24 - Permitir remarcação de voo (adiantar voo) - atendente
+R24 - Permitir remarcaÃ§Ã£o de voo (adiantar voo) - atendente
 =======
 ===========================================================================================================================
 R23 - Atendimento por chat
 
-- O sistema de atendimento por chat, tem como objetivo auxiliar o usuário no esclarecimento de dúvidas referentes a passagens, bagagens, remarcação de vôo,
+- O sistema de atendimento por chat, tem como objetivo auxiliar o usuÃ¡rio no esclarecimento de dÃºvidas referentes a passagens, bagagens, remarcaÃ§Ã£o de vÃ´o,
 troca de passagem, entre outros.
-- O atendimento acontece em tempo real e por motivos de segurança, as conversar serão gravadas juntamente aos ids do usuário e funcionário, a data e o horário.
-- O usuário deve estar logado com suas credenciais (login e senha) previamente cadastrados. 
-- Informar o cpf para maior agilidade no processo de busca de dados do cliente em questão.
+- O atendimento acontece em tempo real e por motivos de seguranÃ§a, as conversar serÃ£o gravadas juntamente aos ids do usuÃ¡rio e funcionÃ¡rio, a data e o horÃ¡rio.
+- O usuÃ¡rio deve estar logado com suas credenciais (login e senha) previamente cadastrados. 
+- Informar o cpf para maior agilidade no processo de busca de dados do cliente em questÃ£o.
 
 BD:
 -cliente( idCliente, nome, cpf, passaporte, endereco, idade, telefone);
 -logChat( idChat, idCliente, idFuncionario, data, hora);
--chat( idChat, data, hora, conteúdo); 
+-chat( idChat, data, hora, conteÃºdo); 
 
 ===========================================================================================================================
 R24 - Remarcacao de voo (adiantar voo) - atendente
 
-O sistema deve permitir que o usuario que o mesmo solicite a alteração do voo.
-Na ocasião de mudança de data e/ou horario do voo, será imprescindivel que ação seja tomada com pelo ao menos 7 horas de antecedencia.
-A alteração estará sujeita a disponibilidade de assentos e será cobrado uma tarifa de acordo com o tipo de passagem.
-O atendente consultará primeiramente a disponibilidade do voo requerido. Após esta ação, caso exista assentos disponiveis, 
-será informada ao cliente. Com as informações sobre voo e assento, a efetivação da requisição, se dára da seguinte forma:
--O solicitante fornecerá a identificação para qual voo e horario o mesmo está requisitando e algum documento de identificação dele, solicitante, tal como o registro geral ou cpf;
--A atendente fará a busca por disponibilidade de assentos no voo requerido,e informará ao solicitante;
--Tendo assentos disponiveis, o solicitante escolherá um assento e informará a atendente;
--A atendente, entrará no voo pedido, e clicará em alteração de voo. Reservará o assento desejado pelo cliente, caso nao esteja marcado, e após reservar, será imediatamente solicitado sobre quem é o solicitante da troca e em qual voo o mesmo estaria alocado atualmente, ou seja, de qual voo ele está migrando.
--Após o processo, será emitida uma nova passagem para o cliente;
+O sistema deve permitir que o usuario que o mesmo solicite a alteraÃ§Ã£o do voo.
+Na ocasiÃ£o de mudanÃ§a de data e/ou horario do voo, serÃ¡ imprescindivel que aÃ§Ã£o seja tomada com pelo ao menos 7 horas de antecedencia.
+A alteraÃ§Ã£o estarÃ¡ sujeita a disponibilidade de assentos e serÃ¡ cobrado uma tarifa de acordo com o tipo de passagem.
+O atendente consultarÃ¡ primeiramente a disponibilidade do voo requerido. ApÃ³s esta aÃ§Ã£o, caso exista assentos disponiveis, 
+serÃ¡ informada ao cliente. Com as informaÃ§Ãµes sobre voo e assento, a efetivaÃ§Ã£o da requisiÃ§Ã£o, se dÃ¡ra da seguinte forma:
+-O solicitante fornecerÃ¡ a identificaÃ§Ã£o para qual voo e horario o mesmo estÃ¡ requisitando e algum documento de identificaÃ§Ã£o dele, solicitante, tal como o registro geral ou cpf;
+-A atendente farÃ¡ a busca por disponibilidade de assentos no voo requerido,e informarÃ¡ ao solicitante;
+-Tendo assentos disponiveis, o solicitante escolherÃ¡ um assento e informarÃ¡ a atendente;
+-A atendente, entrarÃ¡ no voo pedido, e clicarÃ¡ em alteraÃ§Ã£o de voo. ReservarÃ¡ o assento desejado pelo cliente, caso nao esteja marcado, e apÃ³s reservar, serÃ¡ imediatamente solicitado sobre quem Ã© o solicitante da troca e em qual voo o mesmo estaria alocado atualmente, ou seja, de qual voo ele estÃ¡ migrando.
+-ApÃ³s o processo, serÃ¡ emitida uma nova passagem para o cliente;
 
 BD:
 
@@ -211,29 +199,29 @@ logAlteracao(id, idFuncionario, idCliente, idVooAnterior, idVooAtual, comentario
 ===========================================================================================================================
 >>>>>>> 96e21fc32ef75b28bb0abbf4cbe13817d34be8fa
 
-R25 - Fretamento - um cliente pode fretar uma aeronave (um voo), configurar rota e horário de partida
+R25 - Fretamento - um cliente pode fretar uma aeronave (um voo), configurar rota e horÃ¡rio de partida
 
 
 
 =======
-﻿Product backlog
+ï»¿Product backlog
 
-R1 - Desenvolver Sistemas de Autenticação. 
-Roles: Clientes, Agências de viagem, Administradores de Voos  (AV),atendentes
-Administrador geral (pode cadastrar todos os demais e atribuir papéis)
-- Desenvolver CRUD de usuários e Roles.
+R1 - Desenvolver Sistemas de AutenticaÃ§Ã£o. 
+Roles: Clientes, AgÃªncias de viagem, Administradores de Voos  (AV),atendentes
+Administrador geral (pode cadastrar todos os demais e atribuir papÃ©is)
+- Desenvolver CRUD de usuÃ¡rios e Roles.
 
-R2- Os clientes ser�o cadastrados no sistema de forma autom�tica assim que o mesmo
-efetuar a compra de uma passagem. O cadastro ficar� armazenado no sistema pelo 
-per�odo de 1 ano, ap�s esse tempo o registro ser� inativado no sistema e setado 
+R2- Os clientes serão cadastrados no sistema de forma automática assim que o mesmo
+efetuar a compra de uma passagem. O cadastro ficará armazenado no sistema pelo 
+período de 1 ano, após esse tempo o registro será inativado no sistema e setado 
 como removido no banco de dados. Caso o cliente realize a compra de uma nova 
-passagem ap�s o per�odo de 1 ano, seu registro ser� reativado no sistema e 
+passagem após o período de 1 ano, seu registro será reativado no sistema e 
 reinserido no banco de dados. Durante o primeiro login no sistema o cliente 
-dever� confirmar seus dados e escolher uma senha, ap�s escolher sua senha ele 
-poder� logar no sistema utilizando seu email e senha.
-R2.1- Caso o usu�rio queira recuperar sua senha o mesmo dever� clicar na op��o 
-"Esqueci minha senha", ap�s isso o sistema ir� disparar um email para recupera��o
- de senha. Ap�s confirmar o email o usu�rio ter� a op��o de escolher uma nova senha.
+deverá confirmar seus dados e escolher uma senha, após escolher sua senha ele 
+poderá logar no sistema utilizando seu email e senha.
+R2.1- Caso o usuário queira recuperar sua senha o mesmo deverá clicar na opção 
+"Esqueci minha senha", após isso o sistema irá disparar um email para recuperação
+ de senha. Após confirmar o email o usuário terá a opção de escolher uma nova senha.
 BD:
 cliente (id, cpf, rg, passaporte, nome_cliente, endereco, email)
 cliente_login(id_cliente,password)
@@ -244,49 +232,49 @@ R3 - CRUD aeroportos - somente AV
 
 R4 - CRUD aeronaves - somente AV
 - capacidade de passageiros
-- assentos (conforto, convencional, saídas de emergencia, etc)
+- assentos (conforto, convencional, saÃ­das de emergencia, etc)
 
-R5- CRUD de Rotas de avi�o
- O sistema deve ser capaz de armazenar dados sobre o voo do usu�rio assim como hora, local de sa�da, destino e aeronaves dispon�veis 
-para levantar voo. E tamb�m deve ser poss�vel editar esses dados, remover uma rota de um voo e tamb�m deletar.
+R5- CRUD de Rotas de avião
+ O sistema deve ser capaz de armazenar dados sobre o voo do usuário assim como hora, local de saída, destino e aeronaves disponíveis 
+para levantar voo. E também deve ser possível editar esses dados, remover uma rota de um voo e também deletar.
 DB:
  Routes (origin_route, destiny_route, airship_available, date, hour)
 
 R6 - Gerenciamento de VOOS - somente AV
-- associar rota, aeronave, data/hora de embarque, cardápio de voo
+- associar rota, aeronave, data/hora de embarque, cardÃ¡pio de voo
 
-R7 - Cadastrar cardápio de voo
-- cadastrar conjunto de alimentação
+R7 - Cadastrar cardÃ¡pio de voo
+- cadastrar conjunto de alimentaÃ§Ã£o
 - voos curtos
 - voos com + de 2 horas de voo
 - voos com + de 5 horas de voo
-	* O sistema ter� a funcionalidade de cadastrar o card�pio do v�o podendo cadastrar card�pios diferentes para cada tipo de v�o, 
-na �rea de cadastro de card�pio o funcion�rio ter� que inserir o nome dos alimentos e o tipo do v�o, 
-por exemplo: v�o curto ser�o do tipo A,
-		V�o com + de 2 horas de dura��o ser�o do tipo B,
-		V�o com + de 2 horas de dura��o ser�o do tipo C.
-	* O cliente no momento da compra da passagem ele poder� informar se possui alguma restri��o alimentar (ex: algum tipo de alergia) 
-ou algum tipo de prefer�ncia alimentar (ex: vegano, vegetariano).
+	* O sistema terá a funcionalidade de cadastrar o cardápio do vôo podendo cadastrar cardápios diferentes para cada tipo de vôo, 
+na área de cadastro de cardápio o funcionário terá que inserir o nome dos alimentos e o tipo do vôo, 
+por exemplo: vôo curto serão do tipo A,
+		Vôo com + de 2 horas de duração serão do tipo B,
+		Vôo com + de 2 horas de duração serão do tipo C.
+	* O cliente no momento da compra da passagem ele poderá informar se possui alguma restrição alimentar (ex: algum tipo de alergia) 
+ou algum tipo de preferência alimentar (ex: vegano, vegetariano).
 DB:
-card�pio (id, tipoVoo, id_alimento)
+cardápio (id, tipoVoo, id_alimento)
 alimento (id, idCardapio, nome)
-cliente (id, nome, cpf, dataDoVoo, restri��o, tipoDeAlimentacao)
-restri��o (id, id_cliente, nomeAlimento)
+cliente (id, nome, cpf, dataDoVoo, restrição, tipoDeAlimentacao)
+restrição (id, id_cliente, nomeAlimento)
 
 
 R8 - Busca de voos
 - Selecionar aeroporto de origem/destino  e datas
-- opção de ida ou ida/volta ou multitrechos
-- opção de datas aproximadas
+- opÃ§Ã£o de ida ou ida/volta ou multitrechos
+- opÃ§Ã£o de datas aproximadas
 
 Trecho commitado no projeto:
 
-R9 - Efetuar aquisi��o de passagem
-O sistema deve ser capaz de proporcionar passagens, apresentando informa��es da 
-compra como passaporte/cpf do passageiro, cart�o de cr�dito, c�digo promocional, 
-c�digo do programa de milhagem e forma de pagamento. 
-Caso menor de idade, informar leis vigentes ou restri��o legal quando dispon�vel. 
-O sistema tamb�m deve informar aquisi��o de pacotes, podendo escolher o assento 
+R9 - Efetuar aquisição de passagem
+O sistema deve ser capaz de proporcionar passagens, apresentando informações da 
+compra como passaporte/cpf do passageiro, cartão de crédito, código promocional, 
+código do programa de milhagem e forma de pagamento. 
+Caso menor de idade, informar leis vigentes ou restrição legal quando disponível. 
+O sistema também deve informar aquisição de pacotes, podendo escolher o assento 
 ou conforto.
 BD: 
 PassageAcquisition(passport,card_number,promotional_code,mileage_program_code,payment_type,current_laws,legal_restriction)
@@ -294,39 +282,39 @@ PassageAcquisition(passport,card_number,promotional_code,mileage_program_code,pa
 R10 - Gerar boleto para pagamento da compra
 
 
-R11 � Realizar check-in
-Ap�s efetuar o login no sistema, o usu�rio deve informar o seu localizador e seu CPF. Com a identifica��o feita no avi�o, ele pode escolher, ou n�o, se gostaria de levar mais bagagem acima do padr�o. Finalizando, ele deve escolher o assento de sua prefer�ncia (desde que esteja vazio). Ap�s check-in realizado, adicionar milhagem ao cliente atrav�s da seguinte equa��o.  
+R11 – Realizar check-in
+Após efetuar o login no sistema, o usuário deve informar o seu localizador e seu CPF. Com a identificação feita no avião, ele pode escolher, ou não, se gostaria de levar mais bagagem acima do padrão. Finalizando, ele deve escolher o assento de sua preferência (desde que esteja vazio). Após check-in realizado, adicionar milhagem ao cliente através da seguinte equação.  
 Ex: Distancia: 536 km
 536 / 1.5 = 357,33
-Pre�o 350,00 * 0.1% = 0.35
+Preço 350,00 * 0.1% = 0.35
 Milhas 0.35 * 357,33 = 125.
 BD:
-Cliente (idCliente, cpf, passaporte, nome, endere�o, idBagagem, milhagem)
+Cliente (idCliente, cpf, passaporte, nome, endereço, idBagagem, milhagem)
 Bagageiro (idBagagem, idCliente, compartimentoMala*, valorTotal)
-*comparimentoMala seria o local/"arm�rio" que estariam guardadas as malas.
-Avi�o (idAviao, nomeAvi�o, assentosDisponiveis, origem, destino, idCliente, idBagagem)
+*comparimentoMala seria o local/"armário" que estariam guardadas as malas.
+Avião (idAviao, nomeAvião, assentosDisponiveis, origem, destino, idCliente, idBagagem)
 
 
 R12 - Despachar malas (atendente)
 - gerar etiquetas
-- registrar status: esteira, embarque, avião x, transferencia, avião y, desenbarque, esteira
+- registrar status: esteira, embarque, aviÃ£o x, transferencia, aviÃ£o y, desenbarque, esteira
 * Despache de bagagem
-* O atendende deve gerar etiquedas para cada bagagem, além de registrar no sistema o status da mesma.
+* O atendende deve gerar etiquedas para cada bagagem, alÃ©m de registrar no sistema o status da mesma.
 * BD: Bagagem(idPassageiro, NumEsteira, NumEmbarque, NumAviao, NumDesenbarque) 
 
 
 R13 - Rastrear malhas
-- permitir o cliente identificar onde as malas estão
+- permitir o cliente identificar onde as malas estÃ£o
 
 
 R14 - Criar pacotes promocionais - somente AV
 
 R15 - Adquirir pacotes promocionais
 
-R17 - Notificar usuário em caso de cancelamento ou remarcação do voo
+R17 - Notificar usuÃ¡rio em caso de cancelamento ou remarcaÃ§Ã£o do voo
 
 R18 - Possibilitar o AV alterar aeronave
-- alocar aeronave maior/menor, de acordo com aquisições de passagem
+- alocar aeronave maior/menor, de acordo com aquisiÃ§Ãµes de passagem
 
 R19 - Possibilitar AV cancelar voo
 - justificar o motivo
@@ -336,7 +324,7 @@ R20 - Possibilitar venda da passagem por meio de sistema externo
 - desenvolver sistema para teste
 
 R21 - Criar site principal para clientes (site principal da empresa)
--O site principal deve ser limpo, com os imagens e indicações intuitivas para facilitar seu uso, ter a opção de mostrar os horarios disponiveis e preços de viagens que o usuario selecionar, o valor e numero de passagens.
+-O site principal deve ser limpo, com os imagens e indicaÃ§Ãµes intuitivas para facilitar seu uso, ter a opÃ§Ã£o de mostrar os horarios disponiveis e preÃ§os de viagens que o usuario selecionar, o valor e numero de passagens.
 
 Banco de Dados:
 -Consulta (idConsulta, data, hora, num_passagem, origem, destino, valor);
@@ -348,27 +336,27 @@ Banco de Dados:
 
 
 <<<<<<< HEAD
-R22 - Gerenciar quais promoções e banners devem ser exibidos no site principal (somente av)
-=======
 R22 - Gerenciar quais promoÃ§Ãµes e banners devem ser exibidos no site principal (somente av)
+=======
+R22 - Gerenciar quais promoÃƒÂ§ÃƒÂµes e banners devem ser exibidos no site principal (somente av)
 
 >>>>>>> 96e21fc32ef75b28bb0abbf4cbe13817d34be8fa
 
 
 <<<<<<< HEAD
-R24 - Permitir remarcação de voo (adiantar voo) - atendente
+R24 - Permitir remarcaÃ§Ã£o de voo (adiantar voo) - atendente
 R24 - Alteracao de voo (adiantar voo) - atendente
 
 
-R25 - Fretamento - um cliente pode fretar uma aeronave (um voo), configurar rota e horário de partida
-O conceito de Fretamento surgiu na década de 50 na região ABC(São Paulo) para a forte industrialização da região, pois era necessitada de transportes de passageiros. Hoje o serviço de fretamento está presente em todo o país em diversos segmentos. O fretamento de um avião pode ser feito a um avião de grande porte ou pequeno porte para muitas pessoas ou poucas pessoas e até individualmente. 
+R25 - Fretamento - um cliente pode fretar uma aeronave (um voo), configurar rota e horÃ¡rio de partida
+O conceito de Fretamento surgiu na dÃ©cada de 50 na regiÃ£o ABC(SÃ£o Paulo) para a forte industrializaÃ§Ã£o da regiÃ£o, pois era necessitada de transportes de passageiros. Hoje o serviÃ§o de fretamento estÃ¡ presente em todo o paÃ­s em diversos segmentos. O fretamento de um aviÃ£o pode ser feito a um aviÃ£o de grande porte ou pequeno porte para muitas pessoas ou poucas pessoas e atÃ© individualmente. 
 
-- O frete deverá ser solicitado antecipado(1 dia / 1 hora antes) pois caso não seja solicitado antecipadamente o valor a ser pago deverá ser mais alto.
-- Deverá ter dia/hora para vôos fretados 
-- Ter peso máximo de carga para que o frete não seja para levar muita bagagem.
+- O frete deverÃ¡ ser solicitado antecipado(1 dia / 1 hora antes) pois caso nÃ£o seja solicitado antecipadamente o valor a ser pago deverÃ¡ ser mais alto.
+- DeverÃ¡ ter dia/hora para vÃ´os fretados 
+- Ter peso mÃ¡ximo de carga para que o frete nÃ£o seja para levar muita bagagem.
 
 Banco de dados:
 TABLE Aviao (IdAviao int PRIMARY KEY, Origem String, HorarioChegada Date, HorarioSaida date, Destino String, DisponivelFrete char, Piloto String, EmpresaAerea String, Bagagem double,, Passageiros int, IdAgenda int)
-TABLE Agenda (IdAgenda int PRIMARY KEY, Antecipado Char, DiaSolicitaçao Date,Solicitante String)
+TABLE Agenda (IdAgenda int PRIMARY KEY, Antecipado Char, DiaSolicitaÃ§ao Date,Solicitante String)
 TABLE Frete (IdFrete int PRIMARY KEY, DataFretes date, NumeroPassageiros int, Valor double, PesoBagagens double)
-TABLE Passageiro (CPF int, Nome String, RG int, Passaporte int, Endereço endereco, IdPassageiro int PRIMARY KEY, Telefone int, E-mail String)
+TABLE Passageiro (CPF int, Nome String, RG int, Passaporte int, EndereÃ§o endereco, IdPassageiro int PRIMARY KEY, Telefone int, E-mail String)
