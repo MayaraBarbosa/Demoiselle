@@ -321,7 +321,32 @@ Estrutra do Banco de Dados:
 ================================================
 
 
-R24 - Permitir remarcaÃ§Ã£o de voo (adiantar voo) - atendente
+R24 - Alteracao de voo (adiantar voo) - atendente
+
+
+O sistema deve permitir que o usuario que o mesmo solicite a alteração do voo.
+Na ocasião de mudança de data e/ou horario do voo, será imprescindivel que ação seja tomada com pelo ao menos 7 horas de antecedencia.
+A alteração estará sujeita a disponibilidade de assentos e será cobrado uma tarifa de acordo com o tipo de passagem.
+O atendente consultará primeiramente a disponibilidade do voo requerido. Após esta ação, caso exista assentos disponiveis, 
+será informada ao cliente. Com as informações sobre voo e assento, a efetivação da requisição, se dára da seguinte forma:
+-O solicitante fornecerá a identificação para qual voo e horario o mesmo está requisitando e algum documento de identificação dele, solicitante, tal como o registro geral ou cpf;
+-A atendente fará a busca por disponibilidade de assentos no voo requerido,e informará ao solicitante;
+-Tendo assentos disponiveis, o solicitante escolherá um assento e informará a atendente;
+-A atendente, entrará no voo pedido, e clicará em alteração de voo. Reservará o assento desejado pelo cliente, caso nao esteja marcado, e após reservar, será imediatamente solicitado sobre quem é o solicitante da troca e em qual voo o mesmo estaria alocado atualmente, ou seja, de qual voo ele está migrando.
+-Após o processo, será emitida uma nova passagem para o cliente;
+
+BD:
+
+cliente(id, nome, cpf, rg, endereco, telefone, idade, sexo, dtNascimento);
+funcionario(id, nome, cpf, cargo, funcao);
+voo(id, localPartida, localDestino, horaEmbarque, horaDesembarque, compania, qtdAssentos, assentosDisponiveis);
+tipoPassagem(id, descricao);
+passagem(id , idVoo, idportao, idCliente, idAssento, idTipo);
+assento(id, idVoo, idCliente);
+portao(id, idVoo);
+logAlteracao(id, idFuncionario, idCliente, idVooAnterior, idVooAtual, comentarios);
+
+===============================================================================================================
 
 R25 - Fretamento - um cliente pode fretar uma aeronave (um voo), configurar rota e horÃ¡rio de partida
 - O frete deverá ser solicitado antecipado(1 dia / 1 hora antes) pois caso não seja solicitado antecipadamente o valor a ser pago deverá ser mais alto.
