@@ -111,6 +111,9 @@ R15 - Adquirir pacotes promocionais
 
 R16 - Criar interface para sistema externo informar se o cliente possui restrições legais
 - desenvolver um aplicativo de teste
+Usando uma api externa  (Ex:Recordsapi Public Records), ao se cadastrar um usuario se verificar� se consta algo no seu cpf.
+
+BD: Cliente(idCliente, cpf, passaporte, nome, endereco, idBagagem, milhagem)
 
 R17 - Notificar usuário em caso de cancelamento ou remarcação do voo
 
