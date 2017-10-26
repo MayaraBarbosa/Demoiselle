@@ -293,9 +293,6 @@ R14 - Criar pacotes promocionais - somente AV
 
 R15 - Adquirir pacotes promocionais
 
-R16 - Criar interface para sistema externo informar se o cliente possui restrições legais
-- desenvolver um aplicativo de teste
-
 R17 - Notificar usuário em caso de cancelamento ou remarcação do voo
 
 R18 - Possibilitar o AV alterar aeronave
