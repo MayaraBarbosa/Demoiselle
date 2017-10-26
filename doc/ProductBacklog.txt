@@ -188,6 +188,7 @@ voo(idBanco,Classe, nomeDestino, horarioDestino,nomeSaida,horarioSaida)
 
 R21 - Criar site principal para clientes (site principal da empresa)
 
+
 R22 - Gerenciar quais promoÃ§Ãµes e banners devem ser exibidos no site principal (somente av)
 
 R23 - Sistema de atendimento por chat
@@ -290,6 +291,16 @@ horario(idHorario, horarios);
 
 
 R21 - Criar site principal para clientes (site principal da empresa)
+-O site principal deve ser limpo, com os imagens e indicações intuitivas para facilitar seu uso, ter a opção de mostrar os horarios disponiveis e preços de viagens que o usuario selecionar, o valor e numero de passagens.
+
+Banco de Dados:
+-Consulta (idConsulta, data, hora, num_passagem, origem, destino, valor);
+-Promocao (idPromocao, data, valor);
+-Pacote (idPacote, valor, data, tipo);
+-Hotel (idHotel, nome, cidade, valor, telefone);
+-Compra (idCompra, valor, data);
+-Locacao (idLocacao, descricao);
+
 
 R22 - Gerenciar quais promoÃ§Ãµes e banners devem ser exibidos no site principal (somente av)
 
