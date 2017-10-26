@@ -327,6 +327,8 @@ R22 - Gerenciar quais promoÃ§Ãµes e banners devem ser exibidos no site princ
 
 <<<<<<< HEAD
 R24 - Permitir remarcação de voo (adiantar voo) - atendente
+R24 - Alteracao de voo (adiantar voo) - atendente
+
 
 R25 - Fretamento - um cliente pode fretar uma aeronave (um voo), configurar rota e horário de partida
 O conceito de Fretamento surgiu na década de 50 na região ABC(São Paulo) para a forte industrialização da região, pois era necessitada de transportes de passageiros. Hoje o serviço de fretamento está presente em todo o país em diversos segmentos. O fretamento de um avião pode ser feito a um avião de grande porte ou pequeno porte para muitas pessoas ou poucas pessoas e até individualmente. 
@@ -334,24 +336,9 @@ O conceito de Fretamento surgiu na década de 50 na região ABC(São Paulo) para
 - O frete deverá ser solicitado antecipado(1 dia / 1 hora antes) pois caso não seja solicitado antecipadamente o valor a ser pago deverá ser mais alto.
 - Deverá ter dia/hora para vôos fretados 
 - Ter peso máximo de carga para que o frete não seja para levar muita bagagem.
-=======
 
-R24 - Alteracao de voo (adiantar voo) - atendente
-
-
->>>>>>> 96e21fc32ef75b28bb0abbf4cbe13817d34be8fa
-
-TABLE AVIÃO (IdAviao int PRIMARY KEY, Origem String, HorarioChegada Date, HorarioSaida date, Destino String, DisponivelFrete char, Piloto String, EmpresaAerea String, Bagagem double,, Passageiros int, IdAgenda int)
-
-<<<<<<< HEAD
+Banco de dados:
+TABLE Aviao (IdAviao int PRIMARY KEY, Origem String, HorarioChegada Date, HorarioSaida date, Destino String, DisponivelFrete char, Piloto String, EmpresaAerea String, Bagagem double,, Passageiros int, IdAgenda int)
 TABLE Agenda (IdAgenda int PRIMARY KEY, Antecipado Char, DiaSolicitaçao Date,Solicitante String)
-=======
-===============================================================================================================
->>>>>>> 96e21fc32ef75b28bb0abbf4cbe13817d34be8fa
-
 TABLE Frete (IdFrete int PRIMARY KEY, DataFretes date, NumeroPassageiros int, Valor double, PesoBagagens double)
-
-TABLE Passageiro (CPF int, Nome String, RG int, Passaporte int, Endereço endereco, IdPassageiro int PRIMARY KEY, Telefone telefone, E-mail String)
-
-
->>>>>>> 639303f98bc65d99a2e00d5868fa824ba779590a
+TABLE Passageiro (CPF int, Nome String, RG int, Passaporte int, Endereço endereco, IdPassageiro int PRIMARY KEY, Telefone int, E-mail String)
