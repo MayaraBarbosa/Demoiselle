@@ -95,9 +95,10 @@ Aviï¿½o (idAviao, nomeAviï¿½o, assentosDisponiveis, origem, destino, idCliente, 
 R12 - Despachar malas (atendente)
 - gerar etiquetas
 - registrar status: esteira, embarque, aviÃ£o x, transferencia, aviÃ£o y, desenbarque, esteira
+
 * Despache de bagagem
-* O atendende deve gerar etiquedas para cada bagagem, alÃ©m de registrar no sistema o status da mesma.
-* BD: Bagagem(idPassageiro, NumEsteira, NumEmbarque, NumAviao, NumDesenbarque) 
+* Após check-in do cliente no aeroporto, o atendende deve gerar etiquedas únicas para cada bagagem do cliente, como também, registrar no sistema o status da mesma.
+* BD: Bagagem(idPassageiro, NumEsteira, NumEmbarque, NumAviao, NumDesembarque) 
 
 
 R13 - Rastrear malhas
