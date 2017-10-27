@@ -22,10 +22,12 @@ no sistema devera colocar as latitude e longitudepara ser gerada as coordenadas
 BD:
 aeroporto(idAeroporto, nome,sigla, destino, horario, distancia, latitude, longitude, escalas)
 
-
 R4 - CRUD aeronaves - somente AV
-- capacidade de passageiros
-- assentos (conforto, convencional, saÃ­das de emergencia, etc)
+O sistema deverá permitir cadastros, atualizações, exclusões e consultas das aeronaves disponiveis por empresa ou geral
+BD:
+aeronave(id, modelo, quantidade_assentos, tempo_de_voo, fk_empresa)
+fabricante(id, nome, )
+
 
 R5 - CRUD Rotas - somente AV
 - aeroporto origem/destino 
