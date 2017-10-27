@@ -8,13 +8,14 @@ Desenvolver CRUD de usuÃ¡rios e Roles.
 BD:
 usuario(idusuario, nome_usuario, senha)
 role(idrole, descricao)
-
+==================================================================================================================
 R2 - Os clientes serÃ£o cadastrados no sistema de forma automÃ¡tica assim que o mesmo efetuar a compra de uma passagem. O cadastro ficarÃ¡ armazenado no sistema pelo perÃ­odo de 1 ano, apÃ³s esse tempo o registro serÃ¡ inativado no sistema e setado como removido no banco de dados. Caso o cliente realize a compra de uma nova passagem apÃ³s o perÃ­odo de 1 ano, seu registro serÃ¡ reativado no sistema e reinserido no banco de dados. Durante o primeiro login no sistema o cliente deverÃ¡ confirmar seus dados e escolher uma senha, apÃ³s escolher sua senha ele poderÃ¡ logar no sistema utilizando seu email e senha.
 R2.1- Caso o usuÃ¡rio queira recuperar sua senha o mesmo deverÃ¡ clicar na opÃ§Ã£o "Esqueci minha senha", apÃ³s isso o sistema irÃ¡ disparar um email para recuperaÃ§Ã£o de senha. ApÃ³s confirmar o email o usuÃ¡rio terÃ¡ a opÃ§Ã£o de escolher uma nova senha. SerÃ¡ guardado no banco de dados um hash da senha.
 BD:
 cliente (id, cpf, rg, passaporte, nome_cliente, endereco, email)
 cliente_login(id_cliente,password)
 
+==================================================================================================================
 R3 - CRUD aeroportos - somente AV
 O funcionario com permissao irá cadastrar os aeroportos e as aeronaves, e apos o cadastro da viagem
 no sistema devera colocar as latitude e longitudepara ser gerada as coordenadas
@@ -22,19 +23,40 @@ no sistema devera colocar as latitude e longitudepara ser gerada as coordenadas
 BD:
 aeroporto(idAeroporto, nome,sigla, destino, horario, distancia, latitude, longitude, escalas)
 
+==================================================================================================================
 R4 - CRUD aeronaves - somente AV
 O sistema deverá permitir cadastros, atualizações, exclusões e consultas das aeronaves disponiveis por empresa ou geral
 BD:
 aeronave(id, modelo, quantidade_assentos, tempo_de_voo, fk_empresa)
 fabricante(id, nome, )
-
+==================================================================================================================
 
 R5 - CRUD Rotas - somente AV
-- aeroporto origem/destino 
-- aeronaves possÃ­veis
-
+R5.1 O administrador do sistema deve ser capaz de armazenar dados sobre o voo do usuário assim como hora, local de saída, destino e aeronaves disponíveis para levantar voo. E também deve ser possível editar esses dados, remover uma rota de um voo e também deletar. Esses dados serão fixados até que o administrador altere novamente os dados do voo.
+  R5.2 Se os dados sobre o voo forem removidas ou deletadas os dados deverão ser desconsiderados para os usuários do sistema.
+ 
+ DB:
+ rute(origin_route, destiny_route, airship_available, date, hour)
+ ================================================================================================================== 
+  
 R6 - Gerenciamento de VOOS - somente AV
 - associar rota, aeronave, data/hora de embarque, cardÃ¡pio de voo
+ O sistema terá a funcionalidade de cadastrar rotas informando a aeronave, data e hora do embarque para que seja apresentada no cardapio de voos, por exemplo:
+     Rota: Londrina - Curitiba,
+     Aeronave: Boeing 770,
+     Data/Hora: 10/12/2017 às 12h.
+ DB 
+     Pais(id, nome, abreviatura)
+     Estado(id, nome, uf, id_pais)
+     Cidade(id, nome, id_estado)
+    Aeroporto(id, nome, abreviatura, id_cidade)
+    Aeronave(id, nome, modelo, ano, qtde_assentos)
+    Assento(id, codigo, fileira, coluna, id_aeronave, corredor, janela)
+    Rota(id_aeroporto_origem, id_aeroporto_destino, duracao)
+    Voo(id, data, observacao, id_rota, id_aeronave)
+    VooXPassagem(id_voo, id_passagem, id_assento)
+    Passagem(id, id_cliente, valor)
+==================================================================================================================
 
 R7 - Cadastrar cardÃ¡pio de voo
 - cadastrar conjunto de alimentaÃ§Ã£o
@@ -54,36 +76,37 @@ alimento (id, idCardapio, nome)
 cliente (id, nome, cpf, dataDoVoo, restrição, tipoDeAlimentacao)
 restrição (id, id_cliente, nomeAlimento)
 
-
+==================================================================================================================
 R8 - Busca de voos
 - Selecionar aeroporto de origem/destino  e datas
 - opÃ§Ã£o de ida ou ida/volta ou multitrechos
 - opÃ§Ã£o de datas aproximadas
 
-R9 - Efetuar aquisiÃ§Ã£o de passagem
-- informar passaporte/cpf do passageiro.
-- se menor de idade, informar as leis vigentes.
-- se houver restriÃ§Ã£o legal o sistema deve informar
-- informar cartÃ£o de crÃ©dito
-- informar cÃ³digo promocional, cÃ³digo do programa de milhagem (cpf)
-- informar aquisiÃ§Ã£o de pacotes (escolha do assento antecipado ou com conforto)
-- informar pagamento (cartÃ£o de credito, boleto)
+==================================================================================================================
 
-<<<<<<< HEAD
+R9 - Efetuar aquisição de passagem
+O sistema deve ser capaz de proporcionar passagens, apresentando informações da 
+compra como passaporte/cpf do passageiro, cartão de crédito, código promocional, 
+código do programa de milhagem e forma de pagamento. 
+Caso menor de idade, informar leis vigentes ou restrição legal quando disponível. 
+O sistema também deve informar aquisição de pacotes, podendo escolher o assento 
+ou conforto.
+BD:
+
+PassageAcquisition(passport,card_number,promotional_code,mileage_program_code,payment_type,current_laws,legal_restriction)
+
+==================================================================================================================
+
 R10 - Gerar boleto para pagamento da compra
-
-
-R11 ï¿½ Realizar check-in
-Apï¿½s efetuar o login no sistema, o usuï¿½rio deve informar o seu localizador e seu CPF. Com a identificaï¿½ï¿½o feita no aviï¿½o, ele pode escolher, ou nï¿½o, se gostaria de levar mais bagagem acima do padrï¿½o. Finalizando, ele deve escolher o assento de sua preferï¿½ncia (desde que esteja vazio). Apï¿½s check-in realizado, adicionar milhagem ao cliente atravï¿½s da seguinte equaï¿½ï¿½o.  
-=======
-R10 - Gerar boleto para pagamento da compra	
  O sistema deverÃ¡ permitir que o cliente escolha o modo de pagamento via boleto bancÃ¡rio no processo de compra da passagem. 
 ApÃ³s clicar no botÃ£o visualizar, o boleto serÃ¡ gerado na tela do usuÃ¡rio.
  BD: 
  cliente (idcliente, login, senha, cpf, passaporte, nome, endereco)
  pagamento(idpagamento, idformapagamento, idcliente, data, hora)
  boleto (idboleto, idpagamento, codbarras, codbanco, vencimento, nossonumero, valor, carteira, datadocumento)
- 
+==================================================================================================================
+
+
 
 R11 â€“ Realizar check-in
 ApÃ³s efetuar o login no sistema, o usuÃ¡rio deve informar o seu localizador e seu CPF. Com a identificaÃ§Ã£o feita no aviÃ£o, ele pode escolher, ou nÃ£o, se gostaria de levar mais bagagem acima do padrÃ£o. Finalizando, ele deve escolher o assento de sua preferÃªncia (desde que esteja vazio). ApÃ³s check-in realizado, adicionar milhagem ao cliente atravÃ©s da seguinte equaÃ§Ã£o. 
@@ -98,35 +121,46 @@ Bagageiro (idBagagem, idCliente, compartimentoMala*, valorTotal)
 *comparimentoMala seria o local/"armï¿½rio" que estariam guardadas as malas.
 Aviï¿½o (idAviao, nomeAviï¿½o, assentosDisponiveis, origem, destino, idCliente, idBagagem)
 
+==================================================================================================================
 
 R12 - Despachar malas (atendente)
 - gerar etiquetas
 - registrar status: esteira, embarque, aviÃ£o x, transferencia, aviÃ£o y, desenbarque, esteira
 
 * Despache de bagagem
-* Após check-in do cliente no aeroporto, o atendende deve gerar etiquedas únicas para cada bagagem do cliente, como também, registrar no sistema o status da mesma.
-* BD: Bagagem(idPassageiro, NumEsteira, NumEmbarque, NumAviao, NumDesembarque) 
+ Após check-in do cliente no aeroporto, o atendende deve gerar etiquedas únicas para cada bagagem do cliente, como também, registrar no sistema o status da mesma.
+BD: Bagagem(idPassageiro, NumEsteira, NumEmbarque, NumAviao, NumDesembarque) 
 
+==================================================================================================================
 
-R13 - Rastrear malhas
+R13 - Rastrear malas
 - permitir o cliente identificar onde as malas estÃ£o
+==================================================================================================================
 
 
 R14 - Criar pacotes promocionais - somente AV
 * Adicionar prmoções para viagens, pacotes com viagens de ida e volta, pacotes de viagens para varios lugares turísticos, etc.
 * Deverá ser criado uma tabela pacote, que contém os atributos de destino e preço, opção de ida e volta, id do pacote e id da passagem, para concatenar com a tabela passagem com as informações da passagem ou tabela viagem que contenha o id da passagem assim como a tabela de destino com as informações de cada destino dos voos.
-* Pacotes(ID_Pacote, ID_Passagem, nome_destino, ID_Destino, ida_volta, preço)
+BD:
+Pacotes(ID_Pacote, ID_Passagem, nome_destino, ID_Destino, ida_volta, preço)
 
+==================================================================================================================
 
 R15 - Adquirir pacotes promocionais
+==================================================================================================================
 
 R16 - Criar interface para sistema externo informar se o cliente possui restriÃ§Ãµes legais
 - desenvolver um aplicativo de teste
 Usando uma api externa  (Ex:Recordsapi Public Records), ao se cadastrar um usuario se verificará se consta algo no seu cpf.
 
-BD: Cliente(idCliente, cpf, passaporte, nome, endereco, idBagagem, milhagem)
+BD: 
+Cliente(idCliente, cpf, passaporte, nome, endereco, idBagagem, milhagem)
+
+==================================================================================================================
 
 R17 - Notificar usuÃ¡rio em caso de cancelamento ou remarcaÃ§Ã£o do voo
+
+==================================================================================================================
 
 R18 - Possibilitar o AV alterar aeronave
 - alocar aeronave maior/menor, de acordo com aquisiÃ§Ãµes de passagem
