@@ -106,6 +106,10 @@ R13 - Rastrear malhas
 
 
 R14 - Criar pacotes promocionais - somente AV
+* Adicionar prmoções para viagens, pacotes com viagens de ida e volta, pacotes de viagens para varios lugares turísticos, etc.
+* Deverá ser criado uma tabela pacote, que contém os atributos de destino e preço, opção de ida e volta, id do pacote e id da passagem, para concatenar com a tabela passagem com as informações da passagem ou tabela viagem que contenha o id da passagem assim como a tabela de destino com as informações de cada destino dos voos.
+* Pacotes(ID_Pacote, ID_Passagem, nome_destino, ID_Destino, ida_volta, preço)
+
 
 R15 - Adquirir pacotes promocionais
 
