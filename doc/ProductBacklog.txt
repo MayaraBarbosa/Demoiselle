@@ -47,6 +47,19 @@ R7 - Cadastrar cardÃ¡pio de voo
 - voos curtos
 - voos com + de 2 horas de voo
 - voos com + de 5 horas de voo
+	* O sistema terá a funcionalidade de cadastrar o cardápio do vôo podendo cadastrar cardápios diferentes para cada tipo de vôo, 
+na área de cadastro de cardápio o funcionário terá que inserir o nome dos alimentos e o tipo do vôo, 
+por exemplo: vôo curto serão do tipo A,
+		Vôo com + de 2 horas de duração serão do tipo B,
+		Vôo com + de 2 horas de duração serão do tipo C.
+	* O cliente no momento da compra da passagem ele poderá informar se possui alguma restrição alimentar (ex: algum tipo de alergia) 
+ou algum tipo de preferência alimentar (ex: vegano, vegetariano).
+DB:
+cardápio (id, tipoVoo, id_alimento)
+alimento (id, idCardapio, nome)
+cliente (id, nome, cpf, dataDoVoo, restrição, tipoDeAlimentacao)
+restrição (id, id_cliente, nomeAlimento)
+
 
 R8 - Busca de voos
 - Selecionar aeroporto de origem/destino  e datas
@@ -247,6 +260,19 @@ R7 - Cadastrar cardÃ¡pio de voo
 - voos curtos
 - voos com + de 2 horas de voo
 - voos com + de 5 horas de voo
+	* O sistema terá a funcionalidade de cadastrar o cardápio do vôo podendo cadastrar cardápios diferentes para cada tipo de vôo, 
+na área de cadastro de cardápio o funcionário terá que inserir o nome dos alimentos e o tipo do vôo, 
+por exemplo: vôo curto serão do tipo A,
+		Vôo com + de 2 horas de duração serão do tipo B,
+		Vôo com + de 2 horas de duração serão do tipo C.
+	* O cliente no momento da compra da passagem ele poderá informar se possui alguma restrição alimentar (ex: algum tipo de alergia) 
+ou algum tipo de preferência alimentar (ex: vegano, vegetariano).
+DB:
+cardápio (id, tipoVoo, id_alimento)
+alimento (id, idCardapio, nome)
+cliente (id, nome, cpf, dataDoVoo, restrição, tipoDeAlimentacao)
+restrição (id, id_cliente, nomeAlimento)
+
 
 R8 - Busca de voos
 - Selecionar aeroporto de origem/destino  e datas
