@@ -1,12 +1,19 @@
-Product backlog
+﻿Product backlog
 
-R1 - Desenvolver Sistemas de AutenticaÃ§Ã£o. 
-O Sistema deve permitir que todo usuÃ¡rio realize login para autenticaÃ§Ã£o. O usuÃ¡rio ao acessar o sistema deverÃ¡ informar seu nome de usuÃ¡rio e senha.
+R1 - Desenvolver Sistemas de Autenticação. 
+
+Descrição: O sistema deverá permitir a autenticação de todo usuário. Apenas usuários cadastrados poderão 
+se autenticar no sistema. O usuário fornecerá seu nome de usuário e senha e, após a validação no sistema,
+o usuário estará apto a realizar operações da área restrita do sistema. Os usuários do sistema
+são: cliente (usuário habilitado a comprar pacotes de viagem pelo sistema), atendente (usuário que opera  
+o sistema, habilitado a manter os cadastros do portal e consultar os pacotes adquiridos pelos clientes),
+administrador (usuário habilitado a realizar as configurações de segurança e ações de administração do sistema).
+
 Roles: Clientes, Agencias de viagem, Administradores de Voos  (AV),atendentes
 Administrador geral (pode cadastrar todos os demais e atribuir papeis)
 Desenvolver CRUD de usuÃ¡rios e Roles.
-BD:
-usuario(idusuario, nome_usuario, senha)
+BD: 
+usuario (idusuario, nome, senha)
 role(idrole, descricao)
 ==================================================================================================================
 R2 - Os clientes serÃ£o cadastrados no sistema de forma automÃ¡tica assim que o mesmo efetuar a compra de uma passagem. O cadastro ficarÃ¡ armazenado no sistema pelo perÃ­odo de 1 ano, apÃ³s esse tempo o registro serÃ¡ inativado no sistema e setado como removido no banco de dados. Caso o cliente realize a compra de uma nova passagem apÃ³s o perÃ­odo de 1 ano, seu registro serÃ¡ reativado no sistema e reinserido no banco de dados. Durante o primeiro login no sistema o cliente deverÃ¡ confirmar seus dados e escolher uma senha, apÃ³s escolher sua senha ele poderÃ¡ logar no sistema utilizando seu email e senha.
