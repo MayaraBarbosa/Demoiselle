@@ -162,8 +162,14 @@ R17 - Notificar usuÃ¡rio em caso de cancelamento ou remarcaÃ§Ã£o do voo
 
 ==================================================================================================================
 
-R18 - Possibilitar o AV alterar aeronave
-- alocar aeronave maior/menor, de acordo com aquisiÃ§Ãµes de passagem
+R18 - Reconhecimento de retina no cadastro do cliente
++ O sistema deve identificar a retina de um determinado cliente identificando seus pontos. O sistema irá armazenar 512 bytes após a identificação.
+BD:
+cliente (idcliente, dataColeta, retina)
+retina (idretina, pontos)
+
+==================================================================================================================
+
 
 R19 - Possibilitar AV cancelar voo
 - justificar o motivo
