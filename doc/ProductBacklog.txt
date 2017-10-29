@@ -85,9 +85,10 @@ restrição (id, id_cliente, nomeAlimento)
 
 ==================================================================================================================
 R8 - Busca de voos
-- Selecionar aeroporto de origem/destino  e datas
-- opÃ§Ã£o de ida ou ida/volta ou multitrechos
-- opÃ§Ã£o de datas aproximadas
+Facilidade de busca de voo, na qual o usuário poderá filtrar entre o aeroporto de origem/destino e a data do mesmo, o usuário também poderá optar por não ter voo de volta e selecionar diversos trechos durante sua trajetória. 
+BD:  
+Voo(Id, IdAeroportoOrigem, IdAeroportoDesino, FlConcluido, DataHoraEmbarque, DataHoraDesembarque) 
+ClienteXVoo(Id, IdCliente, IdVoo, FlEmbarcado, DataHoraEmbarque, IdClienteXVooSeguinte) 
 
 ==================================================================================================================
 
