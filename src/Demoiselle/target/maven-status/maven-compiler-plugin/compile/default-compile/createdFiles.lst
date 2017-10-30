@@ -1,7 +1,0 @@
-br/data/entity/Cidade.class
-br/data/crud/CrudCidade.class
-br/jsf/JsfCidade.class
-br/data/entity/Cidade_.class
-br/data/crud/EMNames.class
-br/jsf/JsfCidadeSelect.class
-br/data/crud/AbstractCrud.class
