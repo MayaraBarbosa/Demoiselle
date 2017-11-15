@@ -3,7 +3,7 @@
   idcidade integer NOT NULL,
   nome character varying(40),
   CONSTRAINT pk_cid PRIMARY KEY (idcidade)
-)
+);
 
 
 CREATE TABLE public.role
@@ -12,4 +12,4 @@ CREATE TABLE public.role
   nome character varying(30),
   descricao character varying(80),
   CONSTRAINT pk_role PRIMARY KEY (idrole)
-)
+);
