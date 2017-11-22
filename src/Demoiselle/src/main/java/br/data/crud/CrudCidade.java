@@ -6,6 +6,7 @@
 package br.data.crud;
 
 import br.data.entity.Cidade;
+import java.text.Normalizer;
 import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -34,6 +35,9 @@ public class CrudCidade extends AbstractCrud<br.data.entity.Cidade> {
 
     public Collection<Cidade> SelectByNome(String nome) {
        try {
+           //Remove a acentuação da string
+            nome = Normalizer.normalize(nome, Normalizer.Form.NFD);
+	    nome = nome.replaceAll("[^\\p{ASCII}]", "");
             return getEntityManager().createNamedQuery("Cidade.findByNome").setParameter("nome", "%" + nome.toUpperCase() + "%").getResultList();
         } catch (Exception e) {
             System.out.println(e.getMessage());
