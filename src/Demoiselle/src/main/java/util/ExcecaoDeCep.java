@@ -9,7 +9,7 @@ package util;
  * Classe para registrar uma exceção de CEP
  * @author Rafael
  */
-public class ViaCEPException extends Exception {
+public class ExcecaoDeCep extends Exception {
     private String CEP;
     private String Classe;
     
@@ -19,7 +19,7 @@ public class ViaCEPException extends Exception {
      * @param message descrição do erro
      * @param classe classe da excessão original
      */
-    public ViaCEPException(String message, String classe) {
+    public ExcecaoDeCep(String message, String classe) {
         super(message);
         
         this.CEP = "";
@@ -33,7 +33,7 @@ public class ViaCEPException extends Exception {
      * @param cep CEP que foi usado durante o processo
      * @param classe classe da excessão original
      */
-    public ViaCEPException(String message, String cep, String classe) {
+    public ExcecaoDeCep(String message, String cep, String classe) {
         super(message);
         
         this.CEP = cep;

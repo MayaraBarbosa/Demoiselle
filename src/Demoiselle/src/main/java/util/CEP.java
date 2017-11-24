@@ -10,7 +10,7 @@ package util;
  *
  * @author Rafael
  */
-public interface ViaCEPEvents {
+public interface CEP {
     /**
      * Quando o CEP for encontrado com sucesso
      * @param cep retorna o objeto ViaCEP

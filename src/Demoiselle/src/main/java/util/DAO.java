@@ -21,16 +21,16 @@ import java.util.List;
  * Serve como base para a classe ViaCEP
  * @author Rafael
  */
-public abstract class ViaCEPBase {
+public abstract class DAO {
     // pripriedades do CEP
     protected List<Enderecamento> CEPs;
     protected int index;
     protected String currentCEP;
     
     // váriaveis internas
-    protected ViaCEPEvents Events;
+    protected CEP Events;
     
-    public ViaCEPBase () {
+    public DAO () {
         CEPs = new ArrayList<>();
         index = -1;
         currentCEP = "00000-000";
@@ -38,8 +38,8 @@ public abstract class ViaCEPBase {
     }
     
     // métodos abstratos
-    public abstract void buscar(String cep) throws ViaCEPException;
-    public abstract void buscarCEP(Enderecamento cep) throws ViaCEPException;
+    public abstract void buscar(String cep) throws ExcecaoDeCep;
+    public abstract void buscarCEP(Enderecamento cep) throws ExcecaoDeCep;
     
     /**
      * Busca um CEP usando um endereço
@@ -48,7 +48,7 @@ public abstract class ViaCEPBase {
      * @param Logradouro nome ou parte do nome da rua, av, viela...
      * @throws br.com.parg.viacep.ViaCEPException
      */
-    public void buscarCEP(String Uf, String Localidade, String Logradouro) throws ViaCEPException {
+    public void buscarCEP(String Uf, String Localidade, String Logradouro) throws ExcecaoDeCep {
         buscarCEP(new Enderecamento(Logradouro, Localidade, Uf));
     }
     
@@ -147,7 +147,7 @@ public abstract class ViaCEPBase {
      * @return conteúdo remoto
      * @throws br.com.parg.viacep.ViaCEPException caso ocorra algum erro
      */
-    public final String getHttpGET(String urlToRead) throws ViaCEPException {
+    public final String getHttpGET(String urlToRead) throws ExcecaoDeCep {
         StringBuilder result = new StringBuilder();
 
         try {
@@ -163,18 +163,18 @@ public abstract class ViaCEPBase {
             
         } catch (MalformedURLException | ProtocolException ex) {
             // verifica os Eventos
-            if (Events instanceof ViaCEPEvents) {
+            if (Events instanceof CEP) {
                 Events.onCEPError(currentCEP);
             }
             
-            throw new ViaCEPException(ex.getMessage(), ex.getClass().getName());
+            throw new ExcecaoDeCep(ex.getMessage(), ex.getClass().getName());
         } catch (IOException ex) {
             // verifica os Eventos
-            if (Events instanceof ViaCEPEvents) {
+            if (Events instanceof CEP) {
                 Events.onCEPError(currentCEP);
             }
             
-            throw new ViaCEPException(ex.getMessage(), ex.getClass().getName());
+            throw new ExcecaoDeCep(ex.getMessage(), ex.getClass().getName());
         }
         
         return result.toString();
@@ -263,9 +263,9 @@ public abstract class ViaCEPBase {
      * Procedimento para formatar uma string para usar em urls
      * @param string texto que vai ser formatado
      * @return texto formatado
-     * @throws ViaCEPException em caso de erro
+     * @throws ExcecaoDeCep em caso de erro
      */
-    protected String formatStringToUri(String string) throws ViaCEPException {
+    protected String formatStringToUri(String string) throws ExcecaoDeCep {
         String out = null;
         
         // verifica está válido
@@ -274,10 +274,10 @@ public abstract class ViaCEPBase {
                 out = URLEncoder.encode(string, "utf-8");
                 out = out.replace("+", "%20"); // força espaço como %20
             } catch (UnsupportedEncodingException e) {
-                throw new ViaCEPException("Não foi possível codificar o valor solicitado!", UnsupportedEncodingException.class.getName());
+                throw new ExcecaoDeCep("Não foi possível codificar o valor solicitado!", UnsupportedEncodingException.class.getName());
             }
         } else {
-            throw new ViaCEPException("Valor nulo ou vazio informado!", String.class.getName());
+            throw new ExcecaoDeCep("Valor nulo ou vazio informado!", String.class.getName());
         }
         
         return out;
