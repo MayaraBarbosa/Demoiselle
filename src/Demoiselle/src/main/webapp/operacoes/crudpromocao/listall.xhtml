@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="../layout_operacoes.xhtml">
+
+        <ui:define name="content">
+            <h1>Listar todas as promocoes</h1>
+            <f:metadata>
+                <f:viewAction action="#{jsfPromocao.getAll}"/>
+            </f:metadata>
+                
+            <h:form>
+                <p:dataTable value="#{jsfPromocao.lista}" var="promo" emptyMessage="Nenhuma promoção cadastrada">
+                    <p:column headerText="Ativo">
+                        <p:selectBooleanCheckbox value="#{promo.ativo}" />
+                    </p:column>
+                    <p:column headerText="ID" sortBy="#{promo.idpromocao}">
+                        <h:outputText value="#{promo.idpromocao}" />
+                    </p:column>
+                    <p:column headerText="Descrição" sortBy="#{promo.descricao}">
+                        <h:outputText value="#{promo.descricao}" />
+                    </p:column>
+                    <p:column headerText="Nome da imagem">
+                        <h:outputText value="#{promo.nomeimagem}" />
+                    </p:column>
+                    <p:column>
+                        <p:commandButton value="remover" action="#{jsfPromocao.remove(promo)}" onclick="return confirm('Confirma exclusao?');"/> 
+                    </p:column>
+                    <p:column>
+                        <p:commandButton value="editar" action="#{jsfPromocao.update(promo)}"/> 
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>
+
