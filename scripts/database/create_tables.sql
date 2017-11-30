@@ -1,3 +1,19 @@
+CREATE TABLE public.cidade
+(		  
+  idcidade integer NOT NULL,
+  idestado INTEGER NOT NULL,
+  nome character varying(40),		 
+  CONSTRAINT pk_cid PRIMARY KEY (idcidade)
+);
+
+CREATE TABLE public.role
+(		  
+  idrole integer NOT NULL,
+  nome character varying(30),
+  descricao character varying(80),
+  CONSTRAINT pk_role PRIMARY KEY (idrole)
+);
+
 --João Victor Rodrigues Alves RA:1693050
 --Tentei seguir ao máximo o diagrama
 
@@ -199,15 +215,6 @@ CREATE TABLE usuario
   CONSTRAINT pk_usuario PRIMARY KEY (idusuario)
 );
 
-CREATE TABLE role
-(
-  idrole INTEGER NOT NULL,
-  nome CHARACTER varying(20),
-  descricao CHARACTER varying(100),
-  CONSTRAINT pk_role PRIMARY KEY (idrole)
-);
-
-
 CREATE TABLE banner
 (
   idbanner INTEGER NOT NULL,
@@ -289,14 +296,6 @@ CREATE TABLE tipologradouro
   idtipologradouro INTEGER NOT NULL,
   nome CHARACTER varying(20),
   CONSTRAINT pk_tipologradouro PRIMARY KEY (idtipologradouro)
-);
-
-CREATE TABLE cidade
-(
-  idcidade INTEGER NOT NULL,
-  idestado INTEGER NOT NULL,
-  nome CHARACTER varying(20),
-  CONSTRAINT pk_cidade PRIMARY KEY (idcidade)
 );
 
 CREATE TABLE estado
