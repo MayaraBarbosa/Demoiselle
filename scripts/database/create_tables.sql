@@ -17,7 +17,7 @@ CREATE TABLE public.role
 --João Victor Rodrigues Alves RA:1693050
 --Tentei seguir ao máximo o diagrama
 
-CREATE TABLE voo
+CREATE TABLE public.voo
 (
   idvoo INTEGER NOT NULL,
   idrota INTEGER NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE voo
   CONSTRAINT pk_voo PRIMARY KEY (idvoo)
 );
 
-CREATE TABLE rota
+CREATE TABLE public.rota
 (
   idrota INTEGER NOT NULL,
   aeroportoorigem INTEGER NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE rota
   CONSTRAINT pk_rota PRIMARY KEY (idrota)
 );
 
-CREATE TABLE promocao
+CREATE TABLE public.promocao
 (
   idpromocao INTEGER NOT NULL,
   data DATETIME,
@@ -49,7 +49,7 @@ CREATE TABLE promocao
   CONSTRAINT pk_promocao PRIMARY KEY (idpromocao)
 );
 
-CREATE TABLE aeroporto
+CREATE TABLE public.aeroporto
 (
   idaeroporto INTEGER NOT NULL,
   nome CHARACTER varying(50),
@@ -59,7 +59,7 @@ CREATE TABLE aeroporto
   CONSTRAINT pk_aeroporto PRIMARY KEY (idaeroporto)
 );
 
-CREATE TABLE pacotePromocional
+CREATE TABLE public.pacotePromocional
 (
   idpacote INTEGER NOT NULL,
   preco DECIMAL,
@@ -67,7 +67,7 @@ CREATE TABLE pacotePromocional
   CONSTRAINT pk_pacotePromocional PRIMARY KEY (idpacote)
 );
 
-CREATE TABLE aeronave
+CREATE TABLE public.aeronave
 (
   id INTEGER NOT NULL,
   modelo CHARACTER varying(50),
@@ -78,14 +78,14 @@ CREATE TABLE aeronave
   CONSTRAINT pk_aeronave PRIMARY KEY (id)
 );
 
-CREATE TABLE fabricante
+CREATE TABLE public.fabricante
 (
   idfabricante INTEGER NOT NULL,
   nome CHARACTER varying(50),
   CONSTRAINT pk_fabricante PRIMARY KEY (idfabricante)
 );
 
-CREATE TABLE assento
+CREATE TABLE public.assento
 (
   id INTEGER NOT NULL,
   codigo CHARACTER varying(10),
@@ -97,7 +97,7 @@ CREATE TABLE assento
   CONSTRAINT pk_assento PRIMARY KEY (id)
 );
 
-CREATE TABLE agendaFretamento_R25
+CREATE TABLE public.agendaFretamento_R25
 (
   idagenda INTEGER NOT NULL,
   antecipado BIT,
@@ -106,7 +106,7 @@ CREATE TABLE agendaFretamento_R25
   CONSTRAINT pk_agendaFretamento_R25 PRIMARY KEY (idagenda)
 );
 
-CREATE TABLE passagem
+CREATE TABLE public.passagem
 (
   idvenda INTEGER NOT NULL,
   idpassagem INTEGER NOT NULL,
@@ -115,7 +115,7 @@ CREATE TABLE passagem
   CONSTRAINT pk_passagem PRIMARY KEY (idpassagem)
 );
 
-CREATE TABLE bagagem
+CREATE TABLE public.bagagem
 (
   id_bagagem INTEGER NOT NULL,
   id_aviao INTEGER NOT NULL,
@@ -128,7 +128,7 @@ CREATE TABLE bagagem
   CONSTRAINT pk_bagagem PRIMARY KEY (id_bagagem)  
 );
 
-CREATE TABLE atualizacaomala_R13
+CREATE TABLE public.atualizacaomala_R13
 (
   id INTEGER NOT NULL,
   fk_id_bagagem INTEGER NOT NULL,
@@ -143,14 +143,14 @@ CREATE TABLE atualizacaomala_R13
   CONSTRAINT pk_atualizacaomala_R13 PRIMARY KEY (id)  
 );
 
-CREATE TABLE cardapio
+CREATE TABLE public.cardapio
 (
   idCardapio INTEGER NOT NULL,
   id_alimento INTEGER NOT NULL,
   CONSTRAINT pk_cardapio PRIMARY KEY (idCardapio)
 );
 
-CREATE TABLE alimento
+CREATE TABLE public.alimento
 (
   id INTEGER NOT NULL,
   idcardapio INTEGER NOT NULL,
@@ -159,7 +159,7 @@ CREATE TABLE alimento
 );
 
 
-CREATE TABLE venda
+CREATE TABLE public.venda
 (
   datahora DATETIME,
   idvenda INTEGER NOT NULL,
@@ -170,7 +170,7 @@ CREATE TABLE venda
   CONSTRAINT pk_venda PRIMARY KEY (idvenda) 
 );
 
-CREATE TABLE pagamento
+CREATE TABLE public.pagamento
 (
   idpagamento INTEGER NOT NULL,
   idformapagamento INTEGER,
@@ -182,7 +182,7 @@ CREATE TABLE pagamento
   CONSTRAINT pk_pagamento PRIMARY KEY (idpagamento) 
 );
 
-CREATE TABLE boleto
+CREATE TABLE public.boleto
 (
   idboleto INTEGER NOT NULL,
   idpagamento INTEGER,
@@ -197,7 +197,7 @@ CREATE TABLE boleto
   CONSTRAINT pk_boleto PRIMARY KEY (idboleto)
 );
 
-CREATE TABLE cartaocredito
+CREATE TABLE public.cartaocredito
 (
   idcartao INTEGER NOT NULL,
   numero INTEGER,
@@ -205,7 +205,7 @@ CREATE TABLE cartaocredito
   CONSTRAINT pk_cartao PRIMARY KEY (idcartao)
 );
 
-CREATE TABLE usuario
+CREATE TABLE public.usuario
 (
   idusuario INTEGER NOT NULL,
   idrole INTEGER NOT NULL,
@@ -215,7 +215,7 @@ CREATE TABLE usuario
   CONSTRAINT pk_usuario PRIMARY KEY (idusuario)
 );
 
-CREATE TABLE banner
+CREATE TABLE public.banner
 (
   idbanner INTEGER NOT NULL,
   nome CHARACTER varying(50),
@@ -228,7 +228,7 @@ CREATE TABLE banner
   CONSTRAINT pk_banner PRIMARY KEY (idbanner)
 );
 
-CREATE TABLE cliente
+CREATE TABLE public.cliente
 (
   idcliente INTEGER NOT NULL,
   cpf CHARACTER varying(20),
@@ -245,14 +245,14 @@ CREATE TABLE cliente
   CONSTRAINT pk_cliente PRIMARY KEY (idcliente)
 );
 
-CREATE TABLE retina
+CREATE TABLE public.retina
 (
   idretina INTEGER NOT NULL,
   pontos INTEGER,
   CONSTRAINT pk_retina PRIMARY KEY (idretina)
 );
 
-CREATE TABLE chat_R23
+CREATE TABLE public.chat_R23
 (
   idchat INTEGER NOT NULL,
   data DATETIME,
@@ -261,7 +261,7 @@ CREATE TABLE chat_R23
   CONSTRAINT pk_chat PRIMARY KEY (idchat)
 );
 
-CREATE TABLE logchat_R23
+CREATE TABLE public.logchat_R23
 (
   idchat INTEGER NOT NULL,
   idcliente INTEGER NOT NULL,
@@ -271,7 +271,7 @@ CREATE TABLE logchat_R23
   CONSTRAINT pk_logchat PRIMARY KEY (idchat)
 );
 
-CREATE TABLE enderecos
+CREATE TABLE public.enderecos
 (
   idendereco INTEGER NOT NULL,
   idcliente INTEGER NOT NULL,
@@ -281,7 +281,7 @@ CREATE TABLE enderecos
   CONSTRAINT pk_enderecos PRIMARY KEY (idendereco)
 );
 
-CREATE TABLE logradouro
+CREATE TABLE public.logradouro
 (
   idlogradouro INTEGER NOT NULL,
   CEP CHARACTER varying(10),
@@ -291,14 +291,14 @@ CREATE TABLE logradouro
   CONSTRAINT pk_logradouro PRIMARY KEY (idlogradouro) 
 );
 
-CREATE TABLE tipologradouro
+CREATE TABLE public.tipologradouro
 (
   idtipologradouro INTEGER NOT NULL,
   nome CHARACTER varying(20),
   CONSTRAINT pk_tipologradouro PRIMARY KEY (idtipologradouro)
 );
 
-CREATE TABLE estado
+CREATE TABLE public.estado
 (
   idestado INTEGER NOT NULL,
   nome CHARACTER varying(20),
@@ -307,7 +307,7 @@ CREATE TABLE estado
   CONSTRAINT pk_estado PRIMARY KEY (idestado)
 );
 
-CREATE TABLE pais
+CREATE TABLE public.pais
 (
   idpais INTEGER NOT NULL,
   nome CHARACTER varying(20),
