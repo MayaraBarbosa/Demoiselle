@@ -40,3 +40,5 @@ buildNumber.properties
 
 # End of https://www.gitignore.io/api/java,maven
 /src/Demoiselle/nbproject/
+/src/Demoiselle/src/main/java/boleto/build/
+/src/Demoiselle/src/main/java/boleto/nbproject/private/
