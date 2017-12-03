@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    
+    <ui:composition template="../layout_operacoes.xhtml">
+        <ui:define name="content">
+            
+            <f:metadata>
+                <f:viewAction action="#{jsfPromocao.getAll}"/>
+            </f:metadata>
+            
+             <h1>Modificar Rota</h1>
+            <h:form>
+                Aeroporto de origem:
+                <h:selectOneMenu value="#{jsfRota.aeroportoorigem}">
+                    <!-- <f:selectItems value="#{jsfAeroporto.lista}"/> -->
+                </h:selectOneMenu>
+                <br/>
+                
+                Aeroporto de destino:
+                <h:selectOneMenu value="#{jsfRota.aeroportodestino}">
+                    <!-- <f:selectItems value="#{jsfAeroporto.lista}"/> -->
+                </h:selectOneMenu>
+                <br/>
+                
+                Frequencia do voo:
+                <h:inputText value="#{jsfRota.frequencia}"/>
+                <br/>
+                
+                Duração do voo:
+                <h:inputText value="#{jsfRota.duracao_voo}"/>
+                <br/>
+                
+                Promoção:
+                <h:selectOneMenu value="#{jsfRota.idPromocao}">
+                    <f:selectItems value="#{jsfPromocao.lista}"/>
+                </h:selectOneMenu>
+                <br/>
+                
+                Data/hora partida:
+                <h:inputText a:placeholder="d-M-yyyy hh:mm:ss" value="#{jsfRota.datahora_partida}">
+                    <f:convertDateTime pattern="d-M-yyyy hh:mm:ss" />
+                </h:inputText>
+                <br/>
+                
+                Data/hora chegada:
+                <h:inputText a:placeholder="d-M-yyyy hh:mm:ss" value="#{jsfRota.datahora_chegada}">
+                    <f:convertDateTime pattern="d-M-yyyy hh:mm:ss" />
+                </h:inputText>
+                <br/>
+                <br/>
+                
+                <h:commandButton value ="Salvar modificacoes no registro" action="#{jsfRota.merge()}" /> 
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+
+
