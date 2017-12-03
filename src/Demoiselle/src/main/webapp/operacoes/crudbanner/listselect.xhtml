@@ -8,28 +8,28 @@
     <ui:composition template="../layout_operacoes.xhtml">
 
         <ui:define name="content">
-            <h1>Consultar Promocoes</h1>
+            <h1>Consultar Banners</h1>
             <h:form>
-                <p:inputText value="#{jsfPromocao.descricao}" id="busca"/> 
+                <p:inputText value="#{jsfBanner.descricao}" id="busca"/> 
                 <p:commandButton value="Buscar" update="tabela"/>       
-                <p:dataTable value="#{jsfPromocao.select}" var="promo" emptyMessage="Nenhuma promoção encontrada" id="tabela">
+                <p:dataTable value="#{jsfBanner.select}" var="banner" emptyMessage="Nenhum banner encontrado" id="tabela">
                     <p:column headerText="Ativo">
-                        <p:selectBooleanCheckbox value="#{promo.ativo}"/>
+                        <p:selectBooleanCheckbox value="#{banner.ativo}"/>
                     </p:column>
                     <p:column headerText="ID">
-                        <h:outputText value="#{promo.idpromocao}" />
+                        <h:outputText value="#{banner.idbanner}" />
                     </p:column>
                     <p:column headerText="Descrição">
-                        <h:outputText value="#{promo.descricao}" />
+                        <h:outputText value="#{banner.descricao}" />
                     </p:column>
                     <p:column headerText="Imagem">
-                        <h:outputText value="#{promo.nomeimagem}" />
+                        <h:outputText value="#{banner.nomeimagem}" />
                     </p:column>
                     <p:column headerText="Remover">
-                        <p:commandButton value="Remover" action="#{jsfPromocao.remove(promo)}" update="tabela" onclick="return confirm('Confirma exclusao?');" ajax="false" /> 
+                        <p:commandButton value="Remover" action="#{jsfBanner.remove(banner)}" update="tabela" onclick="return confirm('Confirma exclusao?');" ajax="false" /> 
                     </p:column>
                     <p:column headerText="Editar">
-                        <p:commandButton value="Editar" action="#{jsfPromocao.update(promo)}"/> 
+                        <p:commandButton value="Editar" action="#{jsfBanner.update(banner)}"/> 
                     </p:column>
                 </p:dataTable>
             </h:form>

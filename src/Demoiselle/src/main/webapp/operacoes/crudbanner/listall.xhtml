@@ -9,31 +9,31 @@
     <ui:composition template="../layout_operacoes.xhtml">
 
         <ui:define name="content">
-            <h1>Listar todas as promocoes</h1>
+            <h1>Listar todas os banners</h1>
                 
             <h:form>
-                <p:dataTable value="#{jsfPromocao.lista}" var="promo"  id="tabela" emptyMessage="Nenhuma promocao cadastrada">
+                <p:dataTable value="#{jsfBanner.lista}" var="banner"  id="tabela" emptyMessage="Nenhum banner cadastrado">
                     <p:column headerText="Ativo">
-                        <p:selectBooleanCheckbox value="#{promo.ativo}" />
+                        <p:selectBooleanCheckbox value="#{banner.ativo}" />
                     </p:column>
                     <p:column headerText="ID">
-                        <h:outputText value="#{promo.idpromocao}" />
+                        <h:outputText value="#{banner.idbanner}" />
                     </p:column>
                     <p:column headerText="Descrição">
-                        <h:outputText value="#{promo.descricao}" />
+                        <h:outputText value="#{banner.descricao}" />
                     </p:column>
                     <p:column headerText="Imagem">
-                        <p:commandButton value="Ver Imagem" type="button" onclick="PF('#{promo.nomeimagem}').show();" />
-                        <p:dialog header="Imagem" widgetVar="#{promo.nomeimagem}" >
-                            Nome da imagem : #{promo.nomeimagem}<br/>
-                            <img src="../../../uploaded/#{promo.nomeimagem}"/>
+                        <p:commandButton value="Ver Imagem" type="button" onclick="PF('#{banner.nomeimagem}').show();" />
+                        <p:dialog header="Imagem" widgetVar="#{banner.nomeimagem}" >
+                            Nome da imagem : #{banner.nomeimagem}<br/>
+                            <img src="../../../uploaded/#{banner.nomeimagem}"/>
                         </p:dialog>
                     </p:column>
                     <p:column headerText="Remover">
-                        <p:commandButton value="Remover" action="#{jsfPromocao.remove(promo)}" update="tabela" onclick="return confirm('Confirma exclusao?');"/> 
+                        <p:commandButton value="Remover" action="#{jsfBanner.remove(banner)}" update="tabela" onclick="return confirm('Confirma exclusao?');"/> 
                     </p:column>
                     <p:column headerText="Editar">
-                        <p:commandButton value="Editar" action="#{jsfPromocao.update(promo)}"/> 
+                        <p:commandButton value="Editar" action="#{jsfBanner.update(banner)}"/> 
                     </p:column>
                 </p:dataTable>
             </h:form>

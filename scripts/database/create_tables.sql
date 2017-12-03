@@ -217,14 +217,10 @@ CREATE TABLE public.usuario
 
 CREATE TABLE public.banner
 (
-  idbanner INTEGER NOT NULL,
-  nome CHARACTER varying(50),
-  datainicio DATE,
-  datafim DATE,
-  fileblob CHARACTER varying(50),
-  filename CHARACTER varying(50),
-  inrRemovido CHARACTER varying(50),
-  idusuario INTEGER NOT NULL,
+  idbanner SERIAL NOT NULL,
+  descricao VARCHAR,
+  nomeimagem VARCHAR,
+  ativo BOOLEAN,
   CONSTRAINT pk_banner PRIMARY KEY (idbanner)
 );
 
@@ -342,8 +338,7 @@ ALTER TABLE pagamento ADD CONSTRAINT  pf_boletopagamento FOREIGN KEY (idboleto) 
 ALTER TABLE pagamento ADD CONSTRAINT  pf_cartaopagamento FOREIGN KEY (idcartao) REFERENCES cartaocredito(idcartao);   
 ALTER TABLE boleto ADD CONSTRAINT  pf_clienteboleto FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);   
 ALTER TABLE boleto ADD CONSTRAINT  pf_pagamentoboleto FOREIGN KEY (idpagamento) REFERENCES pagamento(idpagamento);   
-ALTER TABLE usuario ADD CONSTRAINT  pf_roleusuario FOREIGN KEY (idrole) REFERENCES role(idrole);   
-ALTER TABLE banner ADD CONSTRAINT  pf_usuariobanner FOREIGN KEY (idusuario) REFERENCES usuario(idusuario);   
+ALTER TABLE usuario ADD CONSTRAINT  pf_roleusuario FOREIGN KEY (idrole) REFERENCES role(idrole);     
 ALTER TABLE cliente ADD CONSTRAINT  pf_retinacliente FOREIGN KEY (idRetina) REFERENCES retina(idretina);   
 ALTER TABLE logchat_R23 ADD CONSTRAINT  pf_clientelogchat_R23 FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);
 ALTER TABLE enderecos ADD CONSTRAINT  pf_clienteenderecos FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);

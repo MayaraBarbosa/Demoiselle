@@ -5,8 +5,8 @@
  */
 package br.jsf;
 
-import br.data.crud.CrudPromocao;
-import br.data.entity.Promocao;
+import br.data.crud.CrudBanner;
+import br.data.entity.Banner;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -25,21 +25,21 @@ import org.primefaces.model.UploadedFile;
  */
 @ManagedBean
 @RequestScoped
-public class JsfPromocao {
+public class JsfBanner {
     
-    private Integer idpromocao;
+    private Integer idbanner;
     private String descricao = "";
     private UploadedFile imagem;
     private String nomeimagem;
     private boolean ativo;
-    public JsfPromocao(){}
+    public JsfBanner(){}
     
-    public List<Promocao> getSelect(){
-        return new CrudPromocao().selectByDescricao(descricao);
+    public List<Banner> getSelect(){
+        return new CrudBanner().selectByDescricao(descricao);
     }
 
-    public List<Promocao> getPromocoesAtivas(){
-        return new CrudPromocao().selectPromocoesAtivas();
+    public List<Banner> getBannersAtivos(){
+        return new CrudBanner().selectBannersAtivos();
     }
     
     public void persist(){
@@ -68,35 +68,35 @@ public class JsfPromocao {
             }catch(IOException er){
                 er.printStackTrace();
             }
-            Promocao promo = new Promocao();
+            Banner promo = new Banner();
             promo.setDescricao(descricao);
             promo.setNomeimagem(nomeImg);
             promo.setAtivo(ativo);
-            new CrudPromocao().persist(promo);
+            new CrudBanner().persist(promo);
         }
     }
     
-    public void remove(Promocao promo){
-        new CrudPromocao().remove(promo);
+    public void remove(Banner promo){
+        new CrudBanner().remove(promo);
     }
     
     
-    public String update(Promocao promo){
-        this.descricao = promo.getDescricao();
-        this.idpromocao= promo.getIdpromocao();
-        this.nomeimagem = promo.getNomeimagem();
-        this.ativo = promo.isAtivo();
+    public String update(Banner banner){
+        this.descricao = banner.getDescricao();
+        this.idbanner= banner.getIdbanner();
+        this.nomeimagem = banner.getNomeimagem();
+        this.ativo = banner.isAtivo();
         return "merge.xhtml";
     }
     
     public String merge(){
-        Promocao promo;
-        promo = new br.data.crud.CrudPromocao().find(this.idpromocao);
-        promo.setDescricao(this.descricao);
-        promo.setNomeimagem(this.nomeimagem);
-        promo.setAtivo(ativo);
-        new br.data.crud.CrudPromocao().merge(promo);
-        this.idpromocao = null;
+        Banner banner;
+        banner = new br.data.crud.CrudBanner().find(this.idbanner);
+        banner.setDescricao(this.descricao);
+        banner.setNomeimagem(this.nomeimagem);
+        banner.setAtivo(ativo);
+        new br.data.crud.CrudBanner().merge(banner);
+        this.idbanner = null;
         this.descricao = "";
         this.nomeimagem = "";
         return "listall.xhtml";
@@ -110,15 +110,16 @@ public class JsfPromocao {
     public void setImagem(UploadedFile imagem) {
         this.imagem = imagem;
     }
+
+    public Integer getIdbanner() {
+        return idbanner;
+    }
+
+    public void setIdbanner(Integer idbanner) {
+        this.idbanner = idbanner;
+    }
     
-    public Integer getIdpromocao() {
-        return idpromocao;
-    }
-
-    public void setIdpromocao(Integer idpromocao) {
-        this.idpromocao = idpromocao;
-    }
-
+    
     public String getDescricao() {
         return descricao;
     }
@@ -143,8 +144,8 @@ public class JsfPromocao {
         this.ativo = ativo;
     }
 
-    public List<Promocao> getLista() {
-        return new CrudPromocao().getAll();
+    public List<Banner> getLista() {
+        return new CrudBanner().getAll();
     }
     
 

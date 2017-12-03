@@ -17,8 +17,9 @@
         <h:link outcome="operacoes/index.xhtml">clique aqui</h:link>
         
         <!-- Carousel só aparece se houver promoções ativas!!!!!!!!! -->
-        <p:carousel value="#{jsfPromocao.promocoesAtivas}" headerText="Promocões" rendered="#{jsfPromocao.promocoesAtivas.size() > 0}" var="promo" itemStyle="text-align:center" responsive="true" rows="1" autoPlayInterval="1000">
-                    <p:graphicImage style="height: 300px" value="uploaded/#{promo.nomeimagem}"/> 
+        <p:carousel value="#{jsfBanner.bannersAtivos}" headerText="Promocões" rendered="#{jsfBanner.bannersAtivos.size() > 0}" var="banner" itemStyle="text-align:center" responsive="true" rows="1" autoPlayInterval="1000">
+                    <p:graphicImage style="height: 300px" value="uploaded/#{banner.nomeimagem}"/> <br/>
+                    <h:outputText value="#{banner.descricao}"/>
         </p:carousel>
         
     </h:body>

@@ -5,7 +5,7 @@
  */
 package br.data.crud;
 
-import br.data.entity.Promocao;
+import br.data.entity.Banner;
 import java.text.Normalizer;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -15,13 +15,13 @@ import javax.persistence.Persistence;
  *
  * @author Hiroshi
  */
-public class CrudPromocao extends AbstractCrud<br.data.entity.Promocao>{
+public class CrudBanner extends AbstractCrud<br.data.entity.Banner>{
 
     private EntityManager em;
     private static final String PU = EMNames.EMN1;
 
-    public CrudPromocao() {
-        super(Promocao.class);
+    public CrudBanner() {
+        super(Banner.class);
     }
 
     @Override
@@ -33,21 +33,21 @@ public class CrudPromocao extends AbstractCrud<br.data.entity.Promocao>{
     }
 
     @Override
-    public List<Promocao> getAll(){
+    public List<Banner> getAll(){
         try{
-        return getEntityManager().createNamedQuery("Promocao.findAll").getResultList();
+        return getEntityManager().createNamedQuery("Banner.findAll").getResultList();
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
         return null;
     }
     
-    public List<Promocao> selectByDescricao(String descricao){
+    public List<Banner> selectByDescricao(String descricao){
         try {
            //Remove a acentuação da string
             descricao = Normalizer.normalize(descricao, Normalizer.Form.NFD);
 	    descricao = descricao.replaceAll("[^\\p{ASCII}]", "");
-            return getEntityManager().createNamedQuery("Promocao.findByDescricao").setParameter("descricao", "%" + descricao.toUpperCase() + "%").getResultList();
+            return getEntityManager().createNamedQuery("Banner.findByDescricao").setParameter("descricao", "%" + descricao.toUpperCase() + "%").getResultList();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -55,9 +55,9 @@ public class CrudPromocao extends AbstractCrud<br.data.entity.Promocao>{
     
     }
 
-    public List<Promocao> selectPromocoesAtivas() {
+    public List<Banner> selectBannersAtivos() {
         try{
-            return getEntityManager().createNamedQuery("Promocao.findPromocoesAtivas").getResultList();
+            return getEntityManager().createNamedQuery("Banner.findPromocoesAtivas").getResultList();
         }catch(Exception e){
             e.printStackTrace();
         }

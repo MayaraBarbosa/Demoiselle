@@ -24,21 +24,21 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Hiroshi
  */
 @Entity
-@Table(name="promocao")
+@Table(name="banner")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name="Promocao.findAll", query="SELECT p FROM Promocao p"),
-    @NamedQuery(name="Promocao.findPromocoesAtivas", query="SELECT p FROM Promocao p WHERE p.ativo = TRUE"),
-    @NamedQuery(name="Promocao.findByDescricao", query="SELECT p FROM Promocao p WHERE UPPER(FUNCTION('TRANSLATE', p.descricao, 'ÁÀÃÂÄáàãâäÍÌÏíìïÚÙÜúùüÉÈÊËéèêëÓÒÕÔÖóòõôöÇç', 'AAAAAaaaaaIIIiiiUUUuuuEEEEeeeeOOOOOoooooCc')) LIKE :descricao")
+    @NamedQuery(name="Banner.findAll", query="SELECT b FROM Banner b"),
+    @NamedQuery(name="Banner.findPromocoesAtivas", query="SELECT b FROM Banner b WHERE b.ativo = TRUE"),
+    @NamedQuery(name="Banner.findByDescricao", query="SELECT b FROM Banner b WHERE UPPER(FUNCTION('TRANSLATE', b.descricao, 'ÁÀÃÂÄáàãâäÍÌÏíìïÚÙÜúùüÉÈÊËéèêëÓÒÕÔÖóòõôöÇç', 'AAAAAaaaaaIIIiiiUUUuuuEEEEeeeeOOOOOoooooCc')) LIKE :descricao")
 })
-public class Promocao implements Serializable{
+public class Banner implements Serializable{
     private static long serialVersionUID = 1L;
-    @SequenceGenerator(name="promocao_idpromocao_seq", sequenceName="promocao_idpromocao_seq", allocationSize=1)
-    @Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="promocao_idpromocao_seq")
+    @SequenceGenerator(name="banner_idbanner_seq", sequenceName="banner_idbanner_seq", allocationSize=1)
+    @Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="banner_idbanner_seq")
     @Basic(optional=false)
     @NotNull
-    @Column(name="idpromocao")
-    private Integer idpromocao;
+    @Column(name="idbanner")
+    private Integer idbanner;
     @NotNull
     @Column(name="descricao")
     private String descricao;
@@ -46,13 +46,13 @@ public class Promocao implements Serializable{
     private String nomeimagem;
     @Column(name="ativo")
     private boolean ativo;
-    
-    public Integer getIdpromocao() {
-        return idpromocao;
+
+    public Integer getIdbanner() {
+        return idbanner;
     }
 
-    public void setIdpromocao(Integer idpromocao) {
-        this.idpromocao = idpromocao;
+    public void setIdbanner(Integer idbanner) {
+        this.idbanner = idbanner;
     }
 
     public String getDescricao() {

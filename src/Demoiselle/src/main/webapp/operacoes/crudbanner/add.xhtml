@@ -7,21 +7,21 @@
 
     <ui:composition template="../layout_operacoes.xhtml">
         <ui:define name="content">
-             <h1>Cadastrar Cidades</h1>
+             <h1>Cadastrar Banner</h1>
             <h:form enctype="multipart/form-data">
                 Descrição:
-                <p:inputText value="#{jsfPromocao.descricao}"  />
+                <p:inputText value="#{jsfBanner.descricao}"  />
                 
                 <br></br>
                 Imagem:
-                <p:fileUpload value="#{jsfPromocao.imagem}" mode="simple" skinSimple="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
+                <p:fileUpload value="#{jsfBanner.imagem}" mode="simple" skinSimple="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
                  
                 <br></br>
                 Ativa
-                <p:selectBooleanCheckbox value="#{jsfPromocao.ativo}" />
+                <p:selectBooleanCheckbox value="#{jsfBanner.ativo}" />
                 
                 <br></br>
-                <p:commandButton value="salvar novo registro" action="#{jsfPromocao.persist()}" ajax="false" /> 
+                <p:commandButton value="salvar novo registro" action="#{jsfBanner.persist()}" ajax="false" /> 
                 
                
                 
