@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+header{
+    position: absolute;
+    width: 100%;
+}
+.nav ul {
+  list-style: none;
+  background-color: #444;
+  text-align: right;
+  padding: 0;
+  margin: 0;
+}
+.nav li {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1em;
+  line-height: 40px;
+  height: 40px;
+  border-bottom: 1px solid #888;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  transition: .3s background-color;
+}
+ 
+.nav a:hover {
+  background-color: #d8621e;
+}
+ 
+.nav a.active {
+  background-color: #fff;
+  color: #444;
+  cursor: default;
+}
+
+.back-cover{
+    width: 100%; 
+    height: 500px; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: 50% 50%;
+}
+
+
+.flex {
+    padding: 0;
+    margin: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-title{
+    height: 30%;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-family: 'Raleway', sans-serif;
+    font-size: 60px;
+}
+
+.container-form{
+    height: 70%;
+    align-items: center;
+    justify-content: center;
+}
+
+.row {
+    width: auto;
+}
+
+form > div > div{
+    display: inline-block;
+}
+ 
+@media screen and (min-width: 600px) {
+  .nav li {
+    width: 120px;
+    border-bottom: none;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.2em;
+  }
+ 
+  .nav li {
+    display: inline-block;
+  }
+ 
+}
