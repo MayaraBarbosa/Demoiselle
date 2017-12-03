@@ -2,25 +2,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:composition template="../layout_operacoes.xhtml">
         <ui:define name="content">
              <h1>Cadastrar Cidades</h1>
-            <h:form>
-                Descricao:
-                <h:inputText value="#{jsfPromocao.descricao}"  />
+            <h:form enctype="multipart/form-data">
+                Descrição:
+                <p:inputText value="#{jsfPromocao.descricao}"  />
                 
                 <br></br>
                 Imagem:
-                <h:inputText value="#{jsfPromocao.nomeimagem}" />
+                <p:fileUpload value="#{jsfPromocao.imagem}" mode="simple" skinSimple="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>
                  
                 <br></br>
                 Ativa
-                <h:selectBooleanCheckbox value="#{jsfPromocao.ativo}" />
+                <p:selectBooleanCheckbox value="#{jsfPromocao.ativo}" />
                 
                 <br></br>
-                <h:commandButton value="salvar novo registro" action="#{jsfPromocao.persist()}"  /> 
+                <p:commandButton value="salvar novo registro" action="#{jsfPromocao.persist()}" ajax="false" /> 
                 
                
                 

@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <ui:composition template="../layout_operacoes.xhtml">
@@ -9,28 +10,28 @@
         <ui:define name="content">
             <h1>Consultar Promocoes</h1>
             <h:form>
-                <h:inputText value="#{jsfPromocao.descricao}"  /> 
-                <h:commandButton value="buscar" />       
-                <h:dataTable value="#{jsfPromocao.select}" var="cid">
-                    <h:column>
-                        <h:selectBooleanCheckbox value="#{promo.ativo}"/>
-                    </h:column>
-                    <h:column>
+                <p:inputText value="#{jsfPromocao.descricao}" id="busca"/> 
+                <p:commandButton value="Buscar" update="tabela"/>       
+                <p:dataTable value="#{jsfPromocao.select}" var="promo" emptyMessage="Nenhuma promoção encontrada" id="tabela">
+                    <p:column headerText="Ativo">
+                        <p:selectBooleanCheckbox value="#{promo.ativo}"/>
+                    </p:column>
+                    <p:column headerText="ID">
                         <h:outputText value="#{promo.idpromocao}" />
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column headerText="Descrição">
                         <h:outputText value="#{promo.descricao}" />
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column headerText="Imagem">
                         <h:outputText value="#{promo.nomeimagem}" />
-                    </h:column>
-                    <h:column>
-                        <h:commandButton value="remover" action="#{jsfPromocao.remove(promo)}" onclick="return confirm('Confirma exclusao?');"/> 
-                    </h:column>
-                    <h:column>
-                        <h:commandButton value="editar" action="#{jsfPromocao.update(promo)}"/> 
-                    </h:column>
-                </h:dataTable>
+                    </p:column>
+                    <p:column headerText="Remover">
+                        <p:commandButton value="Remover" action="#{jsfPromocao.remove(promo)}" update="tabela" onclick="return confirm('Confirma exclusao?');" ajax="false" /> 
+                    </p:column>
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Editar" action="#{jsfPromocao.update(promo)}"/> 
+                    </p:column>
+                </p:dataTable>
             </h:form>
 
         </ui:define>

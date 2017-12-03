@@ -21,7 +21,7 @@ public class JsfCidade {
      * Creates a new instance of JsfCidade
      */
     private int idcidade;
-    private String nome;
+    private String nome = "";
   
     
     public JsfCidade() {
@@ -53,10 +53,10 @@ public class JsfCidade {
     }
     
     public void merge(){
-        br.data.entity.Cidade teste;
-        teste = new br.data.crud.CrudCidade().find(this.idcidade);
-        teste.setNome(this.nome);
-        new br.data.crud.CrudCidade().merge(teste);
+        br.data.entity.Cidade cid;
+        cid = new br.data.crud.CrudCidade().find(this.idcidade);
+        cid.setNome(this.nome);
+        new br.data.crud.CrudCidade().merge(cid);
         this.nome="";
         this.idcidade=0;  
     }

@@ -7,10 +7,17 @@ package br.jsf;
 
 import br.data.crud.CrudPromocao;
 import br.data.entity.Promocao;
-import java.util.Collection;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -21,27 +28,58 @@ import javax.faces.bean.RequestScoped;
 public class JsfPromocao {
     
     private Integer idpromocao;
-    private String descricao;
+    private String descricao = "";
+    private UploadedFile imagem;
     private String nomeimagem;
     private boolean ativo;
-    private List<Promocao> lista;
     public JsfPromocao(){}
     
+    public List<Promocao> getSelect(){
+        return new CrudPromocao().selectByDescricao(descricao);
+    }
+
+    public List<Promocao> getPromocoesAtivas(){
+        return new CrudPromocao().selectPromocoesAtivas();
+    }
+    
     public void persist(){
-        Promocao promo = new Promocao();
-        promo.setDescricao(descricao);
-        promo.setNomeimagem("imgteste");
-        promo.setAtivo(ativo);
-        new CrudPromocao().persist(promo);
+        if(imagem == null){
+            System.out.println("Sem imagem");
+        }else{ 
+            String nomeImg = new java.util.Date().toString();
+            nomeImg = nomeImg.replaceAll("\\s+", "");
+            nomeImg = nomeImg.replaceAll(":", "");
+            String tipoArquivo = imagem.getFileName();
+            tipoArquivo = tipoArquivo.substring(tipoArquivo.lastIndexOf("."));
+            nomeImg = nomeImg.concat(tipoArquivo);
+            try{
+                String path = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/") + "uploaded";
+                File arq = new File(path);
+                if (!arq.exists()) arq.mkdir(); //Cria pasta /uploaded 
+                arq = new File(path, nomeImg);
+                arq.createNewFile();
+                InputStream inS = imagem.getInputstream();
+                OutputStream ouS = new FileOutputStream(arq);
+                byte[] buf = new byte[1024];
+                int read = 0;
+                while((read = inS.read(buf)) != -1){
+                    ouS.write(buf, 0, read);
+                }
+            }catch(IOException er){
+                er.printStackTrace();
+            }
+            Promocao promo = new Promocao();
+            promo.setDescricao(descricao);
+            promo.setNomeimagem(nomeImg);
+            promo.setAtivo(ativo);
+            new CrudPromocao().persist(promo);
+        }
     }
     
     public void remove(Promocao promo){
         new CrudPromocao().remove(promo);
     }
     
-    public void getAll(){
-        this.lista = new CrudPromocao().getAll();
-    }
     
     public String update(Promocao promo){
         this.descricao = promo.getDescricao();
@@ -51,19 +89,26 @@ public class JsfPromocao {
         return "merge.xhtml";
     }
     
-    public void merge(){
+    public String merge(){
         Promocao promo;
-        promo = new CrudPromocao().find(this.idpromocao);
-        promo.setDescricao(descricao);
+        promo = new br.data.crud.CrudPromocao().find(this.idpromocao);
+        promo.setDescricao(this.descricao);
         promo.setNomeimagem(this.nomeimagem);
         promo.setAtivo(ativo);
-        new CrudPromocao().merge(promo);
+        new br.data.crud.CrudPromocao().merge(promo);
+        this.idpromocao = null;
         this.descricao = "";
         this.nomeimagem = "";
+        return "listall.xhtml";
     }
 
-    public Collection<Promocao> select(){
-        return new CrudPromocao().selectByDescricao(this.descricao);
+    
+    public UploadedFile getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(UploadedFile imagem) {
+        this.imagem = imagem;
     }
     
     public Integer getIdpromocao() {
@@ -99,12 +144,10 @@ public class JsfPromocao {
     }
 
     public List<Promocao> getLista() {
-        return lista;
+        return new CrudPromocao().getAll();
     }
+    
 
-    public void setLista(List<Promocao> lista) {
-        this.lista = lista;
-    }
     
     
 }

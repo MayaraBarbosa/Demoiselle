@@ -3,36 +3,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="../layout_operacoes.xhtml">
 
         <ui:define name="content">
             <h1>Listar todas as promocoes</h1>
-            <f:metadata>
-                <f:viewAction action="#{jsfPromocao.getAll}"/>
-            </f:metadata>
                 
             <h:form>
-                <p:dataTable value="#{jsfPromocao.lista}" var="promo" emptyMessage="Nenhuma promoção cadastrada">
+                <p:dataTable value="#{jsfPromocao.lista}" var="promo"  id="tabela" emptyMessage="Nenhuma promocao cadastrada">
                     <p:column headerText="Ativo">
                         <p:selectBooleanCheckbox value="#{promo.ativo}" />
                     </p:column>
-                    <p:column headerText="ID" sortBy="#{promo.idpromocao}">
+                    <p:column headerText="ID">
                         <h:outputText value="#{promo.idpromocao}" />
                     </p:column>
-                    <p:column headerText="Descrição" sortBy="#{promo.descricao}">
+                    <p:column headerText="Descrição">
                         <h:outputText value="#{promo.descricao}" />
                     </p:column>
-                    <p:column headerText="Nome da imagem">
-                        <h:outputText value="#{promo.nomeimagem}" />
+                    <p:column headerText="Imagem">
+                        <p:commandButton value="Ver Imagem" type="button" onclick="PF('#{promo.nomeimagem}').show();" />
+                        <p:dialog header="Imagem" widgetVar="#{promo.nomeimagem}" >
+                            Nome da imagem : #{promo.nomeimagem}<br/>
+                            <img src="../../../uploaded/#{promo.nomeimagem}"/>
+                        </p:dialog>
                     </p:column>
-                    <p:column>
-                        <p:commandButton value="remover" action="#{jsfPromocao.remove(promo)}" onclick="return confirm('Confirma exclusao?');"/> 
+                    <p:column headerText="Remover">
+                        <p:commandButton value="Remover" action="#{jsfPromocao.remove(promo)}" update="tabela" onclick="return confirm('Confirma exclusao?');"/> 
                     </p:column>
-                    <p:column>
-                        <p:commandButton value="editar" action="#{jsfPromocao.update(promo)}"/> 
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Editar" action="#{jsfPromocao.update(promo)}"/> 
                     </p:column>
                 </p:dataTable>
             </h:form>

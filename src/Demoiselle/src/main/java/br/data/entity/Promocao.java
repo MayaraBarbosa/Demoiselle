@@ -27,8 +27,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name="promocao")
 @XmlRootElement
 @NamedQueries({
-    
     @NamedQuery(name="Promocao.findAll", query="SELECT p FROM Promocao p"),
+    @NamedQuery(name="Promocao.findPromocoesAtivas", query="SELECT p FROM Promocao p WHERE p.ativo = TRUE"),
     @NamedQuery(name="Promocao.findByDescricao", query="SELECT p FROM Promocao p WHERE UPPER(FUNCTION('TRANSLATE', p.descricao, 'ÁÀÃÂÄáàãâäÍÌÏíìïÚÙÜúùüÉÈÊËéèêëÓÒÕÔÖóòõôöÇç', 'AAAAAaaaaaIIIiiiUUUuuuEEEEeeeeOOOOOoooooCc')) LIKE :descricao")
 })
 public class Promocao implements Serializable{
