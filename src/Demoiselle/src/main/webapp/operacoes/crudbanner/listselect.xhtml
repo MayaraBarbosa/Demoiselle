@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="../layout_operacoes.xhtml">
+
+        <ui:define name="content">
+            <h1>Consultar Banners</h1>
+            <h:form>
+                <p:inputText value="#{jsfBanner.descricao}" id="busca"/> 
+                <p:commandButton value="Buscar" update="tabela"/>       
+                <p:dataTable value="#{jsfBanner.select}" var="banner" emptyMessage="Nenhum banner encontrado" id="tabela">
+                    <p:column headerText="Ativo">
+                        <p:selectBooleanCheckbox value="#{banner.ativo}"/>
+                    </p:column>
+                    <p:column headerText="ID">
+                        <h:outputText value="#{banner.idbanner}" />
+                    </p:column>
+                    <p:column headerText="Descrição">
+                        <h:outputText value="#{banner.descricao}" />
+                    </p:column>
+                    <p:column headerText="Imagem">
+                        <h:outputText value="#{banner.nomeimagem}" />
+                    </p:column>
+                    <p:column headerText="Remover">
+                        <p:commandButton value="Remover" action="#{jsfBanner.remove(banner)}" update="tabela" onclick="return confirm('Confirma exclusao?');" ajax="false" /> 
+                    </p:column>
+                    <p:column headerText="Editar">
+                        <p:commandButton value="Editar" action="#{jsfBanner.update(banner)}"/> 
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>
+

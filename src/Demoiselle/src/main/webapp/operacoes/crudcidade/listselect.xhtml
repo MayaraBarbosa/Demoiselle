@@ -19,10 +19,10 @@
                         <h:outputText value="#{cid.nome}" />
                     </h:column>
                     <h:column>
-                        <h:commandButton value="remover" action="#{jsfCidade.remove(test)}" onclick="return confirm('Confirma exclusao?');"/> 
+                        <h:commandButton value="remover" action="#{jsfCidade.remove(cid)}" onclick="return confirm('Confirma exclusao?');"/> 
                     </h:column>
                     <h:column>
-                        <h:commandButton value="editar" action="#{jsfCidade.update(test)}"/> 
+                        <h:commandButton value="editar" action="#{jsfCidade.update(cid)}"/> 
                     </h:column>
                 </h:dataTable>
             </h:form>

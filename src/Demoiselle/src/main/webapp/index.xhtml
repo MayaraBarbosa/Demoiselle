@@ -1,19 +1,72 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Demoiselle</title>
+        <link rel="stylesheet" type="text/css" href="./resources/css/styles.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:700|Roboto:900|Raleway:800|Courgette" />
     </h:head>
     <h:body>
-        Demoiselle - Voe Feliz!!
-        <hr></hr>
-        Pagina principal do aplicativo
-        <br>
-            
-        </br>
-        para executar operacoes, 
-        <h:link outcome="operacoes/index.xhtml">clique aqui</h:link>
+        
+        <header>
+            <div class="nav">
+                <ul>
+                    <li style="float: left; font-family: 'Courgette', cursive; font-size: 1.5em">Demoiselle</li>
+                    <li style="text-align: center"><h:link outcome="operacoes/index.xhtml">Operações</h:link></li>
+                </ul>
+            </div>
+        </header>
+        <div class="back-cover" style="background-image: url('./resources/images/demoiselle_plane.png'); ">
+            <div class="flex container-title">
+                <div class="row">
+                    <div class="flex-item" style="background-color: #d8621e; padding-left: 100px">Voe Feliz!&nbsp;</div>
+                </div>
+            </div>
+            <div class="flex container-form">
+                <div>
+                    <h:form>
+                        <div style="text-align: center">
+                            <div>
+                                <p:outputLabel value="Viajar de" for="dd" />&nbsp;<br/>
+                                <p:autoComplete id="dd" dropdown="false" />&nbsp;
+                            </div>
+                            <div>
+                                <p:outputLabel value="Para" for="dd1" />&nbsp;<br/>
+                                <p:autoComplete id="dd1" dropdown="false"  />&nbsp;
+                            </div>
+                        </div>
+                        <br/>
+                        <div>
+                            <div>
+                                <p:outputLabel for="mask" value="Ida" />&nbsp;<br/>
+                                <p:calendar id="mask" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />&nbsp;
+                            </div>
+                            <div>
+                                <p:outputLabel for="mask2" value="Volta" />&nbsp;<br/>
+                                <p:calendar id="mask2" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />&nbsp;
+                            </div>
+                            <div>
+                                <p:outputLabel for="input1" value="Quantidade" />&nbsp;<br/>
+                                <p:inputNumber id="input1"  />  
+                            </div>&nbsp;
+                            <div>
+                                <p:button  value="Procurar" style="color: red" icon="ui-icon-search">
+                                    <f:param name="productId" value="10" />
+                                </p:button>
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel só aparece se houver promoções ativas!!!!!!!!! -->
+        <p:carousel value="#{jsfBanner.bannersAtivos}" headerText="Promocões" rendered="#{jsfBanner.bannersAtivos.size() > 0}" var="banner" itemStyle="text-align:center" responsive="true" rows="1" autoPlayInterval="1000">
+                    <p:graphicImage style="height: 300px" value="uploaded/#{banner.nomeimagem}"/> <br/>
+                    <h:outputText value="#{banner.descricao}"/>
+        </p:carousel>
     </h:body>
 </html>
 
