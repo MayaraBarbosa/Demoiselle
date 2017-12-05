@@ -1,5 +1,6 @@
 package boleto;
 
+/*
 import br.com.nordestefomento.jrimum.bopepo.BancoSuportado;
 import br.com.nordestefomento.jrimum.bopepo.Boleto;
 import br.com.nordestefomento.jrimum.bopepo.view.BoletoViewer;
@@ -19,7 +20,9 @@ import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Date;
+*/
 
+/*
 public class Boletossss {
 
     public static void main(String args[]) {
@@ -30,7 +33,7 @@ public class Boletossss {
 
                 /*
                  * INFORMANDO DADOS SOBRE O SACADO.
-                 */
+                 *
                
 
                 // Informando o endereço do sacado.
@@ -45,7 +48,7 @@ public class Boletossss {
 
                 /*
                  * INFORMANDO DADOS SOBRE O SACADOR AVALISTA.
-                 */
+                 *
                 SacadorAvalista sacadorAvalista = new SacadorAvalista("JRimum Enterprise", "00.000.000/0001-91");
 
                 // Informando o endereço do sacador avalista.
@@ -60,7 +63,7 @@ public class Boletossss {
 
                 /*
                  * INFORMANDO OS DADOS SOBRE O TÍTULO.
-                 */
+                 *
                 
                 // Informando dados sobre a conta bancária do título.
                // ContaBancaria contaBancaria = new ContaBancaria(BancosSuportados.BANCO_BRADESCO.create());
@@ -84,7 +87,7 @@ public class Boletossss {
 
                 /*
                  * INFORMANDO OS DADOS SOBRE O BOLETO.
-                 */
+                 *
                 Boleto boleto = new Boleto(titulo);
                 
                 boleto.setLocalPagamento("Pagável preferencialmente na Rede X ou em " +
@@ -102,7 +105,7 @@ public class Boletossss {
 
                 /*
                  * GERANDO O BOLETO BANCÁRIO.
-                 */
+                 *
                 // Instanciando um objeto "BoletoViewer", classe responsável pela
                 // geração do boleto bancário.
                 BoletoViewer boletoViewer = new BoletoViewer(boleto);
@@ -121,7 +124,7 @@ public class Boletossss {
          * Exibe o arquivo na tela.
          * 
          * @param arquivoBoleto
-         */
+         *
         private static void mostreBoletoNaTela(File arquivoBoleto) {
 
                 java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
@@ -139,3 +142,4 @@ public class Boletossss {
         
     }
 }
+*/

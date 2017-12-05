@@ -7,6 +7,7 @@ package br.data.crud;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 
 
@@ -70,6 +71,10 @@ public abstract class AbstractCrud<T> {
         cq.select(getEntityManager().getCriteriaBuilder().count(rt));
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
+    }
+    
+    public TypedQuery<T> createNamedQuery(String query) {
+        return getEntityManager().createNamedQuery(query, entityClass);
     }
     
 }

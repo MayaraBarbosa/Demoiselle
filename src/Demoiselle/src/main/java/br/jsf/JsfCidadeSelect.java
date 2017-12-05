@@ -26,7 +26,7 @@ public class JsfCidadeSelect  {
     private String nome;
     
     public java.util.Collection<br.data.entity.Cidade> getSelect(){
-            return new br.data.crud.CrudCidade().SelectByNome(this.nome);
+        return new br.data.crud.CrudCidade().SelectByNome(this.nome);
     }
 
     public int getIdcidade() {
