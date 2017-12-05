@@ -23,9 +23,9 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "rota")
-@NamedQueries({
+/*@NamedQueries({
     @NamedQuery(name = "Rota.findByIdAeroporto", query = "SELECT r FROM rota r WHERE aeroportoorigem = :aeroportoorigem AND aeroportodestino = :aeroportodestino")
-})
+})*/
 public class Rota {
     
     private static final long serialVersionUID = 1L;
