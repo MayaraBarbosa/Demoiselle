@@ -1,3 +1,4 @@
+/*
 package boleto;
 
 import br.com.nordestefomento.jrimum.bopepo.BancoSuportado;
@@ -28,9 +29,9 @@ public class Boletossss {
                  Sacado sacados = new Sacado("Nome do sacado", "222.222.222-22");
                 Cedente cedentes = new Cedente("Lindberg XXXX Ltda", "00.000.208/0001-00");
 
-                /*
-                 * INFORMANDO DADOS SOBRE O SACADO.
-                 */
+                
+                 //INFORMANDO DADOS SOBRE O SACADO.
+                 
                
 
                 // Informando o endereço do sacado.
@@ -43,9 +44,9 @@ public class Boletossss {
                 enderecoSac.setNumero("1");
                 sacados.addEndereco(enderecoSac);
 
-                /*
-                 * INFORMANDO DADOS SOBRE O SACADOR AVALISTA.
-                 */
+                
+                /INFORMANDO DADOS SOBRE O SACADOR AVALISTA.
+                
                 SacadorAvalista sacadorAvalista = new SacadorAvalista("JRimum Enterprise", "00.000.000/0001-91");
 
                 // Informando o endereço do sacador avalista.
@@ -58,9 +59,9 @@ public class Boletossss {
                 enderecoSacAval.setNumero("001");
                 sacadorAvalista.addEndereco(enderecoSacAval);
 
-                /*
-                 * INFORMANDO OS DADOS SOBRE O TÍTULO.
-                 */
+                
+                //INFORMANDO OS DADOS SOBRE O TÍTULO.
+                
                 
                 // Informando dados sobre a conta bancária do título.
                // ContaBancaria contaBancaria = new ContaBancaria(BancosSuportados.BANCO_BRADESCO.create());
@@ -82,9 +83,9 @@ public class Boletossss {
                 titulo.setDesconto(new BigDecimal(0.05));
                
 
-                /*
-                 * INFORMANDO OS DADOS SOBRE O BOLETO.
-                 */
+                
+                //INFORMANDO OS DADOS SOBRE O BOLETO.
+                
                 Boleto boleto = new Boleto(titulo);
                 
                 boleto.setLocalPagamento("Pagável preferencialmente na Rede X ou em " +
@@ -100,9 +101,9 @@ public class Boletossss {
                 boleto.setInstrucao7("PARA PAGAMENTO 7 até xx/xx/xxxx COBRAR O VALOR QUE VOCÊ QUISER!");
                 boleto.setInstrucao8("APÓS o Vencimento, Pagável Somente na Rede X.");
 
-                /*
-                 * GERANDO O BOLETO BANCÁRIO.
-                 */
+                
+                //GERANDO O BOLETO BANCÁRIO.
+                
                 // Instanciando um objeto "BoletoViewer", classe responsável pela
                 // geração do boleto bancário.
                 BoletoViewer boletoViewer = new BoletoViewer(boleto);
@@ -117,11 +118,11 @@ public class Boletossss {
                 mostreBoletoNaTela(arquivoPdf);
         }
 
-        /**
+        
          * Exibe o arquivo na tela.
          * 
          * @param arquivoBoleto
-         */
+         
         private static void mostreBoletoNaTela(File arquivoBoleto) {
 
                 java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
@@ -139,3 +140,4 @@ public class Boletossss {
         
     }
 }
+*/
