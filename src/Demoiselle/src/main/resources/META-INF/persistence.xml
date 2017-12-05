@@ -5,7 +5,11 @@
     <class>br.data.entity.Cidade</class>
     <class>br.data.entity.Role</class>
     <class>br.data.entity.Banner</class>
+<<<<<<< HEAD
+    <class>br.data.entity.Passagem</class>
+=======
     <class>br.data.entity.Remarcar</class>
+>>>>>>> 7925af5d3ca586f3bb9a581da8506bf2810d0411
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/demoiselledb"/>
