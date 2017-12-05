@@ -3,7 +3,7 @@ services:
 before_script:
  - psql -c 'create database demoiselledb;' -U postgres
  - psql -U postgres -d demoiselledb -f scripts/database/create_tables.sql
- - psql -U postgres -d demoiselledb -f scripts/database/fill_tables.sql
+ - psql -U postgres -d demoiselledb -f scripts/database/db_inserts_script.sql
  - cd src/Demoiselle
  - ls
 language: java
