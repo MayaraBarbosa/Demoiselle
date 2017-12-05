@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="../layout_operacoes.xhtml">
+        <ui:define name="content">
+            <h1>Remarcar Passagem</h1>
+            <h:form>
+                <p:inputText value="#{jsfRemarcar.descricao}" id="busca"/> 
+                <p:commandButton value="Buscar" update="tabela"/>       
+                <p:dataTable value="#{jsfRemarcar.all}" var="passagem" emptyMessage="Nenhum voo encontrado" id="tabela">
+                    <p:column headerText="Disponível">
+                        <p:selectBooleanCheckbox value="#{jsfRemarcar.disponível}"/>
+                    </p:column>
+                    <p:column headerText="ID">
+                        <h:outputText value="#{jsfRemarcar.id}" />
+                    </p:column>
+                    <p:column headerText="Descrição">
+                        <h:outputText value="#{jsfRemarcar.descricao}" />
+                    </p:column>
+                    <p:column headerText="Tipo de Passagem">
+                        <h:outputText value="#{jsfRemarcar.tipoPassagem}" />
+                    </p:column>
+                    <p:column headerText="Tarifa">
+                        <h:outputText value="#{jsfRemarcar.calcTarifa(tipo, valorPassagem)}" />
+                    </p:column>
+                    <p:column headerText="Remarcar">
+                        <p:commandButton value="Remarcar" action="#{jsfRemarcar.remarcarPassagem()}"/> 
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>
