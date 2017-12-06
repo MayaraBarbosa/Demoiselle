@@ -32,12 +32,18 @@
                     <h:form>
                         <div style="text-align: center">
                             <div>
-                                <p:outputLabel value="Viajar de" for="dd" />&nbsp;<br/>
-                                <p:autoComplete id="dd" dropdown="false" />&nbsp;
+                                <p:outputLabel for="cidades" value="Viajar de: " />&nbsp;<br/>
+                                <p:selectOneMenu id="cidades" value="#{jsfCidade.nome}" style="width:150px">
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItems value="#{jsfCidade.all}" var="cidade" itemLabel="#{cidade.nome}" itemValue="#{cidade.nome}"/>
+                                </p:selectOneMenu>
                             </div>
                             <div>
-                                <p:outputLabel value="Para" for="dd1" />&nbsp;<br/>
-                                <p:autoComplete id="dd1" dropdown="false"  />&nbsp;
+                                <p:outputLabel for="cidades1" value="Para: " />&nbsp;<br/>
+                                <p:selectOneMenu id="cidades1" value="#{jsfCidade.nome}" style="width:150px">
+                                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                                    <f:selectItems value="#{jsfCidade.all}" var="cidade" itemLabel="#{cidade.nome}" itemValue="#{cidade.nome}"/>
+                                </p:selectOneMenu>
                             </div>
                         </div>
                         <br/>
