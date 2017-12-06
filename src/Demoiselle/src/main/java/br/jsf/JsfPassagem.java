@@ -23,7 +23,7 @@ public class JsfPassagem {
     private int idpassagem;
     private int qtdpassageiros;
     private int idvoo;
-//    private int idvenda;
+    private int idvenda;
  
     
     public JsfPassagem() {
@@ -35,7 +35,8 @@ public class JsfPassagem {
        br.data.entity.Passagem pas = new br.data.entity.Passagem();
        pas.setIdpassagem(idpassagem);
        pas.setQtdepassageiros(qtdpassageiros);
-       //pas.setIdvoo();
+       pas.setIdvoo(idvoo);
+       pas.setIdvenda(idvenda);
        new br.data.crud.CrudPassagem().persist(pas);
        this.idpassagem=0;
        this.qtdpassageiros=0;
@@ -52,6 +53,8 @@ public class JsfPassagem {
     public String update(br.data.entity.Passagem passagem){
         this.idpassagem = passagem.getIdpassagem();
         this.qtdpassageiros = passagem.getQtdepassageiros();
+        this.idvoo = passagem.getIdvoo();
+        this.idvenda = passagem.getIdvenda();
         return "merge.xhtml";
     }
     
@@ -61,7 +64,9 @@ public class JsfPassagem {
         pas.setQtdepassageiros(this.qtdpassageiros);
         new br.data.crud.CrudPassagem().merge(pas);
         this.qtdpassageiros=0;
-        this.idpassagem=0;  
+        this.idpassagem=0;
+        this.idvoo=0;
+        this.idvenda=0;
     }
 
     public int getQtdpassageiros() {
@@ -81,18 +86,24 @@ public class JsfPassagem {
         this.idpassagem = idpassagem;
     }
 
-    /**
-     * @return the idvoo
-     */
+ 
     public int getIdvoo() {
         return idvoo;
     }
 
-    /**
-     * @param idvoo the idvoo to set
-     */
+ 
     public void setIdvoo(int idvoo) {
         this.idvoo = idvoo;
+    }
+
+    
+    public int getIdvenda() {
+        return idvenda;
+    }
+
+   
+    public void setIdvenda(int idvenda) {
+        this.idvenda = idvenda;
     }
 
 }
