@@ -210,7 +210,8 @@ CREATE TABLE public.usuario
   idusuario INTEGER NOT NULL,
   idrole INTEGER NOT NULL,
   nome CHARACTER varying(20),
-  senha CHARACTER varying(20),
+  senha CHARACTER varying(200),
+  email CHARACTER varying(40),
   datanascimento DATE,
   CONSTRAINT pk_usuario PRIMARY KEY (idusuario)
 );

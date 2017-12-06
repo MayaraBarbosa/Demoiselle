@@ -5,6 +5,7 @@
  */
 package br.jsf;
 
+import br.data.crud.CrudVoo;
 import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -17,35 +18,25 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 @RequestScoped
 public class JsfVoo {
-
-    /**
-     * Creates a new instance of JsfVoo
-     */
-    private int idvoo;
-    private int idrota;
-    private String obsservacao;
-    private int idaeronave;
-    //private Date datahoraembarque;
- 
+    private int idVoo;
+    private int idRota;
+    private String observacao;
+    private int idAeronave;
     
     public JsfVoo() {
-        
     }
     
-   
     public void persist(){
        br.data.entity.Voo voo = new br.data.entity.Voo();
-       voo.setIdvoo(getIdvoo());
-       voo.setIdrota(getIdrota());
-       voo.setIdaeronave(getIdaeronave());
-       voo.setObservacao(getObsservacao());
+       voo.setIdvoo(getIdVoo());
+       voo.setIdRota(getIdRota());
+       voo.setIdAeronave(getIdAeronave());
+       voo.setObservacao(getObservacao());
        new br.data.crud.CrudVoo().persist(voo);
-       this.setIdvoo(0);
-       this.setIdrota(0);
-       this.setIdaeronave(0);
-       this.setObsservacao("");
-       
-       
+       this.setIdVoo(0);
+       this.setIdRota(0);
+       this.setIdAeronave(0);
+       this.setObservacao("");
     }
     
     public void remove(br.data.entity.Voo voo){
@@ -57,81 +48,52 @@ public class JsfVoo {
     }
 
     public String update(br.data.entity.Voo voo){
-        this.setIdvoo((int) voo.getIdvoo());
-        this.setIdrota(voo.getIdrota());
-        this.setIdaeronave(voo.getIdaeronave());
-        this.setObsservacao(voo.getObservacao());
+        this.setIdVoo((int) voo.getIdvoo());
+        this.setIdRota(voo.getIdRota());
+        this.setIdAeronave(voo.getIdAeronave());
+        this.setObservacao(voo.getObservacao());
         return "merge.xhtml";
     }
     
     public void merge(){
         br.data.entity.Voo voo;
-        voo = new br.data.crud.CrudVoo().find(this.getIdvoo());
-        
+        voo = new CrudVoo().find(this.getIdVoo());
         new br.data.crud.CrudVoo().merge(voo);
-        this.setIdvoo(0);
-        this.setIdrota(0);
-        this.setIdaeronave(0);
-        this.setObsservacao("");
-        
+        this.setIdVoo(0);
+        this.setIdRota(0);
+        this.setIdAeronave(0);
+        this.setObservacao("");
     }
 
-    /**
-     * @return the idvoo
-     */
-    public int getIdvoo() {
-        return idvoo;
+    public int getIdVoo() {
+        return idVoo;
     }
 
-    /**
-     * @param idvoo the idvoo to set
-     */
-    public void setIdvoo(int idvoo) {
-        this.idvoo = idvoo;
+    public void setIdVoo(int idVoo) {
+        this.idVoo = idVoo;
     }
 
-    /**
-     * @return the idrota
-     */
-    public int getIdrota() {
-        return idrota;
+    public int getIdRota() {
+        return idRota;
     }
 
-    /**
-     * @param idrota the idrota to set
-     */
-    public void setIdrota(int idrota) {
-        this.idrota = idrota;
+    public void setIdRota(int idRota) {
+        this.idRota = idRota;
     }
 
-    /**
-     * @return the obsservacao
-     */
-    public String getObsservacao() {
-        return obsservacao;
+    public String getObservacao() {
+        return observacao;
     }
 
-    /**
-     * @param obsservacao the obsservacao to set
-     */
-    public void setObsservacao(String obsservacao) {
-        this.obsservacao = obsservacao;
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
-    /**
-     * @return the idaeronave
-     */
-    public int getIdaeronave() {
-        return idaeronave;
+    public int getIdAeronave() {
+        return idAeronave;
     }
 
-    /**
-     * @param idaeronave the idaeronave to set
-     */
-    public void setIdaeronave(int idaeronave) {
-        this.idaeronave = idaeronave;
+    public void setIdAeronave(int idAeronave) {
+        this.idAeronave = idAeronave;
     }
-
-
-
 }
