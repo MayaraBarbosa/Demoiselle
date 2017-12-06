@@ -5,8 +5,15 @@
  */
 package br.jsf;
 
+import br.data.crud.CrudAeronave;
+import br.data.crud.CrudRota;
 import br.data.crud.CrudVoo;
+import br.data.entity.Aeronave;
+import br.data.entity.Rota;
+import br.data.entity.Voo;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -18,67 +25,46 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 @RequestScoped
 public class JsfVoo {
-    private int idVoo;
-    private int idRota;
+    private Voo voo;
+    private Date dataHoraEmbarque;
     private String observacao;
-    private int idAeronave;
+    private Rota rotaSelecionada;
+    private Aeronave aeronaveSelecionada;
+    private List<Rota> rotas = new ArrayList<>();
+    private List<Aeronave> aeronaves = new ArrayList<>();
+    private CrudVoo crudVoo;
     
     public JsfVoo() {
+        this.crudVoo = new CrudVoo();
+        this.rotas = new CrudRota().getAll();
+        this.aeronaves = new CrudAeronave().getAll();
     }
     
     public void persist(){
-       br.data.entity.Voo voo = new br.data.entity.Voo();
-       voo.setIdvoo(getIdVoo());
-       voo.setIdRota(getIdRota());
-       voo.setIdAeronave(getIdAeronave());
-       voo.setObservacao(getObservacao());
-       new br.data.crud.CrudVoo().persist(voo);
-       this.setIdVoo(0);
-       this.setIdRota(0);
-       this.setIdAeronave(0);
-       this.setObservacao("");
+        this.voo = new Voo();
+        //this.crudVoo.persist(voo);
+        this.voo.setIdVoo(0);
+        this.voo.setObservacao(null);
     }
     
     public void remove(br.data.entity.Voo voo){
-        new br.data.crud.CrudVoo().remove(voo);
+        this.crudVoo.remove(voo);
     }
     
-    public java.util.Collection<br.data.entity.Voo> getAll(){
-        return new br.data.crud.CrudVoo().getAll();
+    public List<Voo> getAll(){
+        return this.crudVoo.getAll();
     }
 
     public String update(br.data.entity.Voo voo){
-        this.setIdVoo((int) voo.getIdvoo());
-        this.setIdRota(voo.getIdRota());
-        this.setIdAeronave(voo.getIdAeronave());
         this.setObservacao(voo.getObservacao());
         return "merge.xhtml";
     }
     
     public void merge(){
-        br.data.entity.Voo voo;
-        voo = new CrudVoo().find(this.getIdVoo());
-        new br.data.crud.CrudVoo().merge(voo);
-        this.setIdVoo(0);
-        this.setIdRota(0);
-        this.setIdAeronave(0);
+        Voo voo;
+        voo = this.crudVoo.find(this.voo.getIdVoo());
+        this.crudVoo.merge(voo);
         this.setObservacao("");
-    }
-
-    public int getIdVoo() {
-        return idVoo;
-    }
-
-    public void setIdVoo(int idVoo) {
-        this.idVoo = idVoo;
-    }
-
-    public int getIdRota() {
-        return idRota;
-    }
-
-    public void setIdRota(int idRota) {
-        this.idRota = idRota;
     }
 
     public String getObservacao() {
@@ -89,11 +75,43 @@ public class JsfVoo {
         this.observacao = observacao;
     }
 
-    public int getIdAeronave() {
-        return idAeronave;
+    public Rota getRotaSelecionada() {
+        return rotaSelecionada;
     }
 
-    public void setIdAeronave(int idAeronave) {
-        this.idAeronave = idAeronave;
+    public void setRotaSelecionada(Rota rotaSelecionada) {
+        this.rotaSelecionada = rotaSelecionada;
+    }
+
+    public List<Rota> getRotas() {
+        return rotas;
+    }
+
+    public void setRotas(List<Rota> rotas) {
+        this.rotas = rotas;
+    }
+
+    public Aeronave getAeronaveSelecionada() {
+        return aeronaveSelecionada;
+    }
+
+    public void setAeronaveSelecionada(Aeronave aeronaveSelecionada) {
+        this.aeronaveSelecionada = aeronaveSelecionada;
+    }
+
+    public List<Aeronave> getAeronaves() {
+        return aeronaves;
+    }
+
+    public void setAeronaves(List<Aeronave> aeronaves) {
+        this.aeronaves = aeronaves;
+    }
+
+    public Date getDataHoraEmbarque() {
+        return dataHoraEmbarque;
+    }
+
+    public void setDataHoraEmbarque(Date dataHoraEmbarque) {
+        this.dataHoraEmbarque = dataHoraEmbarque;
     }
 }

@@ -141,7 +141,6 @@ public class Aeroportos implements Serializable{
     
     @Override
     public String toString() {
-        return "br.data.entity.Aeroportos[idaeroporto = ]" + idaeroporto+"]";
+        return this.nome + "(" + this.sigla + ")";
     }
-    
 }

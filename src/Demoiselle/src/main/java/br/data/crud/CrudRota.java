@@ -6,6 +6,7 @@
 package br.data.crud;
 
 import br.data.entity.Rota;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -47,14 +48,16 @@ public class CrudRota extends AbstractCrud<Rota> {
     }
     
     @Override 
-    public List<Rota> getAll() { 
-        try { 
-            return getEntityManager().createNamedQuery("Rota.findAll").getResultList(); 
+    public List<Rota> getAll() {
+        List<Rota> rotas = new ArrayList<>();
+        try {
+            rotas = getEntityManager()
+                    .createNamedQuery("Rota.findAll")
+                    .getResultList(); 
         } catch (Exception e) { 
             e.printStackTrace(); 
         } 
-         
-        return null; 
+        return rotas;
     }
     
 }

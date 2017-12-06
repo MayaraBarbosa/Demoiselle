@@ -11,8 +11,10 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -42,24 +44,17 @@ public class Voo implements Serializable {
 
     @Size(max = 200)
     @Column(name = "observacao")
-
     private String observacao;
+    
     @Column(name = "datahoraembarque")
     @Temporal(TemporalType.DATE)
-
     private Date dataHoraEmbarque;
 
-    //@JoinColumn( name="idaeronave", foreignKey = @ForeignKey(name = "ida")
-    @Column(name = "idaeronave")
-    private int idAeronave;
+    @ManyToOne
+    private Aeronave aeronave;
 
-    @Column(name = "idpassagem")
-    private Integer idPassagem;
-
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "idrota")
-    private int idRota;
+    @ManyToOne
+    private Rota Rota;
     
     public Voo() {
     }
@@ -99,23 +94,6 @@ public class Voo implements Serializable {
         return hash;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        if (!(object instanceof Voo)) {
-            return false;
-        }
-        Voo other = (Voo) object;
-        if ((this.idVoo == null && other.idVoo != null) || (this.idVoo != null && !this.idVoo.equals(other.idVoo))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "br.data.entity.Voo[ idvoo=" + idVoo + " ]";
-    }
-
     public Integer getIdVoo() {
         return idVoo;
     }
@@ -132,27 +110,36 @@ public class Voo implements Serializable {
         this.dataHoraEmbarque = dataHoraEmbarque;
     }
 
-    public int getIdAeronave() {
-        return idAeronave;
+    public Aeronave getAeronave() {
+        return aeronave;
     }
 
-    public void setIdAeronave(int idAeronave) {
-        this.idAeronave = idAeronave;
+    public void setAeronave(Aeronave aeronave) {
+        this.aeronave = aeronave;
     }
 
-    public Integer getIdPassagem() {
-        return idPassagem;
+    public Rota getRota() {
+        return Rota;
     }
 
-    public void setIdPassagem(Integer idPassagem) {
-        this.idPassagem = idPassagem;
+    public void setRota(Rota Rota) {
+        this.Rota = Rota;
+    }
+    
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Voo)) {
+            return false;
+        }
+        Voo other = (Voo) object;
+        if ((this.idVoo == null && other.idVoo != null) || (this.idVoo != null && !this.idVoo.equals(other.idVoo))) {
+            return false;
+        }
+        return true;
     }
 
-    public int getIdRota() {
-        return idRota;
-    }
-
-    public void setIdRota(int idRota) {
-        this.idRota = idRota;
+    @Override
+    public String toString() {
+        return "br.data.entity.Voo[ idvoo=" + idVoo + " ]";
     }
 }
