@@ -35,41 +35,47 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Voo implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @Basic(optional = false)
     @NotNull
     @Column(name = "idvoo")
-    private Integer idvoo;
+    private Integer idVoo;
+
     @Size(max = 200)
     @Column(name = "observacao")
+
     private String observacao;
     @Column(name = "datahoraembarque")
     @Temporal(TemporalType.DATE)
-    private Date datahoraembarque;
+
+    private Date dataHoraEmbarque;
 
     //@JoinColumn( name="idaeronave", foreignKey = @ForeignKey(name = "ida")
     @Column(name = "idaeronave")
-    private int idaeronave;
+    private int idAeronave;
+
     @Column(name = "idpassagem")
-    private Integer idpassagem;
+    private Integer idPassagem;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "idrota")
-    private int idrota;
+    private int idRota;
     
     public Voo() {
     }
 
-    public Voo(Integer idvoo) {
-        this.idvoo = idvoo;
+    public Voo(Integer idVoo) {
+        this.idVoo = idVoo;
     }
 
     public Integer getIdvoo() {
-        return idvoo;
+        return idVoo;
     }
 
     public void setIdvoo(Integer idvoo) {
-        this.idvoo = idvoo;
+        this.idVoo = idvoo;
     }
 
     public String getObservacao() {
@@ -81,28 +87,27 @@ public class Voo implements Serializable {
     }
 
     public Date getDatahoraembarque() {
-        return datahoraembarque;
+        return dataHoraEmbarque;
     }
 
-    public void setDatahoraembarque(Date datahoraembarque) {
-        this.datahoraembarque = datahoraembarque;
+    public void setDatahoraembarque(Date dataHoraEmbarque) {
+        this.dataHoraEmbarque = dataHoraEmbarque;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idvoo != null ? idvoo.hashCode() : 0);
+        hash += (idVoo != null ? idVoo.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Voo)) {
             return false;
         }
         Voo other = (Voo) object;
-        if ((this.idvoo == null && other.idvoo != null) || (this.idvoo != null && !this.idvoo.equals(other.idvoo))) {
+        if ((this.idVoo == null && other.idVoo != null) || (this.idVoo != null && !this.idVoo.equals(other.idVoo))) {
             return false;
         }
         return true;
@@ -110,49 +115,46 @@ public class Voo implements Serializable {
 
     @Override
     public String toString() {
-        return "br.data.entity.Voo[ idvoo=" + idvoo + " ]";
+        return "br.data.entity.Voo[ idvoo=" + idVoo + " ]";
     }
 
-    /**
-     * @return the idaeronave
-     */
-    public int getIdaeronave() {
-        return idaeronave;
+    public Integer getIdVoo() {
+        return idVoo;
     }
 
-    /**
-     * @param idaeronave the idaeronave to set
-     */
-    public void setIdaeronave(int idaeronave) {
-        this.idaeronave = idaeronave;
+    public void setIdVoo(Integer idVoo) {
+        this.idVoo = idVoo;
     }
 
-    /**
-     * @return the idpassagem
-     */
-    public Integer getIdpassagem() {
-        return idpassagem;
+    public Date getDataHoraEmbarque() {
+        return dataHoraEmbarque;
     }
 
-    /**
-     * @param idpassagem the idpassagem to set
-     */
-    public void setIdpassagem(Integer idpassagem) {
-        this.idpassagem = idpassagem;
+    public void setDataHoraEmbarque(Date dataHoraEmbarque) {
+        this.dataHoraEmbarque = dataHoraEmbarque;
     }
 
-    /**
-     * @return the idrota
-     */
-    public int getIdrota() {
-        return idrota;
+    public int getIdAeronave() {
+        return idAeronave;
     }
 
-    /**
-     * @param idrota the idrota to set
-     */
-    public void setIdrota(int idrota) {
-        this.idrota = idrota;
+    public void setIdAeronave(int idAeronave) {
+        this.idAeronave = idAeronave;
     }
-    
+
+    public Integer getIdPassagem() {
+        return idPassagem;
+    }
+
+    public void setIdPassagem(Integer idPassagem) {
+        this.idPassagem = idPassagem;
+    }
+
+    public int getIdRota() {
+        return idRota;
+    }
+
+    public void setIdRota(int idRota) {
+        this.idRota = idRota;
+    }
 }
