@@ -46,11 +46,11 @@ public class JsfLogin implements Serializable {
     }
     
     public String getUserName() {
-        return SessionsUtils.getUserName();
+        return SessionsUtils.getUserName(Usuario.class);
     }
     
-    public String desconectarUsuario() {
-        System.out.println("user: : " + SessionsUtils.getUserName());
+    public String logout() {
+        System.out.println("user: : " + SessionsUtils.getUserName(Usuario.class));
         SessionsUtils.invalidate();
         
         return "/faces/index.xhtml?faces-redirect=true";

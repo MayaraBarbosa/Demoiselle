@@ -7,7 +7,6 @@ package br.jsf;
 
 import br.data.crud.CrudCliente;
 import br.data.entity.Cliente;
-import br.data.entity.Usuario;
 import br.util.SessionsUtils;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
@@ -24,7 +23,7 @@ public class JsfLoginCliente implements Serializable {
     private static final long serialVersionUID = 1L;
     
     private String email;
-    private String password;
+    private String senha;
     
     public JsfLoginCliente() {
     }
@@ -32,9 +31,9 @@ public class JsfLoginCliente implements Serializable {
     public String validarCliente() {
         System.out.println("Autenticador....");
         
-        Cliente cli = new CrudCliente().findByEmail(email, password);
+        Cliente cli = new CrudCliente().findByEmail(email, senha);
         if (cli != null) {
-            System.out.println("Usuário correto.....");
+            System.out.println("Cliente correto.....");
             System.out.println("Cliente autentic: : " + cli.getNome());
             SessionsUtils.setParam("user", cli);
             
@@ -44,7 +43,17 @@ public class JsfLoginCliente implements Serializable {
             return "/faces/loginCliente.xhtml?faces-redirect=true";
         }
     }
+    
+    public String logout() {
+        System.out.println("user: : " + SessionsUtils.getUserName(Cliente.class));
+        SessionsUtils.invalidate();
+        return "/faces/index.xhtml?faces-redirect=true";   
+    }
 
+    public String getUserName() {
+        return SessionsUtils.getUserName(Cliente.class);
+    }
+    
     public String getEmail() {
         return email;
     }
@@ -53,11 +62,12 @@ public class JsfLoginCliente implements Serializable {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
+    
 }
