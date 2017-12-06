@@ -44,8 +44,6 @@ public class JsfUsuario implements Serializable {
     }
     
     public String merge() {
-        System.out.println("MERGE:::::::::::::::::::::::");
-        
         Usuario user = new CrudUsuario().find(this.usuario.getIdUsuario());
         user.setNome(this.usuario.getNome());
         user.setEmail(this.usuario.getEmail());

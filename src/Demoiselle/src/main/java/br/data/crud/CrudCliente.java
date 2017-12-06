@@ -5,8 +5,8 @@
  */
 package br.data.crud;
 
-import br.data.entity.Usuario;
-import java.io.Serializable;
+import br.data.entity.Cliente;
+import br.data.entity.Role;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -21,60 +21,43 @@ import javax.persistence.Persistence;
  *
  * @author bruno
  */
-public class CrudUsuario extends AbstractCrud<Usuario> implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class CrudCliente extends AbstractCrud<Cliente> {
     
     private EntityManager em;
 
     private static final String PU = EMNames.EMN1;
-    
-    public CrudUsuario() {
-        super(Usuario.class);
-    }
-    
-    public Usuario findByEmail(String email, String password) {
-        Usuario user;
-        try {
-            String passEncrypt = encript(password);
-            user = createNamedQuery("Usuario.findByEmail")
-                    .setParameter("email", email)
-                    .setParameter("password", passEncrypt)
-                    .getSingleResult();
-            user.setPassword(null);
-            return user;
-        } catch(NoResultException e) {
-            return null;
-        }
-    }
-    
-    public List<Usuario> findByNome(String nome) {
-        try {
-            List<Usuario> usuarios = createNamedQuery("Usuario.findByNome")
-                    .setParameter("nome", "%" + nome + "%")
-                    .getResultList();
-            for (Usuario u : usuarios) {
-                u.setPassword(null);
-            }
-            return usuarios;
-        } catch(NoResultException e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
+
+    public CrudCliente() {
+        super(Cliente.class);
     }
 
-    public void salvar(Usuario usuario) {
-        usuario.setPassword(encript(usuario.getPassword()));
-        
-        this.persist(usuario);
-    }
-    
     @Override
     protected EntityManager getEntityManager() {
         if (em == null) {
             em = Persistence.createEntityManagerFactory(PU).createEntityManager();
         }
         return em;
+    }
+    
+    public Cliente findByEmail(String email, String password) {
+        Cliente cliente;
+        try {
+            String passEncrypt = encript(password);
+            cliente = createNamedQuery("Cliente.findByEmail")
+                    .setParameter("email", email)
+                    .setParameter("password", passEncrypt)
+                    .getSingleResult();
+            cliente.setPassword(null);
+            return cliente;
+        } catch(NoResultException e) {
+            return null;
+        }
+    }
+    
+    public void salvar(Cliente cliente) {
+        cliente.setPassword(encript(cliente.getPassword()));
+        cliente.setRole(role());
+        this.persist(cliente);
     }
     
     private String encript(String senha) {
@@ -92,4 +75,18 @@ public class CrudUsuario extends AbstractCrud<Usuario> implements Serializable {
         return senha;
     }
     
+    private Role role() {
+        List<Role> role = new CrudRole().getAll();
+        Role r1 = new Role();
+        for (Role r : role) {
+            if (r.getNome().equals("CLIENTE"))
+                return r;
+            r1 = r;
+        }
+        Role r2 = new Role();
+        r2.setIdrole(r1.getIdrole()+1);
+        r2.setNome("CLIENTE");
+        new CrudRole().persist(r2);
+        return r2;
+    }
 }

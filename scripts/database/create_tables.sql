@@ -237,7 +237,8 @@ CREATE TABLE public.cliente
   password CHARACTER varying(80),
   milhagem DECIMAL,
   dataColeta DATE,
-  idRetina INTEGER NOT NULL,
+  idRetina INTEGER,
+  idrole INTEGER NOT NULL,
   CONSTRAINT pk_cliente PRIMARY KEY (idcliente)
 );
 
@@ -340,6 +341,7 @@ ALTER TABLE boleto ADD CONSTRAINT  pf_clienteboleto FOREIGN KEY (idcliente) REFE
 ALTER TABLE boleto ADD CONSTRAINT  pf_pagamentoboleto FOREIGN KEY (idpagamento) REFERENCES pagamento(idpagamento);
 ALTER TABLE usuario ADD CONSTRAINT  pf_roleusuario FOREIGN KEY (idrole) REFERENCES role(idrole);
 ALTER TABLE cliente ADD CONSTRAINT  pf_retinacliente FOREIGN KEY (idRetina) REFERENCES retina(idretina);
+ALTER TABLE cliente ADD CONSTRAINT  pf_roleusuario FOREIGN KEY (idrole) REFERENCES role(idrole);
 ALTER TABLE logchat_R23 ADD CONSTRAINT  pf_clientelogchat_R23 FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);
 ALTER TABLE enderecos ADD CONSTRAINT  pf_clienteenderecos FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);
 ALTER TABLE logradouro ADD CONSTRAINT  pf_cidadelogradouro FOREIGN KEY (idcidade) REFERENCES cidade(idcidade);

@@ -23,6 +23,13 @@ public class CrudRole extends AbstractCrud<br.data.entity.Role> {
     public CrudRole() {
         super(Role.class);
     }
+    
+    public Role findCliente() {
+        Role role = createNamedQuery("Role.findByNome")
+                .setParameter("nome", "CLIENTE")
+                .getSingleResult();
+        return role;
+    }
 
     @Override
     protected EntityManager getEntityManager() {

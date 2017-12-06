@@ -16,6 +16,7 @@
                 <ul>
                     <li style="float: left; font-family: 'Courgette', cursive; font-size: 1.5em">Demoiselle</li>
                     <li style="text-align: center"><h:link outcome="operacoes/index.xhtml">Operações</h:link></li>
+                    <li style="text-align: center"><h:link outcome="navegacao/index.xhtml">Clientes</h:link></li>
                 </ul>
             </div>
         </header>
@@ -63,7 +64,7 @@
             </div>
         </div>
         <!-- Carousel só aparece se houver promoções ativas!!!!!!!!! -->
-        <p:carousel value="#{jsfBanner.bannersAtivos}" headerText="Promocões" rendered="#{jsfBanner.bannersAtivos.size() > 0}" var="banner" itemStyle="text-align:center" responsive="true" rows="1" autoPlayInterval="1000">
+        <p:carousel value="#{jsfBanner.bannersAtivos}" headerText="Promocões" rendered="#{jsfBanner.bannersAtivos.size() > 0}" var="banner" itemStyle="text-align:center" responsive="true"  autoPlayInterval="1000">
                     <p:graphicImage style="height: 300px" value="uploaded/#{banner.nomeimagem}"/> <br/>
                     <h:outputText value="#{banner.descricao}"/>
         </p:carousel>
