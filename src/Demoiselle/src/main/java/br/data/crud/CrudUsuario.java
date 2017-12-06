@@ -6,7 +6,6 @@
 package br.data.crud;
 
 import br.data.entity.Usuario;
-import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -21,9 +20,7 @@ import javax.persistence.Persistence;
  *
  * @author bruno
  */
-public class CrudUsuario extends AbstractCrud<Usuario> implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class CrudUsuario extends AbstractCrud<Usuario> {
     
     private EntityManager em;
 
