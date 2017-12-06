@@ -42,6 +42,8 @@ public class Passagem implements Serializable {
     @Column(name = "idvoo")
     private Integer idvoo;
     
+    @Column(name = "idvenda")
+    private Integer idvenda;
 
     public Passagem() {
     }
@@ -74,6 +76,16 @@ public class Passagem implements Serializable {
         this.idvoo = idvoo;
     }
     
+       public Integer getIdvenda() {
+        return idvenda;
+    }
+
+
+    public void setIdvenda(Integer idvenda) {
+        this.idvenda = idvenda;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -99,6 +111,8 @@ public class Passagem implements Serializable {
         return "br.data.entity.Passagem[ idpassagem=" + idpassagem + " ]";
     }
 
+ 
+ 
    
     
 }
