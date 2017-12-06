@@ -167,10 +167,10 @@ INSERT INTO public.chat_r23(idchat, data, hora, conteudo) VALUES (2,'2017-02-01 
 INSERT INTO public.chat_r23(idchat, data, hora, conteudo) VALUES (3,'2017-03-01 ','2017-01-01 04:00','Foi discutido problemas sobre o agendamento de viagem');
 
 --cliente
-INSERT INTO public.cliente(idcliente,cpf,rg,passaporte,nome,endereco,datanascimento,email,password,milhagem,datacoleta,idretina) VALUES (1,09999965444, 134325443, 3434343, 'José da Silva Pender', 'Av. Joaquim Barbosa, 103, Centro', '1960-02-20', 'jojo@gmailcom', 'a12345', 990.00,'2017-08-09',1);
-INSERT INTO public.cliente(idcliente,cpf,rg,passaporte,nome,endereco,datanascimento,email,password,milhagem,datacoleta,idretina) VALUES (2,09999965444, 138325443, 3434342, 'João da Silva Pender', 'Av. Joaquim Barbosa, 103, Centro', '1980-02-20', 'jojo2@gmailcom', 'a12345', 990.00,'2017-08-09',1);
-INSERT INTO public.cliente(idcliente,cpf,rg,passaporte,nome,endereco,datanascimento,email,password,milhagem,datacoleta,idretina) VALUES (3,09999965444, 136325443, 3434341, 'Joaquim Ferreira', 'Av. Joao Paulo, 109, Baixada', '1966-02-10', 'ferreira@gmailcom', 'a12345', 990.00,'2017-08-07',1);
-INSERT INTO public.cliente(idcliente,cpf,rg,passaporte,nome,endereco,datanascimento,email,password,milhagem,datacoleta,idretina) VALUES (4,09994467444, 135325443, 3434347, 'José Utah', 'Av. Joaquim Ferreira, 103, Centro', '1970-02-20', 'utah@gmailcom', 'a12345', 990.00,'2017-08-06',1);
+INSERT INTO public.cliente(idcliente,cpf,rg,passaporte,nome,endereco,datanascimento,email,password,milhagem,datacoleta,idretina,idrole) VALUES (1,09999965444, 134325443, 3434343, 'José da Silva Pender', 'Av. Joaquim Barbosa, 103, Centro', '1960-02-20', 'jojo@gmailcom', 'a12345', 990.00,'2017-08-09',1,5);
+INSERT INTO public.cliente(idcliente,cpf,rg,passaporte,nome,endereco,datanascimento,email,password,milhagem,datacoleta,idretina,idrole) VALUES (2,09999965444, 138325443, 3434342, 'João da Silva Pender', 'Av. Joaquim Barbosa, 103, Centro', '1980-02-20', 'jojo2@gmailcom', 'a12345', 990.00,'2017-08-09',1,5);
+INSERT INTO public.cliente(idcliente,cpf,rg,passaporte,nome,endereco,datanascimento,email,password,milhagem,datacoleta,idretina,idrole) VALUES (3,09999965444, 136325443, 3434341, 'Joaquim Ferreira', 'Av. Joao Paulo, 109, Baixada', '1966-02-10', 'ferreira@gmailcom', 'a12345', 990.00,'2017-08-07',1,5);
+INSERT INTO public.cliente(idcliente,cpf,rg,passaporte,nome,endereco,datanascimento,email,password,milhagem,datacoleta,idretina,idrole) VALUES (4,09994467444, 135325443, 3434347, 'José Utah', 'Av. Joaquim Ferreira, 103, Centro', '1970-02-20', 'utah@gmailcom', 'a12345', 990.00,'2017-08-06',1,5);
 
 --logchat_r23
 INSERT INTO public.logchat_r23(idchat, idcliente, idfuncionario, data, hora) VALUES (1, 2, 1, '2017-01-01 01:30', '2017-01-01 01:30');

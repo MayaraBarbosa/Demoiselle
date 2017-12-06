@@ -211,6 +211,7 @@ CREATE TABLE public.usuario
   idrole INTEGER NOT NULL,
   nome CHARACTER varying(20),
   senha CHARACTER varying(20),
+  email CHARACTER varying(40),
   datanascimento DATE,
   CONSTRAINT pk_usuario PRIMARY KEY (idusuario)
 );
