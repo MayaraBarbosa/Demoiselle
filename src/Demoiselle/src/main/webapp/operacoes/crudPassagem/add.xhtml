@@ -12,14 +12,22 @@
                 <h:inputText value="#{jsfPassagem.idpassagem}"  />
                 
                 <br></br>
-                Nome:
-                <h:inputText value="#{jsfPassagem.qtdpassagueiros}" />
+                Quantidade de passageiros
+                <h:inputText value="#{jsfPassagem.qtdpassageiros}" />
                 <br></br>
-<!--            Descrição
-                <h:inputTextarea value="#{jsfRole.descricao}" />
-                 -->
+                Codigo Voo
+                <h:inputTextarea value="#{jsfPassagem.idvoo}" value="#{jsfVoo.idvoo}"/> 
+<!--                adcionar em apenas uma unica tabela para que todas possam "ver" (gambiarra)-->
                 <br></br>
-                <h:commandButton value="salvar novo registro" action="#{jsfPassagem.persist()}"  /> 
+                Codigo Rota
+                <h:inputTextarea value="#{jsfVoo.idrota}" value="#{jsfVoo.idrota}"/> 
+                <br></br>
+                Codigo Aeronave
+                <h:inputTextarea value="#{jsfVoo.idaeronave}" value="#{jsfVoo.idaeronave}"/> 
+                <br></br>
+                
+                <h:commandButton value="salvar novo registro" 
+                                 action="#{jsfPassagem.persist()}" action="#{jsfVoo.persist()}"  /> 
                 
                
                 

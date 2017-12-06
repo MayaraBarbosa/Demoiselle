@@ -11,7 +11,7 @@ import javax.faces.bean.RequestScoped;
 
 /**
  *
- * @author alexandrelerario
+ * @author lucas agustini
  */
 @ManagedBean
 @RequestScoped
@@ -21,8 +21,8 @@ public class JsfPassagem {
      * Creates a new instance of JsfPassagem
      */
     private int idpassagem;
-    private int qtdpassagueiros;
-//    private int idvoo;
+    private int qtdpassageiros;
+    private int idvoo;
 //    private int idvenda;
  
     
@@ -34,10 +34,11 @@ public class JsfPassagem {
     public void persist(){
        br.data.entity.Passagem pas = new br.data.entity.Passagem();
        pas.setIdpassagem(idpassagem);
-       pas.setQtdepassageiros(qtdpassagueiros);
+       pas.setQtdepassageiros(qtdpassageiros);
+       //pas.setIdvoo();
        new br.data.crud.CrudPassagem().persist(pas);
        this.idpassagem=0;
-       this.qtdpassagueiros=0;
+       this.qtdpassageiros=0;
     }
     
     public void remove(br.data.entity.Passagem passagem){
@@ -50,25 +51,25 @@ public class JsfPassagem {
 
     public String update(br.data.entity.Passagem passagem){
         this.idpassagem = passagem.getIdpassagem();
-        this.qtdpassagueiros = passagem.getQtdepassageiros();
+        this.qtdpassageiros = passagem.getQtdepassageiros();
         return "merge.xhtml";
     }
     
     public void merge(){
         br.data.entity.Passagem pas;
         pas = new br.data.crud.CrudPassagem().find(this.idpassagem);
-        pas.setQtdepassageiros(this.qtdpassagueiros);
+        pas.setQtdepassageiros(this.qtdpassageiros);
         new br.data.crud.CrudPassagem().merge(pas);
-        this.qtdpassagueiros=0;
+        this.qtdpassageiros=0;
         this.idpassagem=0;  
     }
 
-    public int getQtdpassagueiros() {
-        return qtdpassagueiros;
+    public int getQtdpassageiros() {
+        return qtdpassageiros;
     }
 
-    public void setQtdpassagueiros(int qtdpassagueiros) {
-        this.qtdpassagueiros = qtdpassagueiros;
+    public void setQtdpassageiros(int qtdpassageiros) {
+        this.qtdpassageiros = qtdpassageiros;
     }
     
     
@@ -78,6 +79,20 @@ public class JsfPassagem {
 
     public void setIdpassagem(int idpassagem) {
         this.idpassagem = idpassagem;
+    }
+
+    /**
+     * @return the idvoo
+     */
+    public int getIdvoo() {
+        return idvoo;
+    }
+
+    /**
+     * @param idvoo the idvoo to set
+     */
+    public void setIdvoo(int idvoo) {
+        this.idvoo = idvoo;
     }
 
 }

@@ -23,10 +23,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "passagem")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Passagem.findAll", query = "SELECT p FROM Passagem p")
-    , @NamedQuery(name = "Passagem.findByIdpassagem", query = "SELECT p FROM Passagem p WHERE p.idpassagem = :idpassagem")
-    , @NamedQuery(name = "Passagem.findByQtdepassageiros", query = "SELECT p FROM Passagem p WHERE p.qtdepassageiros = :qtdepassageiros")})
+//@NamedQueries({
+//    @NamedQuery(name = "Passagem.findAll", query = "SELECT p FROM Passagem p")
+//    , @NamedQuery(name = "Passagem.findByIdpassagem", query = "SELECT p FROM Passagem p WHERE p.idpassagem = :idpassagem")
+//    , @NamedQuery(name = "Passagem.findByQtdepassageiros", query = "SELECT p FROM Passagem p WHERE p.qtdepassageiros = :qtdepassageiros")})
 public class Passagem implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -35,8 +35,13 @@ public class Passagem implements Serializable {
     @NotNull
     @Column(name = "idpassagem")
     private Integer idpassagem;
+    
     @Column(name = "qtdepassageiros")
     private Integer qtdepassageiros;
+    
+    @Column(name = "idvoo")
+    private Integer idvoo;
+    
 
     public Passagem() {
     }
@@ -61,6 +66,14 @@ public class Passagem implements Serializable {
         this.qtdepassageiros = qtdepassageiros;
     }
 
+    public Integer getIdvoo() {
+        return idvoo;
+    }
+
+    public void setIdvoo(Integer idvoo) {
+        this.idvoo = idvoo;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -85,5 +98,7 @@ public class Passagem implements Serializable {
     public String toString() {
         return "br.data.entity.Passagem[ idpassagem=" + idpassagem + " ]";
     }
+
+   
     
 }

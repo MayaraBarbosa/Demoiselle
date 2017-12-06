@@ -16,14 +16,17 @@
                     <h:column>
                         <h:outputText value="#{pas.qtdepassageiros}" />
                     </h:column>
-<!--                     <h:column>
-                         <h:outputText value="#{rol.descricao}" />
+                     <h:column>
+                         <h:outputText value="#{jsfVoo.idvoo}" />
+                    </h:column>
+                     <h:column>
+                         <h:outputText value="#{jsfVoo.idaeronave}" />
+                    </h:column>
+<!--                    <h:column>
+                        <h:commandButton value="remover" action="#{jsfPassagem.remove(pas)}" onclick="return confirm('Confirma exclusao?');"/> 
                     </h:column>-->
                     <h:column>
-                        <h:commandButton value="remover" action="#{jsfPassagem.remove(pas)}" onclick="return confirm('Confirma exclusao?');"/> 
-                    </h:column>
-                    <h:column>
-                        <h:commandButton value="editar" action="#{jsfPassagem.update(pas)}"/> 
+                        <h:commandButton value="comprar" action="#{jsfPassagem.update(pas)}" onclick="return confirm('Certeza desta compra?');"/> 
                     </h:column>
                 </h:dataTable>
             </h:form>

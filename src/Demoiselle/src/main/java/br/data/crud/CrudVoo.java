@@ -6,7 +6,7 @@
 package br.data.crud;
 
 
-import br.data.entity.Passagem;
+import br.data.entity.Voo;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
@@ -14,14 +14,14 @@ import javax.persistence.Persistence;
  *
  * @author lucas agustini
  */
-public class CrudPassagem extends AbstractCrud<br.data.entity.Passagem> {
+public class CrudVoo extends AbstractCrud<br.data.entity.Voo> {
 
     private EntityManager em;
 
     private static final String PU = EMNames.EMN1;
 
-    public CrudPassagem() {
-        super(Passagem.class);
+    public CrudVoo() {
+        super(Voo.class);
     }
 
     @Override

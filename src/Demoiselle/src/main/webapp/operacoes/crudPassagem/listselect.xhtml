@@ -9,7 +9,7 @@
         <ui:define name="content">
             <h1>Consultar Passagens</h1>
             <h:form>
-                <h:inputText value="#{jsfCidadeSelect.nome}"  /> 
+                <h:inputText value="#{jsfPassagem.idpassagem}"  /> 
                 <h:commandButton value="buscar" />       
                 <h:dataTable value="#{jsfCidadeSelect.select}" var="cid">
                     <h:column>
