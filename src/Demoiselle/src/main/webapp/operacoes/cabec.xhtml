@@ -8,10 +8,27 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
+        <header>
+            <div class="nav">
+                Cabecalho da aplicacao
+                Elabore aqui o cabecalho da aplicacao
+                Escolha uma opcao:
+                
+                <ul>
+                    <li  style="float: left; font-size: 1.5em">
+                        <h:outputText value="#{jsfLogin.userName}"/>
+                    </li>
+                    <li >
+                        <h:form>
+                            <h:commandButton style="margin-left: 30px" value="Sair" action="#{jsfLogin.logout()}" /> 
+                        </h:form>
+                    </li>
+
+                </ul>
+            </div>
+        </header>
         <div style="background-color: bisque" >
-        Cabecalho da aplicacao
-        Elabore aqui o cabecalho da aplicacao
-        Escolha uma opcao:
+
         <br></br>
         <hr></hr>
         <h:form>

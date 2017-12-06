@@ -5,6 +5,7 @@
  */
 package br.util;
 
+import br.data.entity.Cliente;
 import br.data.entity.Usuario;
 import java.io.Serializable;
 import javax.faces.context.FacesContext;
@@ -39,6 +40,7 @@ public class SessionsUtils implements Serializable {
     }
 
     public static void invalidate() {
+        getSession().setAttribute("user", null);
         getSession().invalidate();
     }
 
@@ -52,9 +54,13 @@ public class SessionsUtils implements Serializable {
                 .getExternalContext().getResponse();
     }
 
-    public static String getUserName() {
+    public static String getUserName(Class<?> entityClass) {
         HttpSession session = getSession();
-        return ((Usuario)session.getAttribute("user")).getNome();
+        if (entityClass.equals(Usuario.class)) {
+            return ((Usuario)session.getAttribute("user")).getNome();
+        } else {
+            return ((Cliente)session.getAttribute("user")).getNome();
+        } 
     }
 
 }

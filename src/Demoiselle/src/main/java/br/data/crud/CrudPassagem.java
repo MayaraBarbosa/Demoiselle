@@ -7,8 +7,10 @@ package br.data.crud;
 
 
 import br.data.entity.Passagem;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -30,6 +32,18 @@ public class CrudPassagem extends AbstractCrud<br.data.entity.Passagem> {
             em = Persistence.createEntityManagerFactory(PU).createEntityManager();
         }
         return em;
+    }
+    
+    public List<Passagem> selectByIdpassagem(int idpassagem) { 
+        try { 
+            Query query = getEntityManager().createNamedQuery("Passagem.findByIdpassagem");
+            query.setParameter("idpassagem", idpassagem);  
+            return query.getResultList(); 
+        } catch (Exception e) { 
+            e.printStackTrace(); 
+        }
+         
+        return null; 
     }
 
 }

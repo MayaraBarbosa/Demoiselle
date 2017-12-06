@@ -31,12 +31,13 @@ public class FilterLogin implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession(false);
-        
+
         System.out.println("requisicao:: :: " + req.getRequestURI());
         if (session != null && (session.getAttribute("user") != null)
                 || (req.getRequestURI().endsWith("login.xhtml"))
                 || (req.getRequestURI().endsWith("loginCliente.xhtml"))
-                || (req.getRequestURI().contains("javax.faces.resources/"))
+                || (req.getRequestURI().contains("javax.faces.resource/"))
+                || (req.getRequestURI().contains("/faces/resources"))
                 || (req.getRequestURI().equals("/faces/index.xhtml"))) {
          
             chain.doFilter(request, response);
