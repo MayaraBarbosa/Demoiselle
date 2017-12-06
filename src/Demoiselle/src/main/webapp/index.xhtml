@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Demoiselle</title>
         <link rel="stylesheet" type="text/css" href="./resources/css/styles.css" />
@@ -32,17 +33,17 @@
                     <h:form>
                         <div style="text-align: center">
                             <div>
-                                <p:outputLabel for="cidades" value="Viajar de: " />&nbsp;<br/>
-                                <p:selectOneMenu id="cidades" value="#{jsfCidade.nome}" style="width:150px">
+                                <p:outputLabel for="aeroportoOrigem" value="Viajar de: " />&nbsp;<br/>
+                                <p:selectOneMenu id="aeroportoOrigem" value="#{jsfIndex.idAeroportoOrigem}" style="width:150px">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
-                                    <f:selectItems value="#{jsfCidade.all}" var="cidade" itemLabel="#{cidade.nome}" itemValue="#{cidade.nome}"/>
+                                    <f:selectItems value="#{jsfAeroportos.all}" var="aeroporto" itemLabel="#{aeroporto.nome}" itemValue="#{aeroporto.idaeroporto}"/>
                                 </p:selectOneMenu>
                             </div>
                             <div>
-                                <p:outputLabel for="cidades1" value="Para: " />&nbsp;<br/>
-                                <p:selectOneMenu id="cidades1" value="#{jsfCidade.nome}" style="width:150px">
+                                <p:outputLabel for="aeroportoDestino" value="Para: " />&nbsp;<br/>
+                                <p:selectOneMenu id="aeroportoDestino" value="#{jsfIndex.idAeroportoDestino}" style="width:150px">
                                     <f:selectItem itemLabel="Selecione" itemValue="" />
-                                    <f:selectItems value="#{jsfCidade.all}" var="cidade" itemLabel="#{cidade.nome}" itemValue="#{cidade.nome}"/>
+                                    <f:selectItems value="#{jsfAeroportos.all}" var="aeroporto" itemLabel="#{aeroporto.nome}" itemValue="#{aeroporto.idaeroporto}"/>
                                 </p:selectOneMenu>
                             </div>
                         </div>
@@ -50,25 +51,29 @@
                         <div>
                             <div>
                                 <p:outputLabel for="mask" value="Ida" />&nbsp;<br/>
-                                <p:calendar id="mask" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />&nbsp;
+                                <p:calendar id="mask" value="#{jsfIndex.dataIda}" pattern="dd-MM-yyyy" mask="true" />&nbsp;
                             </div>
                             <div>
                                 <p:outputLabel for="mask2" value="Volta" />&nbsp;<br/>
-                                <p:calendar id="mask2" value="#{calendarView.date9}" pattern="dd-MM-yyyy" mask="true" />&nbsp;
+                                <p:calendar id="mask2" value="#{jsfIndex.dataVolta}" pattern="dd-MM-yyyy" mask="true" />&nbsp;
                             </div>
                             <div>
                                 <p:outputLabel for="input1" value="Quantidade" />&nbsp;<br/>
                                 <p:inputNumber id="input1"  />  
                             </div>&nbsp;
                             <div>
-                                <p:button  value="Procurar" style="color: red" icon="ui-icon-search">
-                                    <f:param name="productId" value="10" />
-                                </p:button>
+                                <h:commandButton value="click" action="#{jsfIndex.top()}" styleClass="ui-priority-primary"/>
+                               
                             </div>
                         </div>
                     </h:form>
                 </div>
             </div>
+        </div>
+        <div id="content" style="padding: 30px">
+            <ui:insert name="itens" >
+
+            </ui:insert>
         </div>
         <!-- Carousel só aparece se houver promoções ativas!!!!!!!!! -->
         <p:carousel value="#{jsfBanner.bannersAtivos}" headerText="Promocões" rendered="#{jsfBanner.bannersAtivos.size() > 0}" var="banner" itemStyle="text-align:center" responsive="true"  autoPlayInterval="1000">
