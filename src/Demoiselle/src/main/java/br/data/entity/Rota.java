@@ -5,6 +5,7 @@
  */
 package br.data.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -23,10 +24,10 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "rota")
-/*@NamedQueries({
-    @NamedQuery(name = "Rota.findByIdAeroporto", query = "SELECT r FROM rota r WHERE aeroportoorigem = :aeroportoorigem AND aeroportodestino = :aeroportodestino")
-})*/
-public class Rota {
+@NamedQueries({
+    @NamedQuery(name = "Rota.findByIdAeroporto", query = "SELECT r FROM Rota r WHERE r.aeroportoorigem = :aeroportoorigem AND r.aeroportodestino = :aeroportodestino")
+})
+public class Rota implements Serializable {
     
     private static final long serialVersionUID = 1L;
     

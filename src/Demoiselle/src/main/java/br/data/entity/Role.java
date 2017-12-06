@@ -97,7 +97,7 @@ public class Role implements Serializable {
 
     @Override
     public String toString() {
-        return "br.data.entity.Role[ idrole=" + idrole + " ]";
+        return "br.data.entity.Role[ idrole:" + idrole + ": ]";
     }
     
 }

@@ -1,13 +1,13 @@
 CREATE TABLE public.cidade
-(		  
+(
   idcidade integer NOT NULL,
   idestado INTEGER NOT NULL,
-  nome character varying(40),		 
+  nome character varying(40),
   CONSTRAINT pk_cid PRIMARY KEY (idcidade)
 );
 
 CREATE TABLE public.role
-(		  
+(
   idrole integer NOT NULL,
   nome character varying(30),
   descricao character varying(80),
@@ -125,7 +125,7 @@ CREATE TABLE public.bagagem
   codigo_barras CHARACTER varying(20),
   local CHARACTER varying(50),
   valorTotal INTEGER NOT NULL,
-  CONSTRAINT pk_bagagem PRIMARY KEY (id_bagagem)  
+  CONSTRAINT pk_bagagem PRIMARY KEY (id_bagagem)
 );
 
 CREATE TABLE public.atualizacaomala_R13
@@ -140,7 +140,7 @@ CREATE TABLE public.atualizacaomala_R13
   hora_atual DATE,
   destino_final CHARACTER varying(50),
   fk_codigo_barras CHARACTER varying(20),
-  CONSTRAINT pk_atualizacaomala_R13 PRIMARY KEY (id)  
+  CONSTRAINT pk_atualizacaomala_R13 PRIMARY KEY (id)
 );
 
 CREATE TABLE public.cardapio
@@ -154,7 +154,7 @@ CREATE TABLE public.alimento
 (
   id INTEGER NOT NULL,
   idcardapio INTEGER NOT NULL,
-  nome CHARACTER varying(20),  
+  nome CHARACTER varying(20),
   CONSTRAINT pk_alimento PRIMARY KEY (id)
 );
 
@@ -167,26 +167,26 @@ CREATE TABLE public.venda
   valor DECIMAL,
   idusuario INTEGER NOT NULL,
   idpagamento INTEGER NOT NULL,
-  CONSTRAINT pk_venda PRIMARY KEY (idvenda) 
+  CONSTRAINT pk_venda PRIMARY KEY (idvenda)
 );
 
 CREATE TABLE public.pagamento
 (
   idpagamento INTEGER NOT NULL,
   idformapagamento INTEGER,
-  idcliente INTEGER NOT NULL,  
+  idcliente INTEGER NOT NULL,
   data DATE,
   hora DATE,
   idboleto INTEGER,
   idcartao INTEGER,
-  CONSTRAINT pk_pagamento PRIMARY KEY (idpagamento) 
+  CONSTRAINT pk_pagamento PRIMARY KEY (idpagamento)
 );
 
 CREATE TABLE public.boleto
 (
   idboleto INTEGER NOT NULL,
   idpagamento INTEGER,
-  idcliente INTEGER NOT NULL,  
+  idcliente INTEGER NOT NULL,
   codbarras CHARACTER varying(20),
   codbanco CHARACTER varying(20),
   vencimento DATE,
@@ -226,7 +226,7 @@ CREATE TABLE public.banner
 
 CREATE TABLE public.cliente
 (
-  idcliente INTEGER NOT NULL,
+  idcliente SERIAL NOT NULL,
   cpf CHARACTER varying(20),
   rg CHARACTER varying(20),
   passaporte CHARACTER varying(20),
@@ -234,10 +234,11 @@ CREATE TABLE public.cliente
   endereco CHARACTER varying(50),
   datanascimento DATE,
   email CHARACTER varying(50),
-  password CHARACTER varying(50),
+  password CHARACTER varying(80),
   milhagem DECIMAL,
   dataColeta DATE,
-  idRetina INTEGER NOT NULL,
+  idRetina INTEGER,
+  idrole INTEGER NOT NULL,
   CONSTRAINT pk_cliente PRIMARY KEY (idcliente)
 );
 
@@ -284,7 +285,7 @@ CREATE TABLE public.logradouro
   nome CHARACTER varying(20),
   idcidade INTEGER NOT NULL,
   idtipologradouro INTEGER NOT NULL,
-  CONSTRAINT pk_logradouro PRIMARY KEY (idlogradouro) 
+  CONSTRAINT pk_logradouro PRIMARY KEY (idlogradouro)
 );
 
 CREATE TABLE public.tipologradouro
@@ -314,32 +315,33 @@ CREATE TABLE public.pais
 ALTER TABLE voo ADD CONSTRAINT pf_rotavoo FOREIGN KEY (idrota) REFERENCES rota(idrota);
 ALTER TABLE voo ADD CONSTRAINT  pf_aeronavevoo FOREIGN KEY (idaeronave) REFERENCES aeronave(id);
 ALTER TABLE voo ADD CONSTRAINT  pf_passagemvoo FOREIGN KEY (idpassagem) REFERENCES passagem(idpassagem);
-ALTER TABLE rota ADD CONSTRAINT  pf_aeroportoorigemrota FOREIGN KEY (aeroportoorigem) REFERENCES aeroporto(idaeroporto);  
-ALTER TABLE rota ADD CONSTRAINT  pf_aeroportodestinorota FOREIGN KEY (aeroportodestino) REFERENCES aeroporto(idaeroporto);  
+ALTER TABLE rota ADD CONSTRAINT  pf_aeroportoorigemrota FOREIGN KEY (aeroportoorigem) REFERENCES aeroporto(idaeroporto);
+ALTER TABLE rota ADD CONSTRAINT  pf_aeroportodestinorota FOREIGN KEY (aeroportodestino) REFERENCES aeroporto(idaeroporto);
 ALTER TABLE rota ADD CONSTRAINT  pf_promocaorota FOREIGN KEY (idPromocao) REFERENCES promocao(idpromocao);
-ALTER TABLE aeronave ADD CONSTRAINT  pf_fabricanteaeronave FOREIGN KEY (idfabricante) REFERENCES fabricante(idfabricante); 
+ALTER TABLE aeronave ADD CONSTRAINT  pf_fabricanteaeronave FOREIGN KEY (idfabricante) REFERENCES fabricante(idfabricante);
 ALTER TABLE assento ADD CONSTRAINT  pf_aeronaveassentoassento FOREIGN KEY (idaeronave) REFERENCES aeronave(id);
-ALTER TABLE agendaFretamento_R25 ADD CONSTRAINT  pf_solicitanteagendaFretamento_R25 FOREIGN KEY (idSolicitante) REFERENCES voo(idvoo);   
-ALTER TABLE passagem ADD CONSTRAINT  pf_vendapassagem FOREIGN KEY (idvenda) REFERENCES venda(idvenda);   
-ALTER TABLE passagem ADD CONSTRAINT  pf_voopassagem FOREIGN KEY (idvoo) REFERENCES voo(idvoo);   
-ALTER TABLE bagagem ADD CONSTRAINT  pf_aviaobagagem FOREIGN KEY (id_aviao) REFERENCES aeronave(id);   
-ALTER TABLE bagagem ADD CONSTRAINT  pf_voobagagembagagem FOREIGN KEY (id_voo) REFERENCES voo(idvoo);   
-ALTER TABLE bagagem ADD CONSTRAINT  pf_clientebagagem FOREIGN KEY (id_cliente) REFERENCES cliente(idcliente);   
-ALTER TABLE atualizacaomala_R13 ADD CONSTRAINT  pf_aviaoatualizacaomala_R13 FOREIGN KEY (id_aviao) REFERENCES aeronave(id);   
-ALTER TABLE atualizacaomala_R13 ADD CONSTRAINT  pf_vooatualizacaoatualizacaomala_R13 FOREIGN KEY (id_voo) REFERENCES voo(idvoo);   
-ALTER TABLE atualizacaomala_R13 ADD CONSTRAINT  pf_bagagematualizacaomala_R13 FOREIGN KEY (fk_id_bagagem) REFERENCES bagagem(id_bagagem);   
-ALTER TABLE cardapio ADD CONSTRAINT  pf_alimentocardapio FOREIGN KEY (id_alimento) REFERENCES alimento(id);   
-ALTER TABLE alimento ADD CONSTRAINT  pf_cardapioalimento FOREIGN KEY (idcardapio) REFERENCES cardapio(idCardapio);   
-ALTER TABLE venda ADD CONSTRAINT  pf_clientevendavenda FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);   
-ALTER TABLE venda ADD CONSTRAINT  pf_usuariovenda FOREIGN KEY (idusuario) REFERENCES usuario(idusuario);   
-ALTER TABLE venda ADD CONSTRAINT  pf_pagamentovenda FOREIGN KEY (idpagamento) REFERENCES pagamento(idpagamento);   
-ALTER TABLE pagamento ADD CONSTRAINT  pf_clientepagamento FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);  
-ALTER TABLE pagamento ADD CONSTRAINT  pf_boletopagamento FOREIGN KEY (idboleto) REFERENCES boleto(idboleto);   
-ALTER TABLE pagamento ADD CONSTRAINT  pf_cartaopagamento FOREIGN KEY (idcartao) REFERENCES cartaocredito(idcartao);   
-ALTER TABLE boleto ADD CONSTRAINT  pf_clienteboleto FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);   
-ALTER TABLE boleto ADD CONSTRAINT  pf_pagamentoboleto FOREIGN KEY (idpagamento) REFERENCES pagamento(idpagamento);   
-ALTER TABLE usuario ADD CONSTRAINT  pf_roleusuario FOREIGN KEY (idrole) REFERENCES role(idrole);     
-ALTER TABLE cliente ADD CONSTRAINT  pf_retinacliente FOREIGN KEY (idRetina) REFERENCES retina(idretina);   
+ALTER TABLE agendaFretamento_R25 ADD CONSTRAINT  pf_solicitanteagendaFretamento_R25 FOREIGN KEY (idSolicitante) REFERENCES voo(idvoo);
+ALTER TABLE passagem ADD CONSTRAINT  pf_vendapassagem FOREIGN KEY (idvenda) REFERENCES venda(idvenda);
+ALTER TABLE passagem ADD CONSTRAINT  pf_voopassagem FOREIGN KEY (idvoo) REFERENCES voo(idvoo);
+ALTER TABLE bagagem ADD CONSTRAINT  pf_aviaobagagem FOREIGN KEY (id_aviao) REFERENCES aeronave(id);
+ALTER TABLE bagagem ADD CONSTRAINT  pf_voobagagembagagem FOREIGN KEY (id_voo) REFERENCES voo(idvoo);
+ALTER TABLE bagagem ADD CONSTRAINT  pf_clientebagagem FOREIGN KEY (id_cliente) REFERENCES cliente(idcliente);
+ALTER TABLE atualizacaomala_R13 ADD CONSTRAINT  pf_aviaoatualizacaomala_R13 FOREIGN KEY (id_aviao) REFERENCES aeronave(id);
+ALTER TABLE atualizacaomala_R13 ADD CONSTRAINT  pf_vooatualizacaoatualizacaomala_R13 FOREIGN KEY (id_voo) REFERENCES voo(idvoo);
+ALTER TABLE atualizacaomala_R13 ADD CONSTRAINT  pf_bagagematualizacaomala_R13 FOREIGN KEY (fk_id_bagagem) REFERENCES bagagem(id_bagagem);
+ALTER TABLE cardapio ADD CONSTRAINT  pf_alimentocardapio FOREIGN KEY (id_alimento) REFERENCES alimento(id);
+ALTER TABLE alimento ADD CONSTRAINT  pf_cardapioalimento FOREIGN KEY (idcardapio) REFERENCES cardapio(idCardapio);
+ALTER TABLE venda ADD CONSTRAINT  pf_clientevendavenda FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);
+ALTER TABLE venda ADD CONSTRAINT  pf_usuariovenda FOREIGN KEY (idusuario) REFERENCES usuario(idusuario);
+ALTER TABLE venda ADD CONSTRAINT  pf_pagamentovenda FOREIGN KEY (idpagamento) REFERENCES pagamento(idpagamento);
+ALTER TABLE pagamento ADD CONSTRAINT  pf_clientepagamento FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);
+ALTER TABLE pagamento ADD CONSTRAINT  pf_boletopagamento FOREIGN KEY (idboleto) REFERENCES boleto(idboleto);
+ALTER TABLE pagamento ADD CONSTRAINT  pf_cartaopagamento FOREIGN KEY (idcartao) REFERENCES cartaocredito(idcartao);
+ALTER TABLE boleto ADD CONSTRAINT  pf_clienteboleto FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);
+ALTER TABLE boleto ADD CONSTRAINT  pf_pagamentoboleto FOREIGN KEY (idpagamento) REFERENCES pagamento(idpagamento);
+ALTER TABLE usuario ADD CONSTRAINT  pf_roleusuario FOREIGN KEY (idrole) REFERENCES role(idrole);
+ALTER TABLE cliente ADD CONSTRAINT  pf_retinacliente FOREIGN KEY (idRetina) REFERENCES retina(idretina);
+ALTER TABLE cliente ADD CONSTRAINT  pf_roleusuario FOREIGN KEY (idrole) REFERENCES role(idrole);
 ALTER TABLE logchat_R23 ADD CONSTRAINT  pf_clientelogchat_R23 FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);
 ALTER TABLE enderecos ADD CONSTRAINT  pf_clienteenderecos FOREIGN KEY (idcliente) REFERENCES cliente(idcliente);
 ALTER TABLE logradouro ADD CONSTRAINT  pf_cidadelogradouro FOREIGN KEY (idcidade) REFERENCES cidade(idcidade);
