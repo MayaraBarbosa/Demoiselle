@@ -24,9 +24,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "remarcar")
 @XmlRootElement
-@NamedQueries({
+/*@NamedQueries({
     @NamedQuery(name = "Remarcar.findAll", query = "SELECT r FROM Voo r WHERE r.idvoo = :idvoo")
-    , @NamedQuery(name = "Remarcar.findByIdvoo", query = "SELECT r FROM Voo r WHERE r.idvoo = :idvoo")})
+    , @NamedQuery(name = "Remarcar.findByIdvoo", query = "SELECT r FROM Voo r WHERE r.idvoo = :idvoo")})*/
 public class Remarcar implements Serializable {
 
     private static final long serialVersionUID = 1L;

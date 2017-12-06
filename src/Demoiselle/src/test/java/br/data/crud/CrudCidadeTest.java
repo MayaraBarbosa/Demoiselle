@@ -66,7 +66,7 @@ public class CrudCidadeTest {
         //Collection<Cidade> expResult = null;
         Collection<Cidade> result = instance.SelectByNome(nome);
        // assertEquals(expResult, result);
-        assertEquals(5, result.size());
+        assertEquals(2, result.size());
         // TODO review the generated test code and remove the default call to fail.
       //  fail("The test case is a prototype.");
     }
