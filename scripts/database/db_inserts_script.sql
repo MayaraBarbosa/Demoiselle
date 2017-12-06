@@ -154,6 +154,7 @@ INSERT INTO public.usuario(idusuario, idrole, nome, senha, datanascimento) VALUE
 INSERT INTO public.usuario(idusuario, idrole, nome, senha, datanascimento) VALUES (5,4,'Darth Silveira','deted','1958-02-02');
 INSERT INTO public.usuario(idusuario, idrole, nome, senha, datanascimento) VALUES (6,5,'Wesley Minguado','fdtre23','1998-02-02');
 INSERT INTO public.usuario(idusuario, idrole, nome, senha, datanascimento) VALUES (7,1,'Trajano Lopes','fredge','1998-02-02');
+INSERT INTO public.usuario(idusuario, idrole, nome, senha, datanascimento, email) VALUES (8,1,'admin','8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918','1998-02-02', 'admin');
 
 --cartaocredito
 INSERT INTO public.cartaocredito(idcartao, numero, validade) VALUES (1,12323,'2020-02-02');
