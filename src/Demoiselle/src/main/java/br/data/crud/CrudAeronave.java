@@ -26,13 +26,13 @@ public class CrudAeronave extends AbstractCrud<br.data.entity.Aeronave>{
         super(Aeronave.class);
     }
     
-    /*@Override
+    @Override
     protected EntityManager getEntityManager(){
         if (em == null) {
             em = Persistence.createEntityManagerFactory(PU).createEntityManager();
         }
         return em;
-    }*/
+    }
     
     public Collection<Aeronave> SelectByModelo(String modelo) {
        try {
@@ -46,11 +46,4 @@ public class CrudAeronave extends AbstractCrud<br.data.entity.Aeronave>{
         return null;
     
     }
-
-    @Override
-    protected EntityManager getEntityManager() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
 }

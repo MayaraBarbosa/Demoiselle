@@ -23,8 +23,8 @@ import javax.faces.bean.RequestScoped;
 public class JsfRota {
     
     private int idrota;
-    private int aeroportoorigem;
-    private int aeroportodestino;
+    private Aeroportos aeroportoorigem;
+    private Aeroportos aeroportodestino;
     private Date datahora_partida;
     private Date datahora_chegada;
     private double frequencia;
@@ -45,8 +45,8 @@ public class JsfRota {
     public void persist() {
         Rota rota = new Rota();
         
-        rota.setAeroportodestino(aeroportodestino);
-        rota.setAeroportoorigem(aeroportoorigem);
+        rota.setDestino(aeroportodestino);
+        rota.setOrigem(aeroportoorigem);
         rota.setDatahora_chegada(datahora_chegada);
         rota.setDatahora_partida(datahora_partida);
         rota.setDuracao_voo(duracao_voo);
@@ -65,8 +65,8 @@ public class JsfRota {
         CrudRota crud = new CrudRota();
         Rota rota = crud.find(idrota);
         
-        rota.setAeroportodestino(aeroportodestino);
-        rota.setAeroportoorigem(aeroportoorigem);
+        rota.setDestino(aeroportodestino);
+        rota.setOrigem(aeroportoorigem);
         rota.setDatahora_chegada(datahora_chegada);
         rota.setDatahora_partida(datahora_partida);
         rota.setDuracao_voo(duracao_voo);
@@ -78,8 +78,8 @@ public class JsfRota {
     }
     
     private void limparFormulario() {
-        this.setAeroportodestino(0);
-        this.setAeroportoorigem(0);
+        this.setAeroportodestino(null);
+        this.setAeroportoorigem(null);
         this.setDatahora_chegada(null);
         this.setDatahora_partida(null);
         this.setDuracao_voo(0);
@@ -91,8 +91,8 @@ public class JsfRota {
     
     public String update(Rota rota){
         this.idPromocao = rota.getIdPromocao();
-        this.aeroportodestino = rota.getAeroportodestino();
-        this.aeroportoorigem = rota.getAeroportoorigem();
+        this.aeroportodestino = rota.getDestino();
+        this.aeroportoorigem = rota.getOrigem();
         this.datahora_chegada = rota.getDatahora_chegada();
         this.datahora_partida = rota.getDatahora_partida();
         this.duracao_voo = rota.getDuracao_voo();
@@ -108,25 +108,25 @@ public class JsfRota {
         this.idrota = idrota;
     }
 
-    public int getAeroportoorigem() {
+    public Aeroportos getAeroportoorigem() {
         return aeroportoorigem;
     }
 
-    public void setAeroportoorigem(int aeroportoorigem) {
+    public void setAeroportoorigem(Aeroportos aeroportoorigem) {
         this.aeroportoorigem = aeroportoorigem;
     }
 
-    public int getAeroportodestino() {
+    public Aeroportos getAeroportodestino() {
         return aeroportodestino;
+    }
+
+    public void setAeroportodestino(Aeroportos aeroportodestino) {
+        this.aeroportodestino = aeroportodestino;
     }
     
     public List<Aeroportos> getAeroportos() { 
         return this.aeroportos; 
     }    
-
-    public void setAeroportodestino(int aeroportodestino) {
-        this.aeroportodestino = aeroportodestino;
-    }
 
     public Date getDatahora_partida() {
         return datahora_partida;

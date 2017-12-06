@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -30,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement 
 @NamedQueries({ 
     @NamedQuery(name="Rota.findAll", query ="SELECT r FROM Rota r"), 
-    @NamedQuery(name = "Rota.findByIdAeroporto", query = "SELECT r FROM Rota r WHERE r.aeroportoorigem = :aeroportoorigem AND r.aeroportodestino = :aeroportodestino") 
+    /*@NamedQuery(name = "Rota.findByIdAeroporto", query = "SELECT r FROM Rota r WHERE r.aeroportoorigem = :aeroportoorigem AND r.aeroportodestino = :aeroportodestino") */
 }) 
 public class Rota implements Serializable {
     
@@ -43,13 +45,13 @@ public class Rota implements Serializable {
     @Column(name = "idrota")
     private int idrota;
     
-    @NotNull
-    @Column(name="aeroportoorigem")
-    private int aeroportoorigem;
+    @ManyToOne
+    @JoinColumn(name = "aeroportoorigem")
+    private Aeroportos origem;
     
-    @NotNull
-    @Column(name="aeroportodestino")
-    private int aeroportodestino;
+    @ManyToOne
+    @JoinColumn(name = "aeroportodestino")
+    private Aeroportos destino;
     
     @Column(name="datahora_partida")
     @Temporal(TemporalType.DATE)
@@ -75,20 +77,20 @@ public class Rota implements Serializable {
         return idrota;
     }
 
-    public int getAeroportoorigem() {
-        return aeroportoorigem;
+    public Aeroportos getOrigem() {
+        return origem;
     }
 
-    public void setAeroportoorigem(int aeroportoorigem) {
-        this.aeroportoorigem = aeroportoorigem;
+    public void setOrigem(Aeroportos origem) {
+        this.origem = origem;
     }
 
-    public int getAeroportodestino() {
-        return aeroportodestino;
+    public Aeroportos getDestino() {
+        return destino;
     }
 
-    public void setAeroportodestino(int aeroportodestino) {
-        this.aeroportodestino = aeroportodestino;
+    public void setDestino(Aeroportos destino) {
+        this.destino = destino;
     }
 
     public Date getDatahora_partida() {
