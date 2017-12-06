@@ -2,47 +2,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="../layout_operacoes.xhtml">
-
+        
         <ui:define name="content">
             <h1>Consultar rotas</h1>
             <h:form>
                 Aeroporto de origem:
-                <h:selectOneMenu value="#{jsfRota.aeroportoorigem}">
-                    <!-- <f:selectItems value="#{jsfAeroporto.lista}"/> -->
-                </h:selectOneMenu>
+                <p:inputNumber value="#{jsfRotaSelect.aeroportoorigem}" decimalPlaces="0"/>
                 <br/>
                 
                 Aeroporto de destino:
-                <h:selectOneMenu value="#{jsfRota.aeroportodestino}">
-                    <!-- <f:selectItems value="#{jsfAeroporto.lista}"/> -->
-                </h:selectOneMenu>
+                <p:inputNumber value="#{jsfRotaSelect.aeroportodestino}" decimalPlaces="0"/>
                 <br/>
                 
-                <h:commandButton value="buscar" action="#{jsfRotaSelect.getSelect()}" />
+                <p:commandButton value="Buscar" action="#{jsfRotaSelect.getSelect()}" update="tabela"/>
+                <br/>
                 
-                <h:dataTable value="#{jsfRotaSelect.rotas}" var="rota">
-                     <h:column>
+                <p:dataTable value="#{jsfRotaSelect.rotas}" var="rota" id="tabela">
+                    <p:column headerText="IdRota">
                         <h:outputText value="#{rota.idrota}" />
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column headerText="Aeroporto de destino">
                         <h:outputText value="#{rota.aeroportodestino}" />
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column headerText="Aeroporto de origem">
                         <h:outputText value="#{rota.aeroportoorigem}" />
-                    </h:column>
-                    <h:column>
-                        <h:commandButton value="remover" action="#{jsfRota.remove(rota)}" onclick="return confirm('Confirma exclusao?');"/> 
-                    </h:column>
-                    <h:column>
-                        <h:commandButton value="editar" action="#{jsfRota.update(rota)}"/> 
-                    </h:column>
-                </h:dataTable>
+                    </p:column>
+                    <p:column>
+                        <p:commandButton value="remover" action="#{jsfRota.remove(rota)}"/> 
+                    </p:column>
+                    <p:column>
+                        <p:commandButton value="editar" action="#{jsfRota.update(rota)}"/> 
+                    </p:column>
+                </p:dataTable>
             </h:form>
 
         </ui:define>
     </ui:composition>
 </html>
-

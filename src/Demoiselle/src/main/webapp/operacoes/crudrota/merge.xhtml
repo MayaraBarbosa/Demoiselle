@@ -4,60 +4,56 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
     
     <ui:composition template="../layout_operacoes.xhtml">
         <ui:define name="content">
             
-            <f:metadata>
-                <f:viewAction action="#{jsfPromocao.getAll}"/>
-            </f:metadata>
-            
-             <h1>Modificar Rota</h1>
+            <h1>Modificar Rota</h1>
             <h:form>
                 Aeroporto de origem:
-                <h:selectOneMenu value="#{jsfRota.aeroportoorigem}">
-                    <!-- <f:selectItems value="#{jsfAeroporto.lista}"/> -->
-                </h:selectOneMenu>
+                <p:selectOneMenu value="#{jsfRota.aeroportoorigem}">
+                    <f:selectItems value="#{jsfRota.aeroportos}" var="aeroporto" itemLabel="#{aeroporto.nome}" itemValue="#{aeroporto.idaeroporto}"/>
+                </p:selectOneMenu>
                 <br/>
                 
                 Aeroporto de destino:
-                <h:selectOneMenu value="#{jsfRota.aeroportodestino}">
-                    <!-- <f:selectItems value="#{jsfAeroporto.lista}"/> -->
-                </h:selectOneMenu>
+                <p:selectOneMenu value="#{jsfRota.aeroportodestino}">
+                    <f:selectItems value="#{jsfRota.aeroportos}" var="aeroporto" itemLabel="#{aeroporto.nome}" itemValue="#{aeroporto.idaeroporto}"/>
+                </p:selectOneMenu>
                 <br/>
                 
                 Frequencia do voo:
-                <h:inputText value="#{jsfRota.frequencia}"/>
+                <p:inputText value="#{jsfRota.frequencia}"/>
                 <br/>
                 
                 Duração do voo:
-                <h:inputText value="#{jsfRota.duracao_voo}"/>
+                <p:inputText value="#{jsfRota.duracao_voo}"/>
                 <br/>
                 
                 Promoção:
-                <h:selectOneMenu value="#{jsfRota.idPromocao}">
-                    <f:selectItems value="#{jsfPromocao.lista}"/>
-                </h:selectOneMenu>
+                <p:selectOneMenu value="#{jsfRota.idPromocao}">
+                    <!-- <f:selectItems value="#{jsfPromocao.lista}"/> -->
+                </p:selectOneMenu>
                 <br/>
                 
                 Data/hora partida:
-                <h:inputText a:placeholder="d-M-yyyy hh:mm:ss" value="#{jsfRota.datahora_partida}">
+                <p:inputText a:placeholder="d-M-yyyy hh:mm:ss" value="#{jsfRota.datahora_partida}">
                     <f:convertDateTime pattern="d-M-yyyy hh:mm:ss" />
-                </h:inputText>
+                </p:inputText>
                 <br/>
                 
                 Data/hora chegada:
-                <h:inputText a:placeholder="d-M-yyyy hh:mm:ss" value="#{jsfRota.datahora_chegada}">
+                <p:inputText a:placeholder="d-M-yyyy hh:mm:ss" value="#{jsfRota.datahora_chegada}">
                     <f:convertDateTime pattern="d-M-yyyy hh:mm:ss" />
-                </h:inputText>
+                </p:inputText>
                 <br/>
                 <br/>
                 
-                <h:commandButton value ="Salvar modificacoes no registro" action="#{jsfRota.merge()}" /> 
+                <p:commandButton value ="Salvar modificacoes no registro" action="#{jsfRota.merge()}" /> 
             </h:form>
         </ui:define>
     </ui:composition>
 </html>
-
 

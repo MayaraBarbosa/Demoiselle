@@ -6,7 +6,7 @@
 package br.data.crud;
 
 import br.data.entity.Rota;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
@@ -33,11 +33,28 @@ public class CrudRota extends AbstractCrud<Rota> {
         return em;
     }
     
-    public Collection<Rota> selectByAeroporto(int aeroportoorigem, int aeroportodestino) {
-        Query query = getEntityManager().createNamedQuery("Rota.findByIdAeroporto");
-        query.setParameter("aeroportoorigem", aeroportoorigem);
-        query.setParameter("aeroportodestino", aeroportodestino);
-        return query.getResultList();
+    public List<Rota> selectByAeroporto(int aeroportoorigem, int aeroportodestino) { 
+        try { 
+            Query query = getEntityManager().createNamedQuery("Rota.findByIdAeroporto"); 
+            query.setParameter("aeroportoorigem", aeroportoorigem); 
+            query.setParameter("aeroportodestino", aeroportodestino); 
+            return query.getResultList(); 
+        } catch (Exception e) { 
+            e.printStackTrace(); 
+        }
+         
+        return null; 
+    }
+    
+    @Override 
+    public List<Rota> getAll() { 
+        try { 
+            return getEntityManager().createNamedQuery("Rota.findAll").getResultList(); 
+        } catch (Exception e) { 
+            e.printStackTrace(); 
+        } 
+         
+        return null; 
     }
     
 }

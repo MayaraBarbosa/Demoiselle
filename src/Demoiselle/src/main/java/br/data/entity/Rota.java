@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -17,6 +19,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -24,9 +27,11 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "rota")
-@NamedQueries({
-    @NamedQuery(name = "Rota.findByIdAeroporto", query = "SELECT r FROM Rota r WHERE r.aeroportoorigem = :aeroportoorigem AND r.aeroportodestino = :aeroportodestino")
-})
+@XmlRootElement 
+@NamedQueries({ 
+    @NamedQuery(name="Rota.findAll", query ="SELECT r FROM Rota r"), 
+    @NamedQuery(name = "Rota.findByIdAeroporto", query = "SELECT r FROM Rota r WHERE r.aeroportoorigem = :aeroportoorigem AND r.aeroportodestino = :aeroportodestino") 
+}) 
 public class Rota implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -34,6 +39,7 @@ public class Rota implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
+    @GeneratedValue(strategy = GenerationType.SEQUENCE) 
     @Column(name = "idrota")
     private int idrota;
     

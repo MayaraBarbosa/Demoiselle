@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="../layout_operacoes.xhtml">
 
@@ -14,45 +15,44 @@
             </f:metadata>            
 
             <h:form>
-                <h:dataTable value="#{jsfRota.lista}" var="rota">                    
-                    <h:column>
+                <p:dataTable value="#{jsfRota.lista}" var="rota">                    
+                    <p:column headerText="IdRota">
                         <h:outputText value="#{rota.idrota}" />
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column headerText="Aeroporto de destino">
                         <h:outputText value="#{rota.aeroportodestino}" />
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column headerText="Aeroporto de origem">
                         <h:outputText value="#{rota.aeroportoorigem}" />
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column headerText="Data/hora partida">
                         <h:outputText value="#{rota.datahora_partida}">
                             <f:convertDateTime pattern="d-M-yyyy hh:mm:ss" />
                         </h:outputText>
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column headerText="Data/hora chegada">
                         <h:outputText value="#{rota.datahora_chegada}">
                             <f:convertDateTime pattern="d-M-yyyy hh:mm:ss" />
                         </h:outputText>
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column headerText="Duraçao do voo">
                         <h:outputText value="#{rota.duracao_voo}" />
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column headerText="Frequencia">
                         <h:outputText value="#{rota.frequencia}" />
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column headerText="Codigo promocao">
                         <h:outputText value="#{rota.idPromocao}" />
-                    </h:column>                    
-                    <h:column>
-                        <h:commandButton value="remover" action="#{jsfRota.remove(rota)}" onclick="return confirm('Confirma exclusao?');"/> 
-                    </h:column>
-                    <h:column>
-                        <h:commandButton value="editar" action="#{jsfRota.update(rota)}"/> 
-                    </h:column>
-                </h:dataTable>
+                    </p:column>                    
+                    <p:column>
+                        <p:commandButton value="Remover" action="#{jsfRota.remove(rota)}" onclick="return confirm('Confirma exclusao?');"/> 
+                    </p:column>
+                    <p:column>
+                        <p:commandButton value="Editar" action="#{jsfRota.update(rota)}"/> 
+                    </p:column>
+                </p:dataTable>
             </h:form>
 
         </ui:define>
     </ui:composition>
 </html>
-

@@ -5,7 +5,9 @@
  */
 package br.jsf;
 
+import br.data.crud.CrudAeroportos;
 import br.data.crud.CrudRota;
+import br.data.entity.Aeroportos;
 import br.data.entity.Rota;
 import java.util.Date;
 import java.util.List;
@@ -28,10 +30,13 @@ public class JsfRota {
     private double frequencia;
     private double duracao_voo;
     private int idPromocao;
+    private List<Aeroportos> aeroportos;
     
     private List<Rota> lista; 
     
-    public JsfRota() { }
+    public JsfRota() { 
+        this.aeroportos = new CrudAeroportos().getAll(); 
+    } 
     
     public void getAll() {
         this.lista = new CrudRota().getAll();
@@ -91,8 +96,7 @@ public class JsfRota {
         this.datahora_chegada = rota.getDatahora_chegada();
         this.datahora_partida = rota.getDatahora_partida();
         this.duracao_voo = rota.getDuracao_voo();
-        this.frequencia = rota.getFrequencia();
-        
+        this.frequencia = rota.getFrequencia();        
         return "merge.xhtml";
     }
     
@@ -115,6 +119,10 @@ public class JsfRota {
     public int getAeroportodestino() {
         return aeroportodestino;
     }
+    
+    public List<Aeroportos> getAeroportos() { 
+        return this.aeroportos; 
+    }    
 
     public void setAeroportodestino(int aeroportodestino) {
         this.aeroportodestino = aeroportodestino;
