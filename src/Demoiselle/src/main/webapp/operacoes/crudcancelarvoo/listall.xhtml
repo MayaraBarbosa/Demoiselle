@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="../layout_operacoes.xhtml">
+
+        <ui:define name="content">
+            <h1>Listar todas as voo</h1>
+            <h:form>
+                <h:dataTable value="#{jsfCancelarVoo.all}" var="cvoo">
+                    <h:column>
+                        <h:outputText value="#{cvoo.idvoo}" />
+                    </h:column>
+                    <h:column>
+                        <h:outputText value="#{cvoo.observacao}" />
+                    </h:column>
+                    <h:column>
+                        <h:commandButton value="cancelar voo" action="#{jsfCancelarVoo.update(cvoo)}"/> 
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</html>
+
