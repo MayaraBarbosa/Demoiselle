@@ -33,15 +33,31 @@ public class JsfLoginCliente implements Serializable {
         System.out.println("Autenticador....");
         
         Cliente cli = new CrudCliente().findByEmail(email, password);
-        System.out.println("Cliente autentic: : " + cli.getNome());
         if (cli != null) {
             System.out.println("Usuário correto.....");
+            System.out.println("Cliente autentic: : " + cli.getNome());
             SessionsUtils.setParam("user", cli);
             
             return "/faces/navegacao/index.xhtml?faces-redirect=true";
         } else {
+            System.out.println("Usuário não autenticado.");
             return "/faces/loginCliente.xhtml?faces-redirect=true";
         }
     }
-    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

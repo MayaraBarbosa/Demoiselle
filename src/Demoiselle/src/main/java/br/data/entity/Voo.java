@@ -29,16 +29,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Voo.findAll", query = "SELECT v FROM Voo v")
-    , @NamedQuery(name = "Voo.findByIdvoo", query = "SELECT v FROM Voo v WHERE v.idvoo = :idvoo")
+    , @NamedQuery(name = "Voo.findByIdvoo", query = "SELECT v FROM Voo v WHERE v.idVoo = :idVoo")
     , @NamedQuery(name = "Voo.findByObservacao", query = "SELECT v FROM Voo v WHERE v.observacao = :observacao")
-    , @NamedQuery(name = "Voo.findByDatahoraembarque", query = "SELECT v FROM Voo v WHERE v.datahoraembarque = :datahoraembarque")})
+    , @NamedQuery(name = "Voo.findByDatahoraembarque", query = "SELECT v FROM Voo v WHERE v.dataHoraEmbarque = :dataHoraEmbarque")})
 public class Voo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "idvoo")
     private Integer idVoo;
 

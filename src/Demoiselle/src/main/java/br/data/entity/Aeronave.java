@@ -28,7 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Aeronave.findAll", query = "SELECT a FROM Aeronave a"),
-    @NamedQuery(name = "Aeronave.findById", query = "SELECT a FROM a WHERE a.id = :id"),
+    /*@NamedQuery(name = "Aeronave.findById", query = "SELECT a FROM Aeronave a WHERE a.id = :id"),*/
     @NamedQuery(name = "Aeronave.findByModelo", query = "SELECT a FROM Aeronave a WHERE UPPER(FUNCTION('TRANSLATE', a.modelo, "
                                                     + "'ÁÀÃÂÄáàãâäÍÌÏíìïÚÙÜúùüÉÈÊËéèêëÓÒÕÔÖóòõôöÇç', "
                                                     + "'AAAAAaaaaaIIIiiiUUUuuuEEEEeeeeOOOOOoooooCc')) LIKE :modelo")})

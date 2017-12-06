@@ -39,9 +39,9 @@ public class CrudUsuario extends AbstractCrud<Usuario> implements Serializable {
             String passEncrypt = encript(password);
             user = createNamedQuery("Usuario.findByEmail")
                     .setParameter("email", email)
-                    .setParameter("password", passEncrypt)
+                    .setParameter("senha", passEncrypt)
                     .getSingleResult();
-            user.setPassword(null);
+            user.setSenha(null);
             return user;
         } catch(NoResultException e) {
             return null;
@@ -54,7 +54,7 @@ public class CrudUsuario extends AbstractCrud<Usuario> implements Serializable {
                     .setParameter("nome", "%" + nome + "%")
                     .getResultList();
             for (Usuario u : usuarios) {
-                u.setPassword(null);
+                u.setSenha(null);
             }
             return usuarios;
         } catch(NoResultException e) {
@@ -64,8 +64,7 @@ public class CrudUsuario extends AbstractCrud<Usuario> implements Serializable {
     }
 
     public void salvar(Usuario usuario) {
-        usuario.setPassword(encript(usuario.getPassword()));
-        
+        usuario.setSenha(encript(usuario.getSenha()));
         this.persist(usuario);
     }
     

@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Usuario.findByEmail", 
             query = "SELECT u FROM Usuario u WHERE u.email = :email AND "
-                    + "u.password = :password"),
+                    + "u.senha = :senha"),
     @NamedQuery(name = "Usuario.findByNome",
             query = "SELECT u FROM Usuario u WHERE UPPER("
                     + "FUNCTION('TRANSLATE', u.nome,"
@@ -49,8 +49,8 @@ public class Usuario implements Serializable {
     @Column(name = "email")
     private String email;
     @NotNull
-    @Column(name = "password")
-    private String password;
+    @Column(name = "senha")
+    private String senha;
     
     @ManyToOne
     @JoinColumn(name = "idrole")
@@ -86,12 +86,12 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setSenha(String password) {
+        this.senha = password;
     }
 
     public Role getRole() {
@@ -134,7 +134,7 @@ public class Usuario implements Serializable {
     
     @Override
     public String toString() {
-        return email + " : " + password + "\n";
+        return email + " : " + this.senha + "\n";
     }
     
 }
