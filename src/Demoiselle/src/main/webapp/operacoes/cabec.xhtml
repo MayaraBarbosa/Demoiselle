@@ -13,7 +13,7 @@
                 Cabecalho da aplicacao
                 Elabore aqui o cabecalho da aplicacao
                 Escolha uma opcao:
-                
+
                 <ul>
                     <li  style="float: left; font-size: 1.5em">
                         <h:outputText value="#{jsfLogin.userName}"/>
@@ -29,85 +29,91 @@
         </header>
         <div style="background-color: bisque" >
 
-        <br></br>
-        <hr></hr>
-        <h:form>
-            Cidade <br/>
-            <h:button value="Exibir todos" outcome="/faces/operacoes/crudcidade/listall.xhtml" />
-            <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudcidade/listselect.xhtml" />
-            <h:button value="Cadastrar" outcome="/faces/operacoes/crudcidade/add.xhtml" />
-            <br/>
-            Role <br/>
-            <h:button value="Exibir todos" outcome="/faces/operacoes/crudrole/listall.xhtml" />
-            <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudrole/listselect.xhtml" />
-            <h:button value="Cadastrar" outcome="/faces/operacoes/crudrole/add.xhtml" />
-            <br/>
+            <br></br>
+            <hr></hr>
+            <h:form>
+                Cidade <br/>
+                <h:button value="Exibir todos" outcome="/faces/operacoes/crudcidade/listall.xhtml" />
+                <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudcidade/listselect.xhtml" />
+                <h:button value="Cadastrar" outcome="/faces/operacoes/crudcidade/add.xhtml" />
+                <br/>
+                Role <br/>
+                <h:button value="Exibir todos" outcome="/faces/operacoes/crudrole/listall.xhtml" />
+                <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudrole/listselect.xhtml" />
+                <h:button value="Cadastrar" outcome="/faces/operacoes/crudrole/add.xhtml" />
+                <br/>
 
-            Usuário <br/> 
-            <h:button value="Exibir todos" outcome="/faces/operacoes/crudusuario/listall.xhtml" />
-            <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudusuario/listselect.xhtml" />
-            <h:button value="Cadastrar" outcome="/faces/operacoes/crudusuario/add.xhtml" />
-            
-            <br/>
+                Usuário <br/> 
+                <h:button value="Exibir todos" outcome="/faces/operacoes/crudusuario/listall.xhtml" />
+                <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudusuario/listselect.xhtml" />
+                <h:button value="Cadastrar" outcome="/faces/operacoes/crudusuario/add.xhtml" />
 
-            Cliente <br/> 
-            <h:button value="Exibir todos" outcome="/faces/operacoes/crudcliente/listall.xhtml" />
-            <!-- <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudusuario/listselect.xhtml" /> -->
-            <h:button value="Cadastrar" outcome="/faces/operacoes/crudcliente/add.xhtml" />
-            
-            <br/>
-            Promoção <br/>
-            <h:button value="Exibir todos" outcome="/faces/operacoes/crudpromocao/listall.xhtml" />
-            <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudpromocao/listselect.xhtml" />
-            <h:button value="Cadastrar" outcome="/faces/operacoes/crudpromocao/add.xhtml" />
-            <br/>
+                <br/>
 
-            Banner <br/>
-            <h:button value="Exibir todos" outcome="/faces/operacoes/crudbanner/listall.xhtml" />
-            <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudbanner/listselect.xhtml" />
-            <h:button value="Cadastrar" outcome="/faces/operacoes/crudbanner/add.xhtml" />
-            <br/>
-            Rota <br/>
-            <h:button value="Exibir todos" outcome="/faces/operacoes/crudrota/listall.xhtml" />
-            <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudrota/listselect.xhtml" />
-            <h:button value="Cadastrar" outcome="/faces/operacoes/crudrota/add.xhtml" />
-            <br/>
+                Cliente <br/> 
+                <h:button value="Exibir todos" outcome="/faces/operacoes/crudcliente/listall.xhtml" />
+                <!-- <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudusuario/listselect.xhtml" /> -->
+                <h:button value="Cadastrar" outcome="/faces/operacoes/crudcliente/add.xhtml" />
 
-            Passagem <br/> 
+                <br/>
+                Promoção <br/>
+                <h:button value="Exibir todos" outcome="/faces/operacoes/crudpromocao/listall.xhtml" />
+                <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudpromocao/listselect.xhtml" />
+                <h:button value="Cadastrar" outcome="/faces/operacoes/crudpromocao/add.xhtml" />
+                <br/>
 
-            <h:button value="Exibir todos" outcome="/faces/operacoes/crudpassagem/listall.xhtml" />
-            <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudpassagem/listselect.xhtml" />
-            <h:button value="Cadastrar" outcome="/faces/operacoes/crudpassagem/add.xhtml" />
-            <br/>
-            Alteração de Voo <br/>
-            <h:button value="Consultar voos disponíveis" outcome="/faces/operacoes/crudremarcacao/listall.xhtml" />
-            <h:button value="Assentos disponíveis" outcome="/faces/operacoes/crudremarcacao/assentos.xhtml" /> 
-            <h:button value="Remarcar passagem" outcome="/faces/operacoes/crudremarcacao/listselect.xhtml" />  
-            <br/>
+                Banner <br/>
+                <h:button value="Exibir todos" outcome="/faces/operacoes/crudbanner/listall.xhtml" />
+                <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudbanner/listselect.xhtml" />
+                <h:button value="Cadastrar" outcome="/faces/operacoes/crudbanner/add.xhtml" />
+                <br/>
+                Rota <br/>
+                <h:button value="Exibir todos" outcome="/faces/operacoes/crudrota/listall.xhtml" />
+                <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudrota/listselect.xhtml" />
+                <h:button value="Cadastrar" outcome="/faces/operacoes/crudrota/add.xhtml" />
+                <br/>
 
-            Aeroportos <br/>
-            <h:button value="Exibir todos" outcome="/faces/operacoes/crudaeroportos/listall.xhtml" />
-            <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudaeroportos/listselect.xhtml" />
-            <h:button value="Cadastrar" outcome="/faces/operacoes/crudaeroportos/add.xhtml" />
-            <br/>
-                                    
-            Aeronaves <br/>
-            <h:button value="Exibir todos" outcome="/faces/operacoes/crudaeronave/listall.xhtml" />
-            <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudaeronave/listselect.xhtml" />
-            <h:button value="Cadastrar" outcome="/faces/operacoes/crudaeronave/add.xhtml" />
-            <br/>
-            
-            Fabricante <br/>
-            <h:button value="Exibir todos" outcome="/faces/operacoes/crudfabricante/listall.xhtml" />
-            <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudfabricante/listselect.xhtml" />
-            <h:button value="Cadastrar" outcome="/faces/operacoes/crudfabricante/add.xhtml" />
-            <br/>
+                Passagem <br/> 
 
-            Voo <br/>
-            <h:button value="Cadastrar" outcome="/faces/operacoes/crudVoo/add.xhtml" />
-            <br/>
+                <h:button value="Exibir todos" outcome="/faces/operacoes/crudpassagem/listall.xhtml" />
+                <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudpassagem/listselect.xhtml" />
+                <h:button value="Cadastrar" outcome="/faces/operacoes/crudpassagem/add.xhtml" />
+                <br/>
+                Alteração de Voo <br/>
+                <h:button value="Consultar voos disponíveis" outcome="/faces/operacoes/crudremarcacao/listall.xhtml" />
+                <h:button value="Assentos disponíveis" outcome="/faces/operacoes/crudremarcacao/assentos.xhtml" /> 
+                <h:button value="Remarcar passagem" outcome="/faces/operacoes/crudremarcacao/listselect.xhtml" />  
+                <br/>
 
-        </h:form>
+                Aeroportos <br/>
+                <h:button value="Exibir todos" outcome="/faces/operacoes/crudaeroportos/listall.xhtml" />
+                <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudaeroportos/listselect.xhtml" />
+                <h:button value="Cadastrar" outcome="/faces/operacoes/crudaeroportos/add.xhtml" />
+                <br/>
+
+                Aeronaves <br/>
+                <h:button value="Exibir todos" outcome="/faces/operacoes/crudaeronave/listall.xhtml" />
+                <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudaeronave/listselect.xhtml" />
+                <h:button value="Cadastrar" outcome="/faces/operacoes/crudaeronave/add.xhtml" />
+                <br/>
+
+                Fabricante <br/>
+                <h:button value="Exibir todos" outcome="/faces/operacoes/crudfabricante/listall.xhtml" />
+                <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudfabricante/listselect.xhtml" />
+                <h:button value="Cadastrar" outcome="/faces/operacoes/crudfabricante/add.xhtml" />
+                <br/>
+
+                Voo <br/>
+                <h:button value="Cadastrar" outcome="/faces/operacoes/crudVoo/add.xhtml" />
+                <br/>
+
+                Fabricante <br/>
+                <h:button value="Exibir todos" outcome="/faces/operacoes/crudcancelarvoo/listall.xhtml" />
+                <h:button value="Consultar/buscar" outcome="/faces/operacoes/crudcancelarvoo/listselect.xhtml" />
+                <br/>
+
+
+            </h:form>
         </div>
     </h:body>
 </html>
