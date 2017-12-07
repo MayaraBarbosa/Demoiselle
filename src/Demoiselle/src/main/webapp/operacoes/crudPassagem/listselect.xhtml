@@ -2,27 +2,38 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="../layout_operacoes.xhtml">
 
         <ui:define name="content">
             <h1>Consultar Passagens</h1>
             <h:form>
-                <h:inputText value="#{jsfPassagem.idpassagem}"  /> 
-                <h:commandButton value="buscar" />       
-                <h:dataTable value="#{jsfCidadeSelect.select}" var="cid">
+                Código da Passagem
+                <p:inputNumber value ="#{jsfPassagemSelect.idpassagem}" decimalPlaces="0" />
+                <br/>
+                <p:commandButton value ="Buscar" action ="#{jsfPassagemSelect.gSelect()}" update="tabela"
+                <br/>               
+      
+                <h:dataTable value="#{jsfPassagemSelect.passagens}" var="passagens" id="tablea">
+                    <p:column headerText="Código Passagem">
+                        <h:outputText value="#{passagens.idpassagem}" />
+                    </p:column>
+                    <p:column headerText="Quantidade de passageiros">
+                        <h:outputText value="#{passagens.qtdepassageiros}" />
+                    </p:column>
+                     <p:column headerText="Código Voo">
+                         <h:outputText value="#{passagens.idvoo}" />
+                    </p:column>
+                     <p:column headerText="Código Venda">
+                         <h:outputText value="#{passagens.idvenda}" />
+                    </p:column>
                     <h:column>
-                        <h:outputText value="#{cid.idcidade}" />
+                        <h:commandButton value="remover" action="#{jsfPassagem.remove(passagens)}" onclick="return confirm('Confirma exclusao?');"/> 
                     </h:column>
                     <h:column>
-                        <h:outputText value="#{cid.nome}" />
-                    </h:column>
-                    <h:column>
-                        <h:commandButton value="remover" action="#{jsfCidade.remove(test)}" onclick="return confirm('Confirma exclusao?');"/> 
-                    </h:column>
-                    <h:column>
-                        <h:commandButton value="editar" action="#{jsfCidade.update(test)}"/> 
+                        <h:commandButton value="editar" action="#{jsfPassagem.update(passagens)}"/> 
                     </h:column>
                 </h:dataTable>
             </h:form>

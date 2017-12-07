@@ -5,6 +5,10 @@
  */
 package br.jsf;
 
+import br.data.crud.CrudPassagem;
+import br.data.entity.Passagem;
+import java.util.Collection;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -25,12 +29,21 @@ public class JsfPassagemSelect  {
     private int idpassagem;
     private int idvoo;
     private int idvenda;
-    private String nome = "";
+    private String obvservacao = "";
+    private List<Passagem> passagens;
     
-    public java.util.Collection<br.data.entity.Passagem> getSelect(){
-        return new br.data.crud.CrudPassagem().selectByIdpassagem(idpassagem);
+    
+    
+    public void gSelect(){
+        List<Passagem> passagensResult = new CrudPassagem().selectByIdpassagem(idpassagem);
+        this.passagens = passagensResult;
+        //return new br.data.crud.CrudPassagem().selectByIdpassagem(idpassagem);
     }
 
+    public Collection<Passagem> getPassagens() {
+        return passagens;
+    }
+    
     public int getIdpassagem() {
         return idpassagem;
     }
@@ -39,13 +52,6 @@ public class JsfPassagemSelect  {
         this.idpassagem = idpassagem;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public int getIdvoo() {
         return idvoo;
@@ -64,6 +70,16 @@ public class JsfPassagemSelect  {
 
     public void setIdvenda(int idvenda) {
         this.idvenda = idvenda;
+    }
+
+
+    public String getObvservacao() {
+        return obvservacao;
+    }
+
+
+    public void setObvservacao(String obvservacao) {
+        this.obvservacao = obvservacao;
     }
     
     

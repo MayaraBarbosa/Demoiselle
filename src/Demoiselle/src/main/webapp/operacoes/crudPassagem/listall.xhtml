@@ -2,33 +2,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="../layout_operacoes.xhtml">
 
         <ui:define name="content">
             <h1>Listar todas as Passagens</h1>
             <h:form>
-                <h:dataTable value="#{jsfPassagem.all}" var="pas">
-                    <h:column>
+                <p:dataTable value="#{jsfPassagem.all}" var="pas">
+                    <p:column headerText="Código Passagem">
                         <h:outputText value="#{pas.idpassagem}" />
-                    </h:column>
-                    <h:column>
+                    </p:column>
+                    <p:column headerText="Quantidade de passageiros">
                         <h:outputText value="#{pas.qtdepassageiros}" />
-                    </h:column>
-                     <h:column>
-                         <h:outputText value="#{jsfVoo.idvoo}" />
-                    </h:column>
-                     <h:column>
-                         <h:outputText value="#{jsfVoo.idaeronave}" />
-                    </h:column>
+                    </p:column>
+                     <p:column headerText="Código Voo">
+                         <h:outputText value="#{pas.idvoo}" />
+                    </p:column>
+                     <p:column headerText="Código Venda">
+                         <h:outputText value="#{pas.idvenda}" />
+                    </p:column>
 <!--                    <h:column>
                         <h:commandButton value="remover" action="#{jsfPassagem.remove(pas)}" onclick="return confirm('Confirma exclusao?');"/> 
                     </h:column>-->
                     <h:column>
-                        <h:commandButton value="comprar" action="#{jsfPassagem.update(pas)}" onclick="return confirm('Certeza desta compra?');"/> 
+                        <h:commandButton value="comp" action="#{jsfPassagem.update(pas)}" onclick="return confirm('Certeza desta compra?');"/> 
                     </h:column>
-                </h:dataTable>
+                </p:dataTable>
             </h:form>
 
         </ui:define>

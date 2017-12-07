@@ -7,7 +7,11 @@ package br.jsf;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-
+import br.data.crud.CrudPassagem;
+import br.data.crud.CrudVoo;
+import br.data.entity.Passagem;
+import br.data.entity.Voo;
+import java.util.List;
 
 /**
  *
@@ -24,12 +28,17 @@ public class JsfPassagem {
     private int qtdpassageiros;
     private int idvoo;
     private int idvenda;
+    private List<Voo> voos;
  
     
     public JsfPassagem() {
-        
+        this.voos = new CrudVoo().getAll();
     }
     
+    public List<Passagem> getLista(){
+        List<Passagem> result = new CrudPassagem().getAll();
+        return result;
+    }
    
     public void persist(){
        br.data.entity.Passagem pas = new br.data.entity.Passagem();
