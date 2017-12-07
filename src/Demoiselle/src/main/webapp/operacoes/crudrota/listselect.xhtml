@@ -27,16 +27,16 @@
                         <h:outputText value="#{rota.idrota}" />
                     </p:column>
                     <p:column headerText="Aeroporto de destino">
-                        <h:outputText value="#{rota.aeroportodestino}" />
+                        <h:outputText value="#{rota.destino.nome}" />
                     </p:column>
                     <p:column headerText="Aeroporto de origem">
-                        <h:outputText value="#{rota.aeroportoorigem}" />
+                        <h:outputText value="#{rota.origem.nome}" />
                     </p:column>
                     <p:column>
-                        <p:commandButton value="remover" action="#{jsfRota.remove(rota)}"/> 
+                        <p:commandButton value="Remover" action="#{jsfRota.remove(rota)}"/> 
                     </p:column>
                     <p:column>
-                        <p:commandButton value="editar" action="#{jsfRota.update(rota)}"/> 
+                        <p:commandButton value="Editar" action="#{jsfRota.update(rota)}"/> 
                     </p:column>
                 </p:dataTable>
             </h:form>

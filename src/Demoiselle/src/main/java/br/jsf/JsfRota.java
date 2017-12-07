@@ -23,6 +23,7 @@ import javax.faces.bean.RequestScoped;
 public class JsfRota {
     
     private int idrota;
+    
     private Aeroportos aeroportoorigem;
     private Aeroportos aeroportodestino;
     private Date datahora_partida;
@@ -32,17 +33,16 @@ public class JsfRota {
     private int idPromocao;
     private List<Aeroportos> aeroportos;
     
-    private List<Rota> lista; 
-    
     public JsfRota() { 
-        this.aeroportos = new CrudAeroportos().getAll(); 
+        this.aeroportos = new CrudAeroportos().getAll();
     } 
     
-    public void getAll() {
-        this.lista = new CrudRota().getAll();
+    public List<Rota> getLista() {
+        List<Rota> result = new CrudRota().getAll();
+        return result;
     }
     
-    public void persist() {
+    public String persist() {
         Rota rota = new Rota();
         
         rota.setDestino(aeroportodestino);
@@ -55,10 +55,12 @@ public class JsfRota {
         
         new CrudRota().persist(rota);
         limparFormulario();
+        return "listall.xhtml";
     }
     
-    public void remove(Rota rota) {
+    public String remove(Rota rota) {
         new CrudRota().remove(rota);
+        return "listall.xhtml";
     }
     
     public void merge() {
@@ -86,7 +88,6 @@ public class JsfRota {
         this.setFrequencia(0);
         this.setIdPromocao(0);
         this.setIdrota(0);
-        this.setLista(null);
     }
     
     public String update(Rota rota){
@@ -126,7 +127,7 @@ public class JsfRota {
     
     public List<Aeroportos> getAeroportos() { 
         return this.aeroportos; 
-    }    
+    }
 
     public Date getDatahora_partida() {
         return datahora_partida;
@@ -166,13 +167,5 @@ public class JsfRota {
 
     public void setIdPromocao(int idPromocao) {
         this.idPromocao = idPromocao;
-    }
-
-    public List<Rota> getLista() {
-        return lista;
-    }
-
-    public void setLista(List<Rota> lista) {
-        this.lista = lista;
     }
 }
