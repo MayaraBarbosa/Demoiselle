@@ -9,12 +9,12 @@
    
     <ui:composition template="../layout_operacoes.xhtml">
         <ui:define name="content">
-            <h1>Cadastrar Usuario</h1>
+            <h1>Cadastro de Usuarios</h1>
             <div class="ui-fluid">
                 <p:panelGrid id="capaPanel" columns="12" layout="grid" 
-                        style="margin-top: 20px; margin-bottom: 40px"
-                        styleClass="panelgrid-noborder"
-                        columnClasses=" ui-grid-col-4">
+                  style="margin-top: 30px; margin-bottom: 30px"
+                  styleClass="panelgrid-noborder"
+                  columnClasses=" ui-grid-col-4">
                     
                     <h:form>
                         <p:outputLabel value="Nome:" />
@@ -29,7 +29,7 @@
                         <p:password value="#{jsfUsuario.usuario.password}" />
 
                         <br></br>
-                        <p:outputLabel value="Data Nascimento:" />
+                        <p:outputLabel value="Data de Nascimento:" />
                         <p:calendar id="data-nascimento" pattern="dd/MM/yyyy"
                                     converter="dataConverter" 
                                     value="#{jsfUsuario.usuario.dataNascimento}"
@@ -37,12 +37,13 @@
 
 
                         <br></br>
-                        <p:outputLabel value="Permissões:" />
-                        <p:selectOneMenu id="role" value="#{jsfUsuario.usuario.role}" 
+                        <p:outputLabel value="Permissões do usário:" />
+                              <p:selectOneMenu id="role" value="#{jsfUsuario.usuario.role}" 
                                          converter="roleConverter">
                             <f:selectItems value="#{jsfRole.all}" var="role" 
                                            itemLabel="#{role.nome}" itemValue="#{role}"/>
                         </p:selectOneMenu>
+                      <!--  <p:selectOneMenu id="role" value="#{jsfUsuario.usuario.role}" -->
 
                         <br></br>
                         <p:commandButton value="Salvar" action="#{jsfUsuario.persist}"
