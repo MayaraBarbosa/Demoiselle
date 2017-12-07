@@ -26,14 +26,15 @@
                         itemLabel="#{a.modelo} - #{a.ano}"
                         itemValue="#{a}"/>
                 </p:selectOneMenu> <br/>
-
+                
+                <p:outputLabel for="observacao" value="Observação: " />
                 <p:textEditor id="observacao" value="#{jsfVoo.voo.observacao}" height="200"></p:textEditor><br/>
                 
                 <p:outputLabel for="data-embarque" value="Data de embarque: " />
-                    <p:calendar id="data-embarque" pattern="dd/MM/yyyy HH:mm"
-                        converter="dataHoraConverter" 
-                        value="#{jsfVoo.voo.dataHoraEmbarque}"
-                        yearRange="c-150:c+1" navigator="true"/> <br/>
+                <p:calendar id="data-embarque" pattern="dd/MM/yyyy HH:mm"
+                    converter="dataHoraConverter" 
+                    value="#{jsfVoo.voo.dataHoraEmbarque}"
+                    yearRange="c-150:c+1" navigator="true"/> <br/>
 
                 <p:commandButton value="Salvar" action="#{jsfVoo.persist}" update="@form" /> 
                 

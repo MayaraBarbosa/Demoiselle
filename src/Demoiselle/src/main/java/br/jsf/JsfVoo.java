@@ -92,4 +92,9 @@ public class JsfVoo {
     public void setCrudVoo(CrudVoo crudVoo) {
         this.crudVoo = crudVoo;
     }
+    
+    public List<Voo> getVoos() {
+        List<Voo> voos = this.crudVoo.getAll();
+        return this.crudVoo.getAll();
+    }
 }
