@@ -9,12 +9,12 @@
     <ui:composition template="../layout_operacoes.xhtml">
 
         <ui:define name="content">
-            <h1>Listar todos os Usuários</h1>
+            <h1>Usuários cadastrados</h1>
             <div class="ui-fluid">
                
                     <h:form>
                         <p:dataTable value="#{jsfUsuario.all}" var="user">
-                            <p:column headerText="ID" width="30">
+                            <p:column headerText="ID" width="35">
                                 <h:outputText value="#{user.idUsuario}" />
                             </p:column>
                             <p:column headerText="Nome">
@@ -26,10 +26,10 @@
                             <p:column headerText="Cargo">
                                 <h:outputText value="#{user.role.nome}" />
                             </p:column>
-                            <p:column width="200" headerText="Data de Nascimento">
+                            <p:column width="210" headerText="Data de Nascimento">
                                 <h:outputText value="#{user.dataNascimento}" />
                             </p:column>
-                            <p:column width="115">
+                            <p:column width="120">
                                 <p:commandButton value="Remover" action="#{jsfUsuario.remove(user)}" 
                                                  onclick="return confirm('Confirma exclusao?');"
                                                  update="@form" /> 
