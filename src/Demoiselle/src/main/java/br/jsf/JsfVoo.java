@@ -11,6 +11,7 @@ import br.data.crud.CrudVoo;
 import br.data.entity.Aeronave;
 import br.data.entity.Rota;
 import br.data.entity.Voo;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,25 +27,20 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class JsfVoo {
     private Voo voo;
-    private Date dataHoraEmbarque;
-    private String observacao;
-    private Rota rotaSelecionada;
-    private Aeronave aeronaveSelecionada;
-    private List<Rota> rotas = new ArrayList<>();
-    private List<Aeronave> aeronaves = new ArrayList<>();
+    private List<Rota> rotas;
+    private List<Aeronave> aeronaves;
     private CrudVoo crudVoo;
     
     public JsfVoo() {
         this.crudVoo = new CrudVoo();
+        this.voo = new Voo();
         this.rotas = new CrudRota().getAll();
         this.aeronaves = new CrudAeronave().getAll();
     }
     
-    public void persist(){
+    public void persist() {
+        this.crudVoo.persist(voo);
         this.voo = new Voo();
-        //this.crudVoo.persist(voo);
-        this.voo.setIdVoo(0);
-        this.voo.setObservacao(null);
     }
     
     public void remove(br.data.entity.Voo voo){
@@ -56,7 +52,6 @@ public class JsfVoo {
     }
 
     public String update(br.data.entity.Voo voo){
-        this.setObservacao(voo.getObservacao());
         return "merge.xhtml";
     }
     
@@ -64,23 +59,6 @@ public class JsfVoo {
         Voo voo;
         voo = this.crudVoo.find(this.voo.getIdVoo());
         this.crudVoo.merge(voo);
-        this.setObservacao("");
-    }
-
-    public String getObservacao() {
-        return observacao;
-    }
-
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
-    }
-
-    public Rota getRotaSelecionada() {
-        return rotaSelecionada;
-    }
-
-    public void setRotaSelecionada(Rota rotaSelecionada) {
-        this.rotaSelecionada = rotaSelecionada;
     }
 
     public List<Rota> getRotas() {
@@ -91,14 +69,6 @@ public class JsfVoo {
         this.rotas = rotas;
     }
 
-    public Aeronave getAeronaveSelecionada() {
-        return aeronaveSelecionada;
-    }
-
-    public void setAeronaveSelecionada(Aeronave aeronaveSelecionada) {
-        this.aeronaveSelecionada = aeronaveSelecionada;
-    }
-
     public List<Aeronave> getAeronaves() {
         return aeronaves;
     }
@@ -107,11 +77,19 @@ public class JsfVoo {
         this.aeronaves = aeronaves;
     }
 
-    public Date getDataHoraEmbarque() {
-        return dataHoraEmbarque;
+    public Voo getVoo() {
+        return voo;
     }
 
-    public void setDataHoraEmbarque(Date dataHoraEmbarque) {
-        this.dataHoraEmbarque = dataHoraEmbarque;
+    public void setVoo(Voo voo) {
+        this.voo = voo;
+    }
+
+    public CrudVoo getCrudVoo() {
+        return crudVoo;
+    }
+
+    public void setCrudVoo(CrudVoo crudVoo) {
+        this.crudVoo = crudVoo;
     }
 }

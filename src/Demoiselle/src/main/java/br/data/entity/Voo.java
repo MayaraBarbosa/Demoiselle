@@ -6,6 +6,7 @@
 package br.data.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -21,6 +22,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
  *
@@ -47,7 +49,7 @@ public class Voo implements Serializable {
     private String observacao;
     
     @Column(name = "datahoraembarque")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIME)
     private Date dataHoraEmbarque;
 
     @ManyToOne
@@ -79,14 +81,6 @@ public class Voo implements Serializable {
         this.observacao = observacao;
     }
 
-    public Date getDatahoraembarque() {
-        return dataHoraEmbarque;
-    }
-
-    public void setDatahoraembarque(Date dataHoraEmbarque) {
-        this.dataHoraEmbarque = dataHoraEmbarque;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -100,14 +94,6 @@ public class Voo implements Serializable {
 
     public void setIdVoo(Integer idVoo) {
         this.idVoo = idVoo;
-    }
-
-    public Date getDataHoraEmbarque() {
-        return dataHoraEmbarque;
-    }
-
-    public void setDataHoraEmbarque(Date dataHoraEmbarque) {
-        this.dataHoraEmbarque = dataHoraEmbarque;
     }
 
     public Aeronave getAeronave() {
@@ -125,7 +111,14 @@ public class Voo implements Serializable {
     public void setRota(Rota Rota) {
         this.Rota = Rota;
     }
-    
+
+    public Date getDataHoraEmbarque() {
+        return dataHoraEmbarque;
+    }
+
+    public void setDataHoraEmbarque(Date dataHoraEmbarque) {
+        this.dataHoraEmbarque = dataHoraEmbarque;
+    }
     @Override
     public boolean equals(Object object) {
         if (!(object instanceof Voo)) {

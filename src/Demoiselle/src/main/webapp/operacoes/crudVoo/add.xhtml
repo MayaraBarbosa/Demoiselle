@@ -8,37 +8,38 @@
     <ui:composition template="../layout_operacoes.xhtml">
         <ui:define name="content">
             <h:form>
-                <label for="selectRota">Rota: </label>
-                <h:selectOneMenu id="selectRota"
-                    value="#{jsfVoo.rotaSelecionada}"  
-                    required="true"  
-                    requiredMessage="Valor é obrigatório">  
-                    <f:selectItem itemValue="" itemLabel="Selecione uma rota"/>  
-                    <f:selectItems value="#{jsfVoo.rotas}" var="r" itemLabel="#{r.origem} - #{r.destino}" itemValue="#{r}"/>  
-                </h:selectOneMenu> <br/>
+                <p:outputLabel for="rotas" value="Rota: " />&nbsp;<br/>
+                <p:selectOneMenu id="rotas" value="#{jsfVoo.voo.rota}">
+                    <f:selectItem itemValue="" itemLabel="Selecione uma rota"></f:selectItem>
+                    <f:selectItems 
+                        value="#{jsfVoo.rotas}" 
+                        var="r" 
+                        itemLabel="#{r.origem} - #{r.destino}"/>
+                </p:selectOneMenu> <br/>
+
+                <p:outputLabel for="aeronaves" value="Aeronave: " />&nbsp;<br/>
+                <p:selectOneMenu id="aeronaves" value="#{jsfVoo.voo.aeronave}" >
+                    <f:selectItem itemValue="" itemLabel="Selecione uma aeronave"></f:selectItem>
+                    <f:selectItems 
+                        value="#{jsfVoo.aeronaves}" 
+                        var="a" 
+                        itemLabel="#{a.modelo} - #{a.ano}"
+                        itemValue="#{a}"/>
+                </p:selectOneMenu> <br/>
+
+                <p:textEditor id="observacao" value="#{jsfVoo.voo.observacao}" height="200"></p:textEditor><br/>
                 
-                <label for="selectAeronave">Aeronave: </label>
-                <h:selectOneMenu id="selectAeronave"  
-                    value="#{jsfVoo.aeronaveSelecionada}"  
-                    required="true"  
-                    requiredMessage="Valor é obrigatório">  
-                    <f:selectItem itemValue="" itemLabel="Selecione uma aeronave"/>  
-                    <f:selectItems value="#{jsfVoo.aeronaves}" var="a" itemLabel="#{a.modelo} - #{a.ano}" itemValue="#{a}"/>  
-                </h:selectOneMenu> <br/>
-                
-                <label for="observacao">Observação: </label>
-                <h:inputTextarea id="observacao" value="#{jsfVoo.observacao}" rows="8">
-                </h:inputTextarea> <br/>
-                
-                <p:outputLabel value="Data de embarque: " />
+                <p:outputLabel for="data-embarque" value="Data de embarque: " />
                     <p:calendar id="data-embarque" pattern="dd/MM/yyyy HH:mm"
-                        converter="dataConverter" 
-                        value="#{jsfVoo.dataHoraEmbarque}"
+                        converter="dataHoraConverter" 
+                        value="#{jsfVoo.voo.dataHoraEmbarque}"
                         yearRange="c-150:c+1" navigator="true"/> <br/>
 
-                <h:commandButton value="salvar novo registro" action="#{jsfVoo.persist()}"  /> 
+                <p:commandButton value="Salvar" action="#{jsfVoo.persist}" update="@form" /> 
+                
             </h:form>
         </ui:define>
     </ui:composition>
+    
 </html>
 
