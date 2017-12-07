@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement 
 @NamedQueries({ 
     @NamedQuery(name="Rota.findAll", query ="SELECT r FROM Rota r"), 
-    /*@NamedQuery(name = "Rota.findByIdAeroporto", query = "SELECT r FROM Rota r WHERE r.aeroportoorigem = :aeroportoorigem AND r.aeroportodestino = :aeroportodestino") */
+    @NamedQuery(name = "Rota.findByIdAeroporto", query = "SELECT r FROM Rota r WHERE r.origem.idaeroporto = :aeroportoorigem AND r.destino.idaeroporto = :aeroportodestino")
 }) 
 public class Rota implements Serializable {
     

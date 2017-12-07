@@ -13,11 +13,15 @@
             <h1>Cadastrar Rota</h1>
             <h:form>
                 Aeroporto de origem:
-                <p:inputNumber value="#{jsfRota.aeroportoorigem}" decimalPlaces="0"/>
+                <p:selectOneMenu value="#{jsfRota.aeroportoorigem}">
+                    <f:selectItems value="#{jsfRota.aeroportos}" var="a" itemLabel="#{a.nome}" itemValue="${a}"/>
+                </p:selectOneMenu>
                 <br/>
                 
                 Aeroporto de destino:
-                <p:inputNumber value="#{jsfRota.aeroportodestino}" decimalPlaces="0"/>
+                <p:selectOneMenu value="#{jsfRota.aeroportodestino}">
+                    <f:selectItems value="#{jsfRota.aeroportos}" var="a" itemLabel="#{a.nome}" itemValue="${a}"/>
+                </p:selectOneMenu>
                 <br/>
                 
                 Frequencia do voo:
@@ -41,8 +45,8 @@
                 <br/>
                 <br/>
                 
-                <p:commandButton value="Salvar registro" action="#{jsfRota.persist()}" /> 
-            </h:form>
+                <p:commandButton value="Salvar registro" action="#{jsfRota.persist()}"/>
+            </h:form>             
         </ui:define>
     </ui:composition>
 </html>
