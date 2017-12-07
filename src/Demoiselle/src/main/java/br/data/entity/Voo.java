@@ -12,6 +12,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -53,10 +54,12 @@ public class Voo implements Serializable {
     private Date dataHoraEmbarque;
 
     @ManyToOne
+    @JoinColumn(name = "idaeronave")
     private Aeronave aeronave;
 
     @ManyToOne
-    private Rota Rota;
+    @JoinColumn(name = "idrota")
+    private Rota rota;
     
     public Voo() {
     }
@@ -105,11 +108,11 @@ public class Voo implements Serializable {
     }
 
     public Rota getRota() {
-        return Rota;
+        return rota;
     }
 
     public void setRota(Rota Rota) {
-        this.Rota = Rota;
+        this.rota = Rota;
     }
 
     public Date getDataHoraEmbarque() {
